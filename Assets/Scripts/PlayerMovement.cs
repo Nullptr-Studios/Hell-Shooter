@@ -1,4 +1,5 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,15 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D m_Rigidbody;
     private Vector2 m_Direction;
-    [NonSerialized] public bool IsMoving = false;
-    public float maxSpeed = 4f;
-    [SerializeField] private float m_CurrentSpeed = 0f;
-    
-    // Acceleration variables
-    public AnimationCurve accelerationCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    public AnimationCurve decelerationCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
-    public float accelerationTime = 0.5f;
-    public float decelerationTime = 0.5f;
+    [NonSerialized] public bool IsInput = false, IsMoving = false;
+    [SerializeField] [ReadOnly] private float m_CurrentSpeed = 0f;
+    [SerializeField] MotionController m_MovementController;
     
     // Start is called before the first frame update
     void Start()
@@ -25,8 +20,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsInput = m_Direction != Vector2.zero;
         IsMoving = m_Rigidbody.velocity != Vector2.zero;
-        m_Rigidbody.velocity = m_Direction * maxSpeed;
+        m_MovementController.Update(IsInput, IsMoving);
+        m_Rigidbody.velocity = m_Direction * m_MovementController.speed;
+        m_CurrentSpeed = m_Rigidbody.velocity.magnitude;
     }
 
     /**
