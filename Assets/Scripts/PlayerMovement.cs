@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private float _accelTimer = 0;
     
     // Public variables
-    [SerializeField] [Range(1f, 8f)] private float maxSpeed;
+    [SerializeField] [Range(1.0f, 30.0f)] private float maxSpeed;
     [SerializeField] [ReadOnly] private float currentSpeed;
     [Header("Acceleration variables")]
     [SerializeField] private float accelerationTime;
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rb.velocity = maxSpeed * Vector2.Lerp(Vector2.zero, _direction, _accelTimer);
+        _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime);
         currentSpeed = _rb.velocity.magnitude;
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
     }

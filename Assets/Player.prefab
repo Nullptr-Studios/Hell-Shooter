@@ -202,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f07d9ac7471f042b6c59176773e531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 0
-  m_CurrentSpeed: 0
-  m_MovementController:
-    m_Curve: {fileID: 11400000, guid: 025cc72f600869a488cd014d10d63333, type: 2}
-    m_speedMax: 4
+  maxSpeed: 5.06
+  currentSpeed: 0
+  accelerationTime: 1
