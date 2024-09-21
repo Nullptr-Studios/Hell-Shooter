@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLookAt : MonoBehaviour
@@ -7,6 +5,9 @@ public class PlayerLookAt : MonoBehaviour
     [Range(0.0f,0.25f)] public float lerpMagnitude = 0.03f;
     
     private Vector3 _currentDir;
+    
+    //@TODO: Add controller joystick input
+    
     void Update ()
     {
         //Obtain Mouse Dir
