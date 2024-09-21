@@ -7,7 +7,7 @@ public class PlayerLookAt : MonoBehaviour
 {
     [Range(0.0f,0.25f)] public float lerpMagnitude = 0.03f;
 
-    public Vector3 dir = Vector3.zero;
+    private Vector3 dir = Vector3.zero;
     private Vector3 _currentDir = Vector3.zero;
     
     private PlayerInput playerInput;
