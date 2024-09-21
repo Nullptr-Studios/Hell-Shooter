@@ -1,4 +1,6 @@
 using UnityEngine.InputSystem;
+using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
@@ -7,43 +9,15 @@ public class PlayerShoot : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     [Range(0.1f, 1.0f)] public float fireRate;
-
-    //Inputs
-    private HellShooter_IA InputActions;
-    private InputAction _fire;
     
     //Internal Variables
     private float _nextFire = 0.0f;
-    private bool _wantsToFire = false;
-
-    private void Awake()
-    {
-        InputActions = new HellShooter_IA();
-    }
-
-    private void OnEnable()
-    {
-        //Setup Input Actions
-        _fire = InputActions.Player.Fire;
-        _fire.Enable();
-        
-        _fire.performed += OnPressedFire;
-        _fire.canceled += OnCanceledFire;
-    }
-
-    private void OnDisable()
-    {
-        //Disable input actions
-        _fire.Disable();
-        
-        _fire.performed -= OnPressedFire;
-        _fire.canceled -= OnCanceledFire;
-    }
+    private float _wantsToFire = 0.0f;
 
     // Update is called once per frame
     void Update()
     {
-        //this is outside _wantsToFire to prevent spamming fire button
+        //this is outside _wantsToFire if statement to prevent spamming fire button
         if (_nextFire < fireRate)
         {
             //Add time
@@ -51,7 +25,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
         //main check
-        if (_wantsToFire && (_nextFire >= fireRate))
+        if (_wantsToFire > 0.5f && (_nextFire >= fireRate))
         {
             Fire();
             //revert timer to 0
@@ -59,14 +33,10 @@ public class PlayerShoot : MonoBehaviour
         }
     }
 
-    private void OnCanceledFire(InputAction.CallbackContext context)
+    private void OnFire(InputValue value)
     {
-        _wantsToFire = false;
-    }
-
-    private void OnPressedFire(InputAction.CallbackContext context)
-    {
-        _wantsToFire = true;
+        //fuck unity, a fucking button does not return bool it returns a fucking float, thanks unity
+        _wantsToFire = value.Get<float>();
     }
 
     private void Fire()

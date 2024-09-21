@@ -2,7 +2,7 @@
     "name": "Hell-Shooter_IA",
     "maps": [
         {
-            "name": "Player",
+            "name": "Gameplay",
             "id": "efdb2dcf-f04f-49f9-89a6-6a813b8c9149",
             "actions": [
                 {
@@ -29,8 +29,8 @@
                     "id": "1aab38ea-e318-48cf-8538-68323e74648e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -171,7 +171,7 @@
                     "id": "c1f7a91b-d0fd-4a62-997e-7fb9b69bf235",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": ";Gamepad",
                     "action": "Look",
                     "isComposite": false,
@@ -180,10 +180,10 @@
                 {
                     "name": "",
                     "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
-                    "path": "<Pointer>/delta",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
+                    "groups": "Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
