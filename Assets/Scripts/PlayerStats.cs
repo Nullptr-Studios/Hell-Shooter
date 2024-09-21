@@ -3,29 +3,17 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    /**
-     *  Enum that contains all stats the player has
-     */
-    public enum StatID
-    {
-        damageMultiplier = 0,
-        fireRateMultiplier = 1,
-        bulletSpeedMultiplier = 2,
-        criticalHitPercentage = 3,
-        speedMultiplier = 4,
-    }
     private int[] StatLevel = new int[Enum.GetValues(typeof(StatID)).Length];
     private float[] StatMultiplier = new float[Enum.GetValues(typeof(StatID)).Length];
 
     private void Start()
     {
         // Initializes all stats to 1
-        foreach (var i in StatLevel)
+        for (int i = 0; i < StatLevel.Length; i++)
         {
             StatLevel[i] = 1;
             StatMultiplier[i] = 1f;
         }
-
     }
 
     /**
@@ -50,8 +38,20 @@ public class PlayerStats : MonoBehaviour
      *  Prints the level and the applied multiplayer of the inputted stat
      *  WON'T WORK ON RELEASE
      */
-    void DebugPrint(StatID statID)
+    public void DebugPrint(StatID statID)
     {
-        Debug.Log(statID+" ("+(int)statID+"):: Level: "+StatLevel[(int)statID]+" Multiplier: "+StatMultiplier[(int)statID]);
+        Debug.Log(statID + " (" + (int)statID + "):: Level: " + StatLevel[(int)statID] + " Multiplier: " + StatMultiplier[(int)statID]);
     }
+}
+
+/**
+*  Enum that contains all stats the player has
+*/
+public enum StatID
+{
+    damageMultiplier = 0,
+    fireRateMultiplier = 1,
+    bulletSpeedMultiplier = 2,
+    criticalHitPercentage = 3,
+    speedMultiplier = 4,
 }

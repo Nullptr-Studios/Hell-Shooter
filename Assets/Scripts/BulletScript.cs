@@ -6,7 +6,8 @@ public class BulletScript : MonoBehaviour
     {
         //Add initial force
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(gameObject.transform.up * 500);
+        PlayerStats stats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        rb.AddForce(gameObject.transform.up * (500 * stats.GetStat(StatID.bulletSpeedMultiplier)));
     }
 
     private void OnBecameInvisible()
