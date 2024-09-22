@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
      */
     public void StatLevelUp(StatID statID, bool? decreaseLevel)
-    {
+    { // TODO make bool optional to enter
         var id = (int)statID;
         if (decreaseLevel == true)
             StatLevel[id]--;
@@ -51,6 +51,11 @@ public class PlayerStats : MonoBehaviour
      */
     public float GetStat(StatID statID) => StatMultiplier[(int)statID];
 
+    /**
+     *  Returns current level for inputted stat
+     */
+    public float GetStatLevel(StatID statID) => StatLevel[(int)statID];
+    
     /**
      *  Prints the level and the applied multiplayer of the inputted stat
      *  WON'T WORK ON RELEASE

@@ -1,12 +1,12 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
     public float maxHealth = 100.0f;
     public float currentHealth;
+    public float criticalHitMultiplier = 2.0f;
     
     // Start is called before the first frame update
     void Awake()
@@ -21,7 +21,18 @@ public class EnemyHealthSystem : MonoBehaviour
     /// <param name="damage"></param>
     public void DoDamage(float damage)
     {
-        currentHealth -= damage;
+        var playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        var damageMultiplier = playerStats.GetStat(StatID.damageMultiplier);
+        var critHitPercentage = playerStats.GetStat(StatID.criticalHitPercentage);
+        bool _isCrit = false;
+        if (playerStats.GetStatLevel(StatID.criticalHitPercentage) > 1)
+        {
+            if (Random.Range(0, 100) % Mathf.RoundToInt(critHitPercentage * 8) == 0)
+                _isCrit = true;
+        }
+
+        currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
+        _isCrit = false;
         
         Debug.Log("Ouch: " + currentHealth);
         

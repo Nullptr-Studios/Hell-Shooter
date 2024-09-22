@@ -48,6 +48,4 @@ public class PlayerMovement : MonoBehaviour
     {
         _stats.GiveXP(100);
     }
-    
-    // TODO: For criticalHitPercentage multiply stat x8
 }
