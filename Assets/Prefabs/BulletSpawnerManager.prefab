@@ -46,19 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   premadeShapeType: 3
-  firingRate: 0.25
-  backAndForth: 0
+  firingRate: 0.15
+  backAndForth: 1
   bulletLife: 10
-  bulletSpeed: 1
+  bulletSpeed: 2
   bulletsPerShotInCircle: 20
   rotatePerCircle: 1.5
-  rotatePerShotLine: 1.5
+  rotatePerShotLine: 3
   localDistanceFromCenter: {x: -1.5, y: 1.5}
   distanceBetweenSpawnPoints: 3
   angleBetweenSpawnPoints:
   - 90
   InitialAngle: 0
-  overrideComplexSpawnerType: 0
+  overrideComplexSpawnerType: 1
   complexSpawnPointTransform: {fileID: 9103529774749175473}
   SpawnerPrefab: {fileID: 9037990759331388227, guid: 7eb8c6bc411d8594391acffa776905ba, type: 3}
   SpawnerList:

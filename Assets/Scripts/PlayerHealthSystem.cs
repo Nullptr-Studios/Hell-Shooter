@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class EnemyHealthSystem : MonoBehaviour
+public class PlayerHealthSystem : MonoBehaviour
 {
+    public int shield = 0;
     public float maxHealth = 100.0f;
     public float currentHealth;
     
@@ -21,20 +23,29 @@ public class EnemyHealthSystem : MonoBehaviour
     /// <param name="damage"></param>
     public void DoDamage(float damage)
     {
-        currentHealth -= damage;
-        
-        Debug.Log("Ouch: " + currentHealth);
-        
-        if (currentHealth <= 0)
+        if (shield > 0)
         {
-            Debug.Log("I'm Ded");
-            currentHealth = 0;
-            //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
-            //@TODO:Do something fancy (particles...etc)
-            Destroy(this.gameObject);
+            Debug.Log("Shiled!!");
+            shield--;
+            return;
+        }
+        else
+        {
+            currentHealth -= damage;
+
+            Debug.Log("Player Ouch: " + currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                Debug.Log("I'm Ded");
+                currentHealth = 0;
+                //@TODO:Delagate for UI?
+                //@TODO:Do something fancy (particles...etc)
+                Destroy(this.gameObject);
+            }
         }
     }
-
+    
     /// <summary>
     /// Gain Health void
     ///     - amount: amount to regen

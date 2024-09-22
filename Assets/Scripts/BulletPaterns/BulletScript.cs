@@ -6,17 +6,18 @@ public class BulletScript : MonoBehaviour
     public float bulletLife = 10.0f;  // Defines how long before the bullet is destroyed
     public float speed = 1.0f;
     
+    //Damage and multiplier is stored inside each bullet.
     public float storedDamage = 1.0f;
     public float storedMultiplier = 1.0f;
 
-    private Vector2 spawnPoint;
+    private Vector2 _spawnPoint;
     private float _timer = 0.0f;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnPoint = new Vector2(transform.position.x, transform.position.y);
+        _spawnPoint = new Vector2(transform.position.x, transform.position.y);
     }
 
 
@@ -34,13 +35,14 @@ public class BulletScript : MonoBehaviour
     }
 
     private Vector2 Movement(float timer) {
-        //this is done so we can avoid Unity expensive RigidBody
+        //this is done, so we can avoid Unity expensive RigidBody
         // Moves right according to the bullet's rotation
         float x = timer * speed * transform.right.x;
         float y = timer * speed * transform.right.y;
-        return new Vector2(x+spawnPoint.x, y+spawnPoint.y);
+        return new Vector2(x+_spawnPoint.x, y+_spawnPoint.y);
     }
 
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
@@ -49,7 +51,10 @@ public class BulletScript : MonoBehaviour
             //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d
             float calculatedDamage = storedDamage * storedMultiplier;
             other.gameObject.SendMessage("DoDamage", calculatedDamage);
+            Destroy(this.gameObject);
         }
+        //@TODO: Add fancy effects
+        
     }
 
 }
