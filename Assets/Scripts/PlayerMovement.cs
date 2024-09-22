@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _direction;
     private float _accelTimer = 0;
+    private PlayerStats _stats;
     
     // Public variables
     [SerializeField] [Range(1.0f, 30.0f)] private float maxSpeed;
@@ -20,12 +21,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _stats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime);
+        _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
         currentSpeed = _rb.velocity.magnitude;
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
     }
@@ -40,5 +42,10 @@ public class PlayerMovement : MonoBehaviour
         if (value.Get<Vector2>() != Vector2.zero && _direction == Vector2.zero)
             _accelTimer = 0;
         _direction = value.Get<Vector2>();
+    }
+
+    private void OnDebug()
+    {
+        _stats.GiveXP(100);
     }
 }
