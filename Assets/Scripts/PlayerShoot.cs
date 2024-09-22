@@ -41,7 +41,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Fire()
     {
-        Debug.Log("Fire");
+        //Debug.Log("Fire");
         //Instantiate bullet in given spawn location
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
         
