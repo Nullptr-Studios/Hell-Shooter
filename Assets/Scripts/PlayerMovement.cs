@@ -48,8 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDebug()
     {
-        _stats.LevelUp(StatID.criticalHitPercentage);
-        _stats.DebugPrint(StatID.criticalHitPercentage);
+        _stats.GiveXP(100);
     }
     
     // TODO: For criticalHitPercentage multiply stat x8
