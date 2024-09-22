@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -16,6 +17,15 @@ public class PlayerStats : MonoBehaviour
     // Made protected so XP and Level can only be changed by GiveXP() function
     [NonSerialized] protected int xp;
     [NonSerialized] protected int level;
+    
+    [Header("UI")]
+    public Canvas levelMenu;
+
+    private void Awake()
+    {
+        // Disables canvas on startup
+        levelMenu.enabled = false;
+    }
 
     private void Start()
     {
@@ -31,10 +41,13 @@ public class PlayerStats : MonoBehaviour
      *  Increases the level of the inputted stat by 1
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
      */
-    public void StatLevelUp(StatID statID)
+    public void StatLevelUp(StatID statID, bool? decreaseLevel)
     {
         var id = (int)statID;
-        StatLevel[id]++;
+        if (decreaseLevel == true)
+            StatLevel[id]--;
+        else
+            StatLevel[id]++;
         StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
     }
     
@@ -73,6 +86,13 @@ public class PlayerStats : MonoBehaviour
      *  regardless of the input parameters.
      */
     public int GetXPToLevelUp() => Mathf.RoundToInt(startingXp * Mathf.Pow(xpMultiplier,level));
+
+    private void OnOpenLevelMenu()
+    {
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+        playerInput.enabled = false;
+        levelMenu.enabled = true;
+    }
 }
 
 /**

@@ -22,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _stats = GetComponent<PlayerStats>();
-        
-        _stats.DebugPrint(StatID.speedMultiplier);
     }
 
     // Update is called once per frame
