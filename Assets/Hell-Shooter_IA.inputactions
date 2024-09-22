@@ -784,7 +784,7 @@
             "id": "19f954f3-8ff8-452f-a6bd-a3a94e343ba5",
             "actions": [
                 {
-                    "name": "Point",
+                    "name": "PointLevelMenu",
                     "type": "Value",
                     "id": "8e7998e4-61c2-41cf-bd22-58dc4cf03acf",
                     "expectedControlType": "Vector2",
@@ -793,7 +793,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Accept",
+                    "name": "AcceptLevelMenu",
                     "type": "Button",
                     "id": "b80d2bbb-6a87-4906-9ec9-b724b81d542f",
                     "expectedControlType": "Button",
@@ -802,7 +802,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cancel",
+                    "name": "CancelLevelMenu",
                     "type": "Button",
                     "id": "d52d8656-336b-4b29-b8fa-d07a35257c56",
                     "expectedControlType": "Button",
@@ -811,7 +811,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Exit",
+                    "name": "CloseLevelMenu",
                     "type": "Button",
                     "id": "ede85346-f1d6-4095-873e-40fd99f7a8b2",
                     "expectedControlType": "Button",
@@ -828,7 +828,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
-                    "action": "Point",
+                    "action": "PointLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -839,7 +839,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "Point",
+                    "action": "PointLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -850,7 +850,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Accept",
+                    "action": "AcceptLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -861,7 +861,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Accept",
+                    "action": "AcceptLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -872,7 +872,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
+                    "action": "CancelLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -883,7 +883,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cancel",
+                    "action": "CancelLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -894,7 +894,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Exit",
+                    "action": "CloseLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -905,7 +905,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Exit",
+                    "action": "CloseLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -916,7 +916,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Exit",
+                    "action": "CloseLevelMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b4030ee7-f972-4c5f-bd58-842edc75813a",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseLevelMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

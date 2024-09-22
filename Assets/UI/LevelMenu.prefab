@@ -147,8 +147,7 @@ GameObject:
   - component: {fileID: 3477015238291676167}
   - component: {fileID: 1093056739612866799}
   - component: {fileID: 2820332811561981789}
-  - component: {fileID: 1111807272878753943}
-  - component: {fileID: 2657050634132894542}
+  - component: {fileID: 1198114778638983299}
   m_Layer: 5
   m_Name: LevelMenu
   m_TagString: Untagged
@@ -184,7 +183,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3801732089618432285}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -240,7 +239,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1111807272878753943
+--- !u!114 &1198114778638983299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,37 +248,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3801732089618432285}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f, type: 3}
-  m_NotificationBehavior: 1
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: LevelMenu
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
---- !u!114 &2657050634132894542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3801732089618432285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b78d213290dc5443bd2bb7660a8fd71, type: 3}
+  m_Script: {fileID: 11500000, guid: 8365f4ccccc0d234ca112e31c6e619be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6350969806109182774
@@ -403,7 +372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7773345444667354789}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1198114778638983299}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: MovementDowngrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7174951165793717038
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,4 +855,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3488684712437189760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1198114778638983299}
+        m_TargetAssemblyTypeName: LevelMenu, Assembly-CSharp
+        m_MethodName: MovementUpgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -18,14 +18,7 @@ public class PlayerStats : MonoBehaviour
     [NonSerialized] protected int xp;
     [NonSerialized] protected int level;
     
-    [Header("UI")]
-    public Canvas levelMenu;
-
-    private void Awake()
-    {
-        // Disables canvas on startup
-        levelMenu.enabled = false;
-    }
+    PlayerInput input;
 
     private void Start()
     {
@@ -35,6 +28,8 @@ public class PlayerStats : MonoBehaviour
             StatLevel[i] = 1;
             StatMultiplier[i] = 1f;
         }
+        
+        input = GetComponent<PlayerInput>();
     }
 
     /**
@@ -89,9 +84,16 @@ public class PlayerStats : MonoBehaviour
 
     private void OnOpenLevelMenu()
     {
-        PlayerInput playerInput = GetComponent<PlayerInput>();
-        playerInput.enabled = false;
-        levelMenu.enabled = true;
+        input.SwitchCurrentActionMap("LevelMenu");
+        LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
+        levelMenuScript.Open();
+    }
+
+    private void OnCloseLevelMenu()
+    {
+        input.SwitchCurrentActionMap("Gameplay");
+        LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
+        levelMenuScript.Close();
     }
 }
 

@@ -338,7 +338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2469250651799902263, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: lerpMagnitude
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4746165723592550958, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_Name
@@ -426,12 +426,6 @@ MonoBehaviour:
   statXpMultiplier: 1.63
   startingXp: 100
   xpMultiplier: 1.5
-  levelMenu: {fileID: 2073731094}
---- !u!223 &2073731094 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3477015238291676167, guid: 6dc087452dfe7c54da8af4a9baa3ded0, type: 3}
-  m_PrefabInstance: {fileID: 8254768543491021076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8254768543491021076
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,7 +436,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3801732089618432285, guid: 6dc087452dfe7c54da8af4a9baa3ded0, type: 3}
       propertyPath: m_Name
-      value: Canvas
+      value: LevelMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6070045950022867668, guid: 6dc087452dfe7c54da8af4a9baa3ded0, type: 3}
       propertyPath: m_Pivot.x
@@ -528,8 +522,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2657050634132894542, guid: 6dc087452dfe7c54da8af4a9baa3ded0, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
