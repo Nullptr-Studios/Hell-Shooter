@@ -63,10 +63,16 @@ public class BulletSpawnerManager : MonoBehaviour
     
     //Refresh Bool
     private FieldChangesTracker changesTracker = new FieldChangesTracker();
+
+    private GameObject _player;
+
+    private float _playerRadius;
     
     // Start is called before the first frame update
     void Start()
     {
+        _player = GameObject.FindWithTag("Player");
+        _playerRadius = _player.GetComponent<PlayerBulletColision>().playerRadius;
         SelectSettingsForShape(premadeShapeType);
     }
 
@@ -188,6 +194,9 @@ public class BulletSpawnerManager : MonoBehaviour
             spawner.usesSen = this.usesSen;
             spawner.senAmplitude = this.senAmplitude;
             spawner.senTimeMultiplier = this.senTimeMultiplier;
+
+            spawner.player = this._player;
+            spawner._pRadius = this._playerRadius;
             
             index++;
         }
