@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class BulletSpawner : MonoBehaviour
 {
     public enum SpawnerType { Straight, Spin, Circle }
 
-    public bool AlsobackAndForth = false;
+    public bool alsobackAndForth = false;
 
     [Header("Bullet Attributes")]
     public GameObject bullet;
@@ -25,22 +27,50 @@ public class BulletSpawner : MonoBehaviour
     [Header("Circle Attributes")]
     [SerializeField] public int ammountOfBulletsInCircle = 5;
     [SerializeField] public float rotateEachCircleCompletion = 15.0f;
+    public bool usesSen = false;
+    public float senTimeMultiplier = 1.0f;
+    public float senAmplitude = 20.0f;
 
+    public GameObject player;
 
-    private GameObject spawnedBullet;
-    private float timer = 0.0f;
+    private GameObject _spawnedBullet;
+    private float _timer = 0.0f;
+    private float _senTimer = 0.0f;
 
+    public float _pRadius;
+    private void Start()
+    {
+        
+        bullet.GetComponent<BulletScript>().SetLifeAndSpeed(bulletLife,speed);
+        bullet.GetComponent<EnemyBulletColision>().player = this.player;
+        bullet.GetComponent<BulletScript>().player = this.player;
+        bullet.GetComponent<EnemyBulletColision>().playerRadius = this._pRadius;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        float delta = Time.deltaTime;
+        _timer += delta;
+        _senTimer += delta;
+
+        if (_senTimer >= 180.0f)
+        {
+            _senTimer -= 180.0f;
+        }
         
-        if(timer >= firingRate) {
+        if(_timer >= firingRate) {
 
             if (spawnerType == SpawnerType.Spin)
             {
-                transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + rotatingEachBullet);
+                if (usesSen)
+                {
+                    transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + MathF.Sin(_senTimer*senTimeMultiplier)*senAmplitude);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + rotatingEachBullet);
+                }
                 FireLogic();
             }
             else if (spawnerType == SpawnerType.Circle)
@@ -51,25 +81,33 @@ public class BulletSpawner : MonoBehaviour
                     Fire();
                     transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + angleEachStep);
                 }
-                transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + rotateEachCircleCompletion);
+
+                if (usesSen)
+                {
+                    transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + MathF.Sin(_senTimer*senTimeMultiplier)*senAmplitude);
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + rotateEachCircleCompletion);
+                }
             }
             else if (spawnerType == SpawnerType.Straight)
             {
                 FireLogic();
             }
             
-            timer = 0.0f;
+            _timer = 0.0f;
         }
     }
 
     private void FireLogic()
     {
-        if (AlsobackAndForth)
+        if (alsobackAndForth)
         {
             Fire();
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
             Fire();
-            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - 180.0f);
         }
         else
         {
@@ -81,12 +119,15 @@ public class BulletSpawner : MonoBehaviour
     private void Fire() {
         if(bullet) {
 
-            spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+            _spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
-            spawnedBullet.GetComponent<BulletScript>().speed = speed;
-            spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
+            /*_spawnedBullet.GetComponent<BulletScript>().speed = speed;
+            _spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;*/
+            
+            /*_spawnedBullet.SendMessage("SetSpeed", speed);
+            _spawnedBullet.SendMessage("SetLife", bulletLife);*/
 
-            spawnedBullet.transform.rotation = transform.rotation;
+            _spawnedBullet.transform.rotation = transform.rotation;
         }
     }
 }

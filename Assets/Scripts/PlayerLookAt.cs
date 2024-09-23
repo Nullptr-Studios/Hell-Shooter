@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerLookAt : MonoBehaviour
 {
-    [Range(0.0f,0.25f)] public float lerpMagnitude = 0.03f;
+    public float lerpMagnitude = 0.03f;
 
     private Vector3 dir = Vector3.zero;
     private Vector3 _currentDir = Vector3.zero;
@@ -59,13 +59,13 @@ public class PlayerLookAt : MonoBehaviour
                 dir.Normalize();
             }
 
-            //Lerp rotation over time
-            _currentDir = Vector3.Slerp(_currentDir, dir, Time.deltaTime + lerpMagnitude);
-            float angle = Mathf.Atan2(_currentDir.y, _currentDir.x) * Mathf.Rad2Deg;
-
-            //Set rotation
-            gameObject.transform.rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
-        }
+        //Lerp rotation over time
+        _currentDir = Vector3.Slerp(_currentDir, dir, Time.deltaTime * lerpMagnitude); 
+        float angle = Mathf.Atan2 (_currentDir.y, _currentDir.x) * Mathf.Rad2Deg;
+        
+        //Set rotation
+        gameObject.transform.rotation = Quaternion.AngleAxis (angle - 90.0f, Vector3.forward);
+        
         
     }
     
