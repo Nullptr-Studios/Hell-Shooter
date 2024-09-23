@@ -28,7 +28,10 @@ public class BulletSpawnerManager : MonoBehaviour
     public int bulletsPerShotInCircle = 20;
     public float rotatePerCircle = 1.5f;
 
+    
     public bool usesSen = false;
+    public float senTimeMultiplier = 1.0f;
+    public float senAmplitude = 20.0f;
     
     [Header("Line Configs")]
     public float rotatePerShotLine = 1.5f;
@@ -180,7 +183,11 @@ public class BulletSpawnerManager : MonoBehaviour
             spawner.bulletLife = this.bulletLife;
             spawner.speed = this.bulletSpeed;
             
-            spawner.AlsobackAndForth = backAndForth;
+            spawner.alsobackAndForth = backAndForth;
+
+            spawner.usesSen = this.usesSen;
+            spawner.senAmplitude = this.senAmplitude;
+            spawner.senTimeMultiplier = this.senTimeMultiplier;
             
             index++;
         }
