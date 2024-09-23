@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,8 +15,8 @@ public class PlayerStats : MonoBehaviour
     [Header("XP System")]
     public int requiredXP;
     // Made protected so XP and Level can only be changed by GiveXP() function
-    [NonSerialized] protected int xp;
-    [NonSerialized] protected int levelPoints = 0;
+    [NonSerialized] protected internal int xp;
+    [NonSerialized] protected internal int levelPoints = 0;
     
     PlayerInput input;
 
@@ -72,7 +73,15 @@ public class PlayerStats : MonoBehaviour
      *  <param name="statID">Ability type</param>
      *  <returns>Level of the stat</returns>
      */
-    public float GetStatLevel(StatID statID) => StatLevel[(int)statID];
+    public int GetStatLevel(StatID statID) => StatLevel[(int)statID];
+    
+    /**
+     *  Returns current level for inputted stat in numbers
+     *
+     *  <param name="statID">Ability ID</param>
+     *  <returns>Level of the stat</returns>
+     */
+    public int GetStatLevelByID(int statID) => StatLevel[statID];
 
     /**
      *  Prints the level and the applied multiplayer of the inputted stat
@@ -90,6 +99,13 @@ public class PlayerStats : MonoBehaviour
      */
     public void GiveXP(int _xp)
     {
+        // Prevents infinite loop if required xp is 0 or less (thanks unity for crashing btw) -x
+        if (requiredXP <= 0)
+        {
+            Debug.LogWarning("XP not given since required XP is zero. Check required XP to level up.");
+            return;
+        }
+        
         xp += _xp;
         while (xp >= requiredXP)
         {
@@ -97,6 +113,14 @@ public class PlayerStats : MonoBehaviour
             levelPoints++;
         }
     }
+    
+    /**
+     *  Grants the player a level point
+     *  Used when the player lowers one of their stats
+     *
+     *  <param name="number">Number of Level Points given to player</param>
+     */  
+    public void GiveLevelPoint(int number) => levelPoints+=number;
 
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu

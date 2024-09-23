@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4201514345980098904}
   m_Layer: 5
   m_Name: Upgrade Buttons
-  m_TagString: Untagged
+  m_TagString: UpgradeButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,10 +364,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statId: 4
   maxLevel: 1
+  upgradeCost: 0000000001000000020000000300000004000000
   currentLevel: 1
   upgradeButton: {fileID: 4863002652121740814}
   downgradeButton: {fileID: 7072316019821173366}
   levelSlider: {fileID: 1371138137380819645}
+  levelText: {fileID: 0}
 --- !u!1 &2265952123457167614
 GameObject:
   m_ObjectHideFlags: 0

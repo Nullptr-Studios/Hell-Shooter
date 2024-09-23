@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +9,8 @@ public class UpgradeButtons : MonoBehaviour
     [Header("Stats")]
     public StatID statId;
     public int maxLevel = 1;
-    [SerializeField] protected int currentLevel = 1;
+    public int[] upgradeCost;
+    [NonSerialized] public int currentLevel = 1;
     [Header("Buttons")]
     public Button upgradeButton;
     public Button downgradeButton;
@@ -20,14 +23,21 @@ public class UpgradeButtons : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         downgradeButton.interactable = false;
         levelSlider.value = (float)currentLevel/maxLevel;
+        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
+        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
     }
+    
     public void LevelUp()
     {
         Mathf.Clamp(currentLevel, 1, maxLevel);
         player.BroadcastMessage("StatLevelUp", statId);
-        currentLevel++;
         levelSlider.value = (float)currentLevel/maxLevel;
         levelText.text = currentLevel.ToString();
+        player.BroadcastMessage("GiveLevelPoint", -upgradeCost[currentLevel]); // Function adds so here is substracting
+        currentLevel++;
+        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
+        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
+        transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
         // This disables the buttons on reach level limit
         if (currentLevel == maxLevel)
             upgradeButton.interactable = false;
@@ -39,9 +49,13 @@ public class UpgradeButtons : MonoBehaviour
     {
         Mathf.Clamp(currentLevel, 1, maxLevel);
         player.BroadcastMessage("StatLevelDown", statId);
-        currentLevel--;
         levelSlider.value = (float)currentLevel/maxLevel;
         levelText.text = currentLevel.ToString();
+        player.BroadcastMessage("GiveLevelPoint", upgradeCost[currentLevel-1]);
+        currentLevel--;
+        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
+        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
+        transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
         // This disables the buttons on reach level limit
         if (currentLevel == 1)
             downgradeButton.interactable = false;
