@@ -40,9 +40,9 @@ public class PlayerStats : MonoBehaviour
     public void StatLevelUp(StatID statID)
     {
         var id = (int)statID;
-        Debug.Log("Broadcast");
         StatLevel[id]++;
         StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
+        DebugPrint(statID);
     }
 
     /**

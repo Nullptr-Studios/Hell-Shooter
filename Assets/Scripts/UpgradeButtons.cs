@@ -14,7 +14,6 @@ public class UpgradeButtons : MonoBehaviour
     public void LevelUp()
     {
         player.BroadcastMessage("StatLevelUp", statId);
-        Debug.Log("Function");
     }
     public void LevelDown()
     {

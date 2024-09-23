@@ -11,11 +11,13 @@ public class PlayerLookAt : MonoBehaviour
     private Vector3 _currentDir = Vector3.zero;
     
     private PlayerInput playerInput;
+    private LevelMenu _levelMenu; // This is needed to disable rotation on Level Menu
     
     private bool UsingMouse = false;
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        _levelMenu = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
     }
     
     //fuck unity
@@ -47,21 +49,23 @@ public class PlayerLookAt : MonoBehaviour
     
     void Update ()
     {
-        if (UsingMouse)
+        if(!_levelMenu.isMenuOpen)
         {
-            //Obtain mouse dir 
-            dir = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f) -
-                  Camera.main.WorldToScreenPoint(gameObject.transform.position);
-            dir.Normalize();
-        }
+            if (UsingMouse)
+            {
+                //Obtain mouse dir 
+                dir = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f) -
+                      Camera.main.WorldToScreenPoint(gameObject.transform.position);
+                dir.Normalize();
+            }
 
-        //Lerp rotation over time
-        _currentDir = Vector3.Slerp(_currentDir, dir, Time.deltaTime + lerpMagnitude); 
-        float angle = Mathf.Atan2 (_currentDir.y, _currentDir.x) * Mathf.Rad2Deg;
-        
-        //Set rotation
-        gameObject.transform.rotation = Quaternion.AngleAxis (angle - 90.0f, Vector3.forward);
-        
+            //Lerp rotation over time
+            _currentDir = Vector3.Slerp(_currentDir, dir, Time.deltaTime + lerpMagnitude);
+            float angle = Mathf.Atan2(_currentDir.y, _currentDir.x) * Mathf.Rad2Deg;
+
+            //Set rotation
+            gameObject.transform.rotation = Quaternion.AngleAxis(angle - 90.0f, Vector3.forward);
+        }
         
     }
     
