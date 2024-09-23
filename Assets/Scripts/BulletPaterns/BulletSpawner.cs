@@ -25,6 +25,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Circle Attributes")]
     [SerializeField] public int ammountOfBulletsInCircle = 5;
     [SerializeField] public float rotateEachCircleCompletion = 15.0f;
+    public bool usesSen = false;
 
 
     private GameObject spawnedBullet;
@@ -51,6 +52,7 @@ public class BulletSpawner : MonoBehaviour
                     Fire();
                     transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + angleEachStep);
                 }
+                //@TODO: Add Sen function :-)
                 transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + rotateEachCircleCompletion);
             }
             else if (spawnerType == SpawnerType.Straight)
@@ -69,7 +71,7 @@ public class BulletSpawner : MonoBehaviour
             Fire();
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
             Fire();
-            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z - 180.0f);
         }
         else
         {

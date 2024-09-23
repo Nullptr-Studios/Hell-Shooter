@@ -27,6 +27,8 @@ public class BulletSpawnerManager : MonoBehaviour
     [Header("Circle Configs")]
     public int bulletsPerShotInCircle = 20;
     public float rotatePerCircle = 1.5f;
+
+    public bool usesSen = false;
     
     [Header("Line Configs")]
     public float rotatePerShotLine = 1.5f;
