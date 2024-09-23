@@ -30,6 +30,9 @@ public class PlayerStats : MonoBehaviour
         }
         
         input = GetComponent<PlayerInput>();
+
+        xp = 0;
+        GameObject.Find("GUI").SendMessage("SetExperience", xp);
     }
 
     /**
@@ -106,6 +109,9 @@ public class PlayerStats : MonoBehaviour
             xp -= requiredXP;
             levelPoints++;
         }
+        
+        // Broadcast to GUI slider
+        GameObject.Find("GUI").SendMessage("SetExperience", xp);
     }
     
     /**

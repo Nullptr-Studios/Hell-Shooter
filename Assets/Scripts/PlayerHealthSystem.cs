@@ -14,6 +14,7 @@ public class PlayerHealthSystem : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+        GameObject.Find("GUI").SendMessage("SetHealth", currentHealth/maxHealth);
     }
 
     /// <summary>
@@ -32,6 +33,7 @@ public class PlayerHealthSystem : MonoBehaviour
         else
         {
             currentHealth -= damage;
+            GameObject.Find("GUI").SendMessage("SetHealth", currentHealth/maxHealth);
 
             Debug.Log("Player Ouch: " + currentHealth);
 
@@ -53,13 +55,8 @@ public class PlayerHealthSystem : MonoBehaviour
     /// <param name="amount"></param>
     public void GainHealth(float amount)
     {
-        if (currentHealth >= 100)
-        {
-            currentHealth = 100;
-        }
-        else
-        {
-            currentHealth += MathF.Abs(amount);
-        }
+        currentHealth += MathF.Abs(amount);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth += MathF.Abs(amount);
     }
 }
