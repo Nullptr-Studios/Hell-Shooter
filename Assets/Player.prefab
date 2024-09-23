@@ -314,4 +314,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f68fdd044bff44b298ac79e02062f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRadius: 1
+  playerRadius: 0.1
