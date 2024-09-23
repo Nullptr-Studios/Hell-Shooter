@@ -49,7 +49,7 @@ public class PlayerLookAt : MonoBehaviour
     
     void Update ()
     {
-        if(!_levelMenu.isMenuOpen)
+        if (!_levelMenu.isMenuOpen)
         {
             if (UsingMouse)
             {
@@ -58,6 +58,7 @@ public class PlayerLookAt : MonoBehaviour
                       Camera.main.WorldToScreenPoint(gameObject.transform.position);
                 dir.Normalize();
             }
+        }
 
         //Lerp rotation over time
         _currentDir = Vector3.Slerp(_currentDir, dir, Time.deltaTime * lerpMagnitude); 
