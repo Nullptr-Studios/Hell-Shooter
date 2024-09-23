@@ -21,6 +21,7 @@ public class EnemyHealthSystem : MonoBehaviour
     /// <param name="damage"></param>
     public void DoDamage(float damage)
     {
+        //@TODO: Change this to bullet
         var playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         var damageMultiplier = playerStats.GetStat(StatID.damageMultiplier);
         var critHitPercentage = playerStats.GetStat(StatID.criticalHitPercentage);

@@ -36,7 +36,7 @@ public class BulletScript : MonoBehaviour
 
     private Vector2 Movement(float timer) {
         //this is done, so we can avoid Unity expensive RigidBody
-        // Moves right according to the bullet's rotation
+        //Moves right according to the bullet's rotation
         float x = timer * speed * transform.right.x;
         float y = timer * speed * transform.right.y;
         return new Vector2(x+_spawnPoint.x, y+_spawnPoint.y);

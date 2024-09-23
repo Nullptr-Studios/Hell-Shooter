@@ -51,8 +51,9 @@ public class PlayerShoot : MonoBehaviour
     {
         // Debug.Log("Fire");
         //Instantiate bullet in given spawn location
-        bulletPrefab.GetComponent<BulletScript>().speed *= _stats.GetStat(StatID.bulletSpeedMultiplier);
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
-        
+        bullet.GetComponent<BulletScript>().speed *= _stats.GetStat(StatID.bulletSpeedMultiplier);
+
+
     }
 }

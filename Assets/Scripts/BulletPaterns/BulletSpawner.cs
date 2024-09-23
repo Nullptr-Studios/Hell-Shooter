@@ -41,17 +41,7 @@ public class BulletSpawner : MonoBehaviour
             if (spawnerType == SpawnerType.Spin)
             {
                 transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + rotatingEachBullet);
-                if (AlsobackAndForth)
-                {
-                    Fire();
-                    transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + 180.0f);
-                    Fire();
-                    transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + 180.0f);
-                }
-                else
-                {
-                    Fire();
-                }
+                FireLogic();
             }
             else if (spawnerType == SpawnerType.Circle)
             {
@@ -65,21 +55,25 @@ public class BulletSpawner : MonoBehaviour
             }
             else if (spawnerType == SpawnerType.Straight)
             {
-                if (AlsobackAndForth)
-                {
-                    Fire();
-                    transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + 180.0f);
-                    Fire();
-                    transform.eulerAngles = new Vector3(0f,0f,transform.eulerAngles.z + 180.0f);
-                }
-                else
-                {
-                    Fire();
-                }
+                FireLogic();
             }
             
-            
             timer = 0.0f;
+        }
+    }
+
+    private void FireLogic()
+    {
+        if (AlsobackAndForth)
+        {
+            Fire();
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
+            Fire();
+            transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
+        }
+        else
+        {
+            Fire();
         }
     }
 
@@ -88,9 +82,10 @@ public class BulletSpawner : MonoBehaviour
         if(bullet) {
 
             spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-            // let's try to avoid get component as much as we can, speed vars will be set in bullet prefab;
+
             spawnedBullet.GetComponent<BulletScript>().speed = speed;
             spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;
+
             spawnedBullet.transform.rotation = transform.rotation;
         }
     }
