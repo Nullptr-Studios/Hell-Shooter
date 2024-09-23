@@ -18,17 +18,15 @@ public class PlayerHealthSystem : MonoBehaviour
     }
 
     /// <summary>
-    ///  Custom damage event
-    ///     - damage: amount of damage to deal
+    ///  Custom damage event because unity doesn't have one
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage">amount of damage to deal</param>
     public void DoDamage(float damage)
     {
         if (shield > 0)
         {
             Debug.Log("Shiled!!");
             shield--;
-            return;
         }
         else
         {
