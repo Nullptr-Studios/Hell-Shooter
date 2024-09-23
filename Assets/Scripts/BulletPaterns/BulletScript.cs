@@ -53,6 +53,9 @@ public class BulletScript : MonoBehaviour
             other.gameObject.SendMessage("DoDamage", calculatedDamage);
             Destroy(this.gameObject);
         }
+        
+        //Warning Asteroid implementation is on AsteroidController
+
         //@TODO: Add fancy effects
         
     }
