@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,13 +11,12 @@ public class PlayerStats : MonoBehaviour
     [Range(1f, 4f)] public float statXpMultiplier = 1.63f;
     private int[] StatLevel = new int[Enum.GetValues(typeof(StatID)).Length];
     private float[] StatMultiplier = new float[Enum.GetValues(typeof(StatID)).Length];
-    
+
     [Header("XP System")]
-    public int startingXp = 100;
-    [Range(1f, 3f)] public float xpMultiplier = 1.5f;
+    public int requiredXP;
     // Made protected so XP and Level can only be changed by GiveXP() function
-    [NonSerialized] protected int xp;
-    [NonSerialized] protected int level;
+    [NonSerialized] protected internal int xp;
+    [NonSerialized] protected internal int levelPoints = 0;
     
     PlayerInput input;
 
@@ -37,16 +37,26 @@ public class PlayerStats : MonoBehaviour
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
      *  
      *  <param name="statID">Ability type</param>
-     *  <param name="decreaseLevel">If true, decreases the level of the ability by one</param>
      */
-    public void StatLevelUp(StatID statID, bool decreaseLevel = false)
+    public void StatLevelUp(StatID statID)
     {
         var id = (int)statID;
-        if (decreaseLevel == true)
-            StatLevel[id]--;
-        else
-            StatLevel[id]++;
+        StatLevel[id]++;
         StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
+        DebugPrint(statID);
+    }
+
+    /**
+     *  Decrease the level of the inputted stat by 1
+     *  
+     *  <param name="statID">Ability type</param>
+     */
+    public void StatLevelDown(StatID statID)
+    {
+        var id = (int)statID;
+        StatLevel[id]--;
+        StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id] - 1);
+        DebugPrint(statID);
     }
 
     /**
@@ -63,7 +73,7 @@ public class PlayerStats : MonoBehaviour
      *  <param name="statID">Ability type</param>
      *  <returns>Level of the stat</returns>
      */
-    public float GetStatLevel(StatID statID) => StatLevel[(int)statID];
+    public int GetStatLevel(StatID statID) => StatLevel[(int)statID];
 
     /**
      *  Prints the level and the applied multiplayer of the inputted stat
@@ -78,34 +88,40 @@ public class PlayerStats : MonoBehaviour
 
     /**
      *  Gives the player the XP sent in the parameter. Also checks for level up.
+     *
+     *  <param name="_xp">XP given to the player</param>>
      */
     public void GiveXP(int _xp)
     {
-        xp += _xp;
-        if (xp >= GetXPToLevelUp())
+        // Prevents infinite loop if required xp is 0 or less (thanks unity for crashing btw) -x
+        if (requiredXP <= 0)
         {
-            xp -= GetXPToLevelUp();
-            level++;
-            Debug.Log("Level Up: " + GetXPToLevelUp());
+            Debug.LogWarning("XP not given since required XP is zero or less. Check requiredXP to be able to use GiveXP().");
+            return;
+        }
+        
+        xp += _xp;
+        while (xp >= requiredXP)
+        {
+            xp -= requiredXP;
+            levelPoints++;
         }
     }
-
+    
     /**
-     *  Returns XP required to level up to current level.
-     *  Made public so it could be used by a GUI in the future.
-     *  By default, all results are rounded to an Int so the formula doesn't return weird XP numbers
-     *  regardless of the input parameters.
-     *  
-     *  <returns>XP needed for level up</returns>
-     */
-    public int GetXPToLevelUp() => Mathf.RoundToInt(startingXp * Mathf.Pow(xpMultiplier,level)); // TODO: rewrite this for new level system
+     *  Grants the player a level point
+     *  Used when the player lowers one of their stats
+     *
+     *  <param name="number">Number of Level Points given to player</param>
+     */  
+    public void GiveLevelPoint(int number) => levelPoints+=number;
 
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu
      */  
     private void OnOpenLevelMenu()
     {
-        input.SwitchCurrentActionMap("LevelMenu");
+        input.SwitchCurrentActionMap("UI");
         LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
         levelMenuScript.Open();
     }
@@ -125,6 +141,9 @@ public class PlayerStats : MonoBehaviour
  *  Enum that contains all stats the player has
  *  Updating this will automatically change the Arrays of the player, so it's easy to scale and add
  *  new stats to the player
+ *
+ *  Updating this will make you need to update the store page, since that UI is unrelated from this file
+ *  Check classes LevelMenu and UpgradeButtons for that
  */
 public enum StatID
 {

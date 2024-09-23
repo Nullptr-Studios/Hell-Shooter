@@ -48,5 +48,6 @@ public class PlayerMovement : MonoBehaviour
     private void OnDebug()
     {
         _stats.GiveXP(100);
+        Debug.Log("Leveled Up");
     }
 }

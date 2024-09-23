@@ -1,34 +1,62 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
     private Canvas canvas;
-    // private bool _isMenuOpen = false;
+    private PlayerStats playerStats;
+    
+    private int levelPoints;
+    [NonSerialized] public bool isMenuOpen = false;
+    
+    public TextMeshProUGUI upgradePointsText;
 
-    public void Open()
+    private void Awake()
     {
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+
         canvas = gameObject.GetComponent<Canvas>();
-        canvas.enabled = true;
-        // _isMenuOpen = true;
-        Time.timeScale = 0f;
+        canvas.enabled = false;
     }
 
+    /// <summary>
+    /// Opens the stats menu
+    /// </summary>
+    public void Open()
+    {
+        isMenuOpen = true;
+        Time.timeScale = 0f;
+        canvas.enabled = true;
+        UpdateLevelPoints();
+    }
+
+    /// <summary>
+    ///  Closes the stats menu
+    /// </summary>
     public void Close()
     {
-        // _isMenuOpen = false;
+        isMenuOpen = false;
         Time.timeScale = 1f;
         canvas.enabled = false;
     }
 
-    // TODO: This needs to be done far better than this spaghetti code
-    public void MovementUpgrade()
+    /// <summary>
+    /// Gets Upgrade Points (codenamed levelPoints) from PlayerStats so it can update the UI of the menu
+    /// </summary>
+    public void UpdateLevelPoints()
     {
-        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier);
-    }
-
-    public void MovementDowngrade()
-    {
-        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier, true);
+        levelPoints = playerStats.levelPoints;
+        upgradePointsText.text = "Upgrade Points: " + levelPoints;
+        var upgradeButtons = gameObject.GetComponentsInChildren<UpgradeButtons>();
+        foreach (var i in upgradeButtons)
+        {
+            if (i.upgradeCost[i.currentLevel] > levelPoints)
+                i.upgradeButton.interactable = false;
+            else 
+                i.upgradeButton.interactable = true;
+        }
     }
 }
