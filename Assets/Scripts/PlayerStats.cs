@@ -35,9 +35,12 @@ public class PlayerStats : MonoBehaviour
     /**
      *  Increases the level of the inputted stat by 1
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
+     *  
+     *  <param name="statID">Ability type</param>
+     *  <param name="decreaseLevel">If true, decreases the level of the ability by one</param>
      */
-    public void StatLevelUp(StatID statID, bool? decreaseLevel)
-    { // TODO make bool optional to enter
+    public void StatLevelUp(StatID statID, bool decreaseLevel = false)
+    {
         var id = (int)statID;
         if (decreaseLevel == true)
             StatLevel[id]--;
@@ -45,20 +48,28 @@ public class PlayerStats : MonoBehaviour
             StatLevel[id]++;
         StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
     }
-    
+
     /**
      *  Returns current multiplier for inputted stat
+     *  
+     *  <param name="statID">Ability type</param>
+     *  <returns>Multiplier for the stat</returns>
      */
     public float GetStat(StatID statID) => StatMultiplier[(int)statID];
 
     /**
      *  Returns current level for inputted stat
+     *  
+     *  <param name="statID">Ability type</param>
+     *  <returns>Level of the stat</returns>
      */
     public float GetStatLevel(StatID statID) => StatLevel[(int)statID];
-    
+
     /**
      *  Prints the level and the applied multiplayer of the inputted stat
      *  WON'T WORK ON RELEASE
+     *  
+     *  <param name="statID">Ability type</param>
      */
     public void DebugPrint(StatID statID)
     {
@@ -84,9 +95,14 @@ public class PlayerStats : MonoBehaviour
      *  Made public so it could be used by a GUI in the future.
      *  By default, all results are rounded to an Int so the formula doesn't return weird XP numbers
      *  regardless of the input parameters.
+     *  
+     *  <returns>XP needed for level up</returns>
      */
-    public int GetXPToLevelUp() => Mathf.RoundToInt(startingXp * Mathf.Pow(xpMultiplier,level));
+    public int GetXPToLevelUp() => Mathf.RoundToInt(startingXp * Mathf.Pow(xpMultiplier,level)); // TODO: rewrite this for new level system
 
+    /**
+     *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu
+     */  
     private void OnOpenLevelMenu()
     {
         input.SwitchCurrentActionMap("LevelMenu");
@@ -94,6 +110,9 @@ public class PlayerStats : MonoBehaviour
         levelMenuScript.Open();
     }
 
+    /**
+     *  Calls level menu to be closed and switches ActionMap back to default (gameplay)
+     */  
     private void OnCloseLevelMenu()
     {
         input.SwitchCurrentActionMap("Gameplay");
@@ -115,3 +134,10 @@ public enum StatID
     criticalHitPercentage = 3,
     speedMultiplier = 4,
 }
+
+/*  TODO: Make this a custom unity component using child of class ScriptableObject
+ *  Example:
+ *  [CreateAssetMenu(fileName = "New MotionCurve", menuName = "Create MotionCurve")]
+ *  public class MotionCurve : ScriptableObject {};
+ */  
+ 

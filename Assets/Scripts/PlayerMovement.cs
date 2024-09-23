@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         _direction = value.Get<Vector2>();
     }
 
+    // Calls InputAction OnDebug for testing purposes
     private void OnDebug()
     {
         _stats.GiveXP(100);

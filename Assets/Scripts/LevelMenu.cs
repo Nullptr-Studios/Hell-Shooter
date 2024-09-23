@@ -21,9 +21,10 @@ public class LevelMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
+    // TODO: This needs to be done far better than this spaghetti code
     public void MovementUpgrade()
     {
-        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier, false);
+        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier);
     }
 
     public void MovementDowngrade()
