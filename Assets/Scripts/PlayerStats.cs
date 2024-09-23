@@ -74,14 +74,6 @@ public class PlayerStats : MonoBehaviour
      *  <returns>Level of the stat</returns>
      */
     public int GetStatLevel(StatID statID) => StatLevel[(int)statID];
-    
-    /**
-     *  Returns current level for inputted stat in numbers
-     *
-     *  <param name="statID">Ability ID</param>
-     *  <returns>Level of the stat</returns>
-     */
-    public int GetStatLevelByID(int statID) => StatLevel[statID];
 
     /**
      *  Prints the level and the applied multiplayer of the inputted stat
@@ -96,13 +88,15 @@ public class PlayerStats : MonoBehaviour
 
     /**
      *  Gives the player the XP sent in the parameter. Also checks for level up.
+     *
+     *  <param name="_xp">XP given to the player</param>>
      */
     public void GiveXP(int _xp)
     {
         // Prevents infinite loop if required xp is 0 or less (thanks unity for crashing btw) -x
         if (requiredXP <= 0)
         {
-            Debug.LogWarning("XP not given since required XP is zero. Check required XP to level up.");
+            Debug.LogWarning("XP not given since required XP is zero or less. Check requiredXP to be able to use GiveXP().");
             return;
         }
         
@@ -147,6 +141,9 @@ public class PlayerStats : MonoBehaviour
  *  Enum that contains all stats the player has
  *  Updating this will automatically change the Arrays of the player, so it's easy to scale and add
  *  new stats to the player
+ *
+ *  Updating this will make you need to update the store page, since that UI is unrelated from this file
+ *  Check classes LevelMenu and UpgradeButtons for that
  */
 public enum StatID
 {

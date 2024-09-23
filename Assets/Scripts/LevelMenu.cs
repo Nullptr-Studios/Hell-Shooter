@@ -22,6 +22,9 @@ public class LevelMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
+    /// <summary>
+    /// Opens the stats menu
+    /// </summary>
     public void Open()
     {
         isMenuOpen = true;
@@ -30,6 +33,9 @@ public class LevelMenu : MonoBehaviour
         UpdateLevelPoints();
     }
 
+    /// <summary>
+    ///  Closes the stats menu
+    /// </summary>
     public void Close()
     {
         isMenuOpen = false;
@@ -37,12 +43,15 @@ public class LevelMenu : MonoBehaviour
         canvas.enabled = false;
     }
 
+    /// <summary>
+    /// Gets Upgrade Points (codenamed levelPoints) from PlayerStats so it can update the UI of the menu
+    /// </summary>
     public void UpdateLevelPoints()
     {
         levelPoints = playerStats.levelPoints;
         upgradePointsText.text = "Upgrade Points: " + levelPoints;
-        var _upgradeButtons = gameObject.GetComponentsInChildren<UpgradeButtons>();
-        foreach (var i in _upgradeButtons)
+        var upgradeButtons = gameObject.GetComponentsInChildren<UpgradeButtons>();
+        foreach (var i in upgradeButtons)
         {
             if (i.upgradeCost[i.currentLevel] > levelPoints)
                 i.upgradeButton.interactable = false;
