@@ -30,6 +30,10 @@ public class PlayerStats : MonoBehaviour
         }
         
         input = GetComponent<PlayerInput>();
+
+        xp = 0;
+        GameObject.Find("GUI").SendMessage("SetExperience", xp);
+        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
     }
 
     /**
@@ -105,7 +109,11 @@ public class PlayerStats : MonoBehaviour
         {
             xp -= requiredXP;
             levelPoints++;
+            GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
         }
+        
+        // Broadcast to GUI slider
+        GameObject.Find("GUI").SendMessage("SetExperience", xp);
     }
     
     /**
@@ -114,7 +122,11 @@ public class PlayerStats : MonoBehaviour
      *
      *  <param name="number">Number of Level Points given to player</param>
      */  
-    public void GiveLevelPoint(int number) => levelPoints+=number;
+    public void GiveLevelPoint(int number)
+    {
+        levelPoints += number;
+        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+    }
 
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu

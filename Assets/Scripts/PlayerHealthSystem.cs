@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerHealthSystem : MonoBehaviour
@@ -14,24 +15,24 @@ public class PlayerHealthSystem : MonoBehaviour
     void Awake()
     {
         currentHealth = maxHealth;
+        GameObject.Find("GUI").SendMessage("SetHealth", currentHealth/maxHealth);
     }
 
     /// <summary>
-    ///  Custom damage event
-    ///     - damage: amount of damage to deal
+    ///  Custom damage event because unity doesn't have one
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage">amount of damage to deal</param>
     public void DoDamage(float damage)
     {
         if (shield > 0)
         {
             Debug.Log("Shiled!!");
             shield--;
-            return;
         }
         else
         {
             currentHealth -= damage;
+            GameObject.Find("GUI").SendMessage("SetHealth", currentHealth/maxHealth);
 
             Debug.Log("Player Ouch: " + currentHealth);
 
@@ -42,6 +43,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 //@TODO:Delagate for UI?
                 //@TODO:Do something fancy (particles...etc)
                 Destroy(this.gameObject);
+                SceneManager.LoadScene("LoseScreen");
             }
         }
     }
@@ -53,13 +55,8 @@ public class PlayerHealthSystem : MonoBehaviour
     /// <param name="amount"></param>
     public void GainHealth(float amount)
     {
-        if (currentHealth >= 100)
-        {
-            currentHealth = 100;
-        }
-        else
-        {
-            currentHealth += MathF.Abs(amount);
-        }
+        currentHealth += MathF.Abs(amount);
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth += MathF.Abs(amount);
     }
 }
