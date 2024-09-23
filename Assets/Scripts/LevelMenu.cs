@@ -1,5 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
 {
@@ -19,16 +20,5 @@ public class LevelMenu : MonoBehaviour
         // _isMenuOpen = false;
         Time.timeScale = 1f;
         canvas.enabled = false;
-    }
-
-    // TODO: This needs to be done far better than this spaghetti code
-    public void MovementUpgrade()
-    {
-        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier);
-    }
-
-    public void MovementDowngrade()
-    {
-        GameObject.Find("Player").GetComponent<PlayerStats>().StatLevelUp(StatID.speedMultiplier, true);
     }
 }
