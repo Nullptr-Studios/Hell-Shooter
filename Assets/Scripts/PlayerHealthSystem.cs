@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class PlayerHealthSystem : MonoBehaviour
@@ -42,6 +43,7 @@ public class PlayerHealthSystem : MonoBehaviour
                 //@TODO:Delagate for UI?
                 //@TODO:Do something fancy (particles...etc)
                 Destroy(this.gameObject);
+                SceneManager.LoadScene("LoseScreen");
             }
         }
     }
