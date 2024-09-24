@@ -133,8 +133,9 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: Prototype v0.1
-  preloadedAssets: []
+  bundleVersion: Prototype v1.1p
+  preloadedAssets:
+  - {fileID: 11400000, guid: 244255f25ddabcc4c9f4de94b4ac850d, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -154,7 +155,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.Hell-Shooter
+    Standalone: com.nullptr-Studios.Hell-Shooter
   buildNumber:
     Bratwurst: 0
     Standalone: 0
