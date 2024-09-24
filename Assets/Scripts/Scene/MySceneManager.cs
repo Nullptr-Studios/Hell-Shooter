@@ -10,6 +10,7 @@ public class MySceneManager : MonoBehaviour
     public float onBeginDelay = 3.0f;
     private bool _started = false;
 
+    private float _1timer = 0.0f;
     private float _timer = 0.0f;
 
     private int _listMaxIndex = 0;
@@ -20,6 +21,8 @@ public class MySceneManager : MonoBehaviour
 
     private EnemyWavesScriptableObject _wave;
     private List<EnemyWave> _currentEnemyWave;
+
+    private bool _waitForObject = true;
     
     // Start is called before the first frame update
     void Start()
@@ -30,23 +33,38 @@ public class MySceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _timer += Time.deltaTime;
-        if (!_started && _timer >= onBeginDelay)
+        
+        //@TODO: Fix this stupid duplication bug
+        if (!_started && _1timer >= onBeginDelay)
         {
             _started = true;
-            _timer = 0.0f;
+            _1timer = 0.0f;
+        }
+        else
+        {
+            _1timer += Time.deltaTime;
         }
 
         if (_started)
         {
+            if (!_waitForObject)
+            {
+                _timer += Time.deltaTime;
+            }
+            else
+            {
+                _timer = 0;
+            }
+
             if (_currentIndex != _lastIndex)
             {
                 _lastIndex = _currentIndex;
                 _currentWaveTimer = waves[_currentIndex].TotalWaveTime;
                 _wave = waves[_currentIndex].Wave;
                 _currentEnemyWave = _wave.EnemyWavesList;
+                _waitForObject = true;
             }
-            
+
             if (_timer >= _currentWaveTimer)
             {
                 _timer = 0.0f;
@@ -61,11 +79,21 @@ public class MySceneManager : MonoBehaviour
             }
             else
             {
-                //If this returns true, let´s not wait more, all waves have been played, continuing to next scene
-                if (_wave.UpdateEnemyWave(Time.deltaTime))
+                if (_waitForObject)
                 {
-                    _timer = _currentWaveTimer;
-                    _started = false;
+                    //If this returns true, let´s not wait more, all waves have been played, continuing to next scene
+                    if (_wave.UpdateEnemyWave(Time.deltaTime))
+                    {
+                        _waitForObject = false;
+                        _timer = 0.0f;
+                        _currentIndex++;
+                        if (_currentIndex > _listMaxIndex)
+                        {
+                            //@TODO: Change
+                            Debug.Log("All scripted scenes played!!");
+                            Destroy(this.gameObject);
+                        }
+                    }
                 }
             }
             

@@ -284,7 +284,7 @@ MonoBehaviour:
   shield: 0
   maxHealth: 3
   currentHealth: 0
-  invulnerable: 1
+  invulnerable: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,7 +47,14 @@ public class EnemyWavesScriptableObject : ScriptableObject
          {
              GameObject Enemy = Instantiate(Wave.EnemyPrefab,
                  new Vector3(Wave.SpawnLocation.x, Wave.SpawnLocation.y, 0), new Quaternion());
-             //@TODO: Pass enemy data
+             EnemyMovement movement = Enemy.GetComponent<EnemyMovement>();
+             movement.destination = Wave.DestinationLocation;
+             movement.useLerp = Wave.useLerp;
+             movement.speed = Wave.speed;
+             if (Wave.speed > 0)
+             {
+                 movement.moveToPosition = true;
+             }
          }
      }
 }
@@ -62,6 +69,8 @@ public struct EnemyWave
     public Vector2 SpawnLocation;
     //@TODO: Add support for enemies
     public Vector2 DestinationLocation;
+    public bool useLerp;
+    public float speed;
     public EnemyWaypointsScriptableObject WaypointsSo;
     //@TODO: Add Follow waypoints
 }
