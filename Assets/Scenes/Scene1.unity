@@ -393,6 +393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4765042391462002835, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: invulnerable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -589,8 +593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
-    TotalWaveTime: 10
   - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
     TotalWaveTime: 10
   onBeginDelay: 1

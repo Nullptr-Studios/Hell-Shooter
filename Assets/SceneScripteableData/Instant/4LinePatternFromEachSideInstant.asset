@@ -10,39 +10,39 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ffaf7457114db74bbb6910cdd8eaa3e, type: 3}
-  m_Name: 4CirclePatternFromEachSideInstant
+  m_Name: 4LinePatternFromEachSideInstant
   m_EditorClassIdentifier: 
   EnemyWavesList:
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: -11, y: 6}
     DestinationLocation: {x: -6, y: 3}
     useLerp: 1
     speed: 1
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: 11, y: 6}
     DestinationLocation: {x: 6, y: 3}
     useLerp: 1
     speed: 1
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: 11, y: -6}
     DestinationLocation: {x: 6, y: -3}
     useLerp: 1
     speed: 1
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: -11, y: -6}
     DestinationLocation: {x: -6, y: -3}
     useLerp: 1
     speed: 1
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
+    WaypointsSo: {fileID: 0}
   _currentSteppingIndex: 0
