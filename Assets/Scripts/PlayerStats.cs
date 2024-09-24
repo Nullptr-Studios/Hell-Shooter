@@ -7,10 +7,10 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Stat System")]
     [Range(0.9f, 1.5f)] public float statEffectMultiplier = 1f;
-    [Range(0.1f, 0.9f)] public float statXpRatio = 0.25f;
-    [Range(1f, 4f)] public float statXpMultiplier = 1.63f;
+    [Range(1f, 8f)] public float statXpCurve = 5f;
     private int[] StatLevel = new int[Enum.GetValues(typeof(StatID)).Length];
     private float[] StatMultiplier = new float[Enum.GetValues(typeof(StatID)).Length];
+    public bool debugLevelUp;
 
     [Header("XP System")]
     public int requiredXP;
@@ -39,6 +39,8 @@ public class PlayerStats : MonoBehaviour
     /**
      *  Increases the level of the inputted stat by 1
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
+     *
+     *  If you check the formula please update StatLevelUp also
      *  
      *  <param name="statID">Ability type</param>
      */
@@ -46,8 +48,8 @@ public class PlayerStats : MonoBehaviour
     {
         var id = (int)statID;
         StatLevel[id]++;
-        StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
-        DebugPrint(statID);
+        StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
+        if (debugLevelUp) DebugPrint(statID);
     }
 
     /**
@@ -59,8 +61,8 @@ public class PlayerStats : MonoBehaviour
     {
         var id = (int)statID;
         StatLevel[id]--;
-        StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id] - 1);
-        DebugPrint(statID);
+        StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
+        if (debugLevelUp) DebugPrint(statID);
     }
 
     /**
