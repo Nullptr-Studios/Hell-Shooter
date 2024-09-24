@@ -102,7 +102,7 @@ public class BulletSpawner : MonoBehaviour
 
     private void FireLogic()
     {
-        if (alsobackAndForth)
+        if (alsobackAndForth && spawnerType != SpawnerType.Circle)
         {
             Fire();
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);

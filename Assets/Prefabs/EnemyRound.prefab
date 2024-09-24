@@ -166,6 +166,7 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 0
   criticalHitMultiplier: 2
+  killedXp: 10
 --- !u!114 &5588805392906202844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,125 +179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028c62e2c87facf40aea68a23500dbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveToPosition: 0
-  destination: {x: 0, y: 0}
-  speed: 1
---- !u!1 &8728692413716132623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3787096842636120315}
-  - component: {fileID: 1147903751271699628}
-  m_Layer: 0
-  m_Name: BulletSpawner(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3787096842636120315
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728692413716132623}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4254636645907878143}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1147903751271699628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728692413716132623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3375e4a56cc80b4dbf790a80399732d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alsobackAndForth: 1
-  bullet: {fileID: 2029785020895981331, guid: c7d6790ac9be2ad41ab8be9f2628efa1, type: 3}
-  bulletLife: 10
-  speed: 2
-  spawnerType: 2
-  firingRate: 0.7
-  rotatingEachBullet: 3
-  ammountOfBulletsInCircle: 8
-  rotateEachCircleCompletion: 5
-  usesSen: 0
-  senTimeMultiplier: 1
-  senAmplitude: 20
-  player: {fileID: 0}
-  _pRadius: 0
---- !u!1 &8988544443889730681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5011092658498157722}
-  - component: {fileID: 6522890521994238494}
-  m_Layer: 0
-  m_Name: BulletSpawner(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5011092658498157722
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8988544443889730681}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4254636645907878143}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6522890521994238494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8988544443889730681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3375e4a56cc80b4dbf790a80399732d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alsobackAndForth: 1
-  bullet: {fileID: 2029785020895981331, guid: c7d6790ac9be2ad41ab8be9f2628efa1, type: 3}
-  bulletLife: 10
-  speed: 2
-  spawnerType: 2
-  firingRate: 0.7
-  rotatingEachBullet: 3
-  ammountOfBulletsInCircle: 8
-  rotateEachCircleCompletion: 5
-  usesSen: 0
-  senTimeMultiplier: 1
-  senAmplitude: 20
-  player: {fileID: 0}
-  _pRadius: 0
+  moveToPosition: 1
+  destination: {x: -5, y: -5}
+  speed: 0.5
+  useLerp: 1
 --- !u!1001 &7716546385961627810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -390,17 +276,9 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
-      propertyPath: SpawnerList.Array.data[0]
-      value: 
-      objectReference: {fileID: 8988544443889730681}
-    - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: SpawnerScriptList.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
-      propertyPath: SpawnerScriptList.Array.data[0]
-      value: 
-      objectReference: {fileID: 6522890521994238494}
     - target: {fileID: 9103529774749175473, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -419,13 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5772822460066160733, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3787096842636120315}
-    - targetCorrespondingSourceObject: {fileID: 5772822460066160733, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5011092658498157722}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
 --- !u!4 &4254636645907878143 stripped
