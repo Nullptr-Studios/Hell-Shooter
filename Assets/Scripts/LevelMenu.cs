@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 public class LevelMenu : MonoBehaviour
@@ -53,7 +54,9 @@ public class LevelMenu : MonoBehaviour
         var upgradeButtons = gameObject.GetComponentsInChildren<UpgradeButtons>();
         foreach (var i in upgradeButtons)
         {
-            if (i.upgradeCost[i.currentLevel] > levelPoints)
+            // maxLevel has to be -1 as the array has "points to get to next level"
+            // As level 6 doesn't exist, maxLevel[5] doesn't also
+            if (i.upgradeCost[Mathf.Clamp(i.currentLevel,1,i.maxLevel-1)] > levelPoints || i.currentLevel >= 5)
                 i.upgradeButton.interactable = false;
             else 
                 i.upgradeButton.interactable = true;

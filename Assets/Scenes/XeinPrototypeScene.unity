@@ -146,10 +146,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DummyEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 9040203315688398997, guid: ca8732536851b6e42ad87c773d7a4146, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 9066741328073151281, guid: ca8732536851b6e42ad87c773d7a4146, type: 3}
       propertyPath: m_RootOrder
       value: 2
