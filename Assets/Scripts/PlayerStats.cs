@@ -1,16 +1,17 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
+    // Privates
+    PlayerInput input;
+    
     [Header("Stat System")]
     [Range(0.9f, 1.5f)] public float statEffectMultiplier = 1f;
     [Range(1f, 8f)] public float statXpCurve = 5f;
     private int[] StatLevel = new int[Enum.GetValues(typeof(StatID)).Length];
     private float[] StatMultiplier = new float[Enum.GetValues(typeof(StatID)).Length];
-    public bool debugLevelUp;
 
     [Header("XP System")]
     public int requiredXP;
@@ -18,8 +19,9 @@ public class PlayerStats : MonoBehaviour
     [NonSerialized] protected internal int xp;
     [NonSerialized] protected internal int levelPoints = 0;
     
-    PlayerInput input;
-
+    [Header("Debug")]
+    public bool logLevelUp;
+    
     private void Start()
     {
         // Initializes all stats to 1
@@ -49,7 +51,7 @@ public class PlayerStats : MonoBehaviour
         var id = (int)statID;
         StatLevel[id]++;
         StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
-        if (debugLevelUp) DebugPrint(statID);
+        if (logLevelUp) DebugPrint(statID);
     }
 
     /**
@@ -62,7 +64,7 @@ public class PlayerStats : MonoBehaviour
         var id = (int)statID;
         StatLevel[id]--;
         StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
-        if (debugLevelUp) DebugPrint(statID);
+        if (logLevelUp) DebugPrint(statID);
     }
 
     /**
