@@ -15,6 +15,7 @@ public class EnemyBulletColision : MonoBehaviour
     private Transform _pTr;
     private Vector2 _pos;
     private Vector2 _playerPos;
+
     private void Start()
     {
         if (player)
@@ -22,10 +23,15 @@ public class EnemyBulletColision : MonoBehaviour
             _tr = this.transform;
             _pTr = player.transform;
         }
+        else
+        {
+            Destroy(this);
+        }
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (player)
         {

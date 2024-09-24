@@ -18,6 +18,8 @@ public class PlayerStats : MonoBehaviour
     // Made protected so XP and Level can only be changed by GiveXP() function
     [NonSerialized] protected internal int xp;
     [NonSerialized] protected internal int levelPoints = 0;
+
+    private GameObject GUI;
     
     [Header("Debug")]
     public bool logLevelUp;
@@ -32,10 +34,12 @@ public class PlayerStats : MonoBehaviour
         }
         
         input = GetComponent<PlayerInput>();
+        GUI = GameObject.Find("GUI");
 
         xp = 0;
-        GameObject.Find("GUI").SendMessage("SetExperience", xp);
-        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+        GUI.SendMessage("SetExperience", xp);
+        GUI.SendMessage("SetLevelPoints", levelPoints);
+        Debug.Log("Si lo hace");
     }
 
     /**
@@ -113,11 +117,11 @@ public class PlayerStats : MonoBehaviour
         {
             xp -= requiredXP;
             levelPoints++;
-            GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+            GUI.SendMessage("SetLevelPoints", levelPoints);
         }
-        
+
         // Broadcast to GUI slider
-        GameObject.Find("GUI").SendMessage("SetExperience", xp);
+        GUI.SendMessage("SetExperience", (float)xp/requiredXP);
     }
     
     /**
@@ -129,7 +133,7 @@ public class PlayerStats : MonoBehaviour
     public void GiveLevelPoint(int number)
     {
         levelPoints += number;
-        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+        GUI.SendMessage("SetLevelPoints", levelPoints);
     }
 
     /**
