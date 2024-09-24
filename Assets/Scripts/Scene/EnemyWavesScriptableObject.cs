@@ -14,6 +14,7 @@ public class EnemyWavesScriptableObject : ScriptableObject
 
      private float _timer = 0.0f;
 
+     //Spawning logic is inside Scriptable object to be more organized
      public bool UpdateEnemyWave(float delta)
      {
          _timer += delta;
@@ -41,7 +42,7 @@ public class EnemyWavesScriptableObject : ScriptableObject
 
      private void SpawnWave(EnemyWave Wave)
      {
-         Debug.Log("Spawned: " + Wave.EnemyPrefab.ToString());
+         Debug.Log("Spawned: " + Wave.EnemyPrefab.ToString() + " In position: " + Wave.SpawnLocation.ToString());
          for (int i = 0; i < Wave.ammount; i++)
          {
              GameObject Enemy = Instantiate(Wave.EnemyPrefab,
@@ -56,8 +57,10 @@ public struct EnemyWave
 {
     public GameObject EnemyPrefab;
     public int ammount;
+    //Dealay between waves
     public float delay;
     public Vector2 SpawnLocation;
+    //@TODO: Add support for enemies
     public Vector2 DestinationLocation;
     public EnemyWaypointsScriptableObject WaypointsSo;
     //@TODO: Add Follow waypoints

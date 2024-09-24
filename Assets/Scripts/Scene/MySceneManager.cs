@@ -6,6 +6,7 @@ public class MySceneManager : MonoBehaviour
 {
     public List<SceneManagerEnum> waves;
 
+    //Scene starting delay
     public float onBeginDelay = 3.0f;
     private bool _started = false;
 
@@ -60,9 +61,11 @@ public class MySceneManager : MonoBehaviour
             }
             else
             {
+                //If this returns true, let´s not wait more, all waves have been played, continuing to next scene
                 if (_wave.UpdateEnemyWave(Time.deltaTime))
                 {
                     _timer = _currentWaveTimer;
+                    _started = false;
                 }
             }
             
@@ -74,5 +77,6 @@ public class MySceneManager : MonoBehaviour
 public struct SceneManagerEnum
 {
     public EnemyWavesScriptableObject Wave;
+    //Total wave time exits to avoid being stuck in a non functionin wave
     public float TotalWaveTime;
 }
