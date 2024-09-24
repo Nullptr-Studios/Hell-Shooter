@@ -179,10 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028c62e2c87facf40aea68a23500dbf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveToPosition: 1
-  destination: {x: -5, y: -5}
-  speed: 0.5
-  useLerp: 1
+  moveToPosition: 0
+  destination: {x: 0, y: 0}
+  speed: 1
 --- !u!1001 &7716546385961627810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,15 +244,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: usesSen
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: firingRate
-      value: 0.7
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
+      propertyPath: bulletSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
+      propertyPath: backAndForth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
+      propertyPath: senAmplitude
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: rotatePerCircle
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: amountOfSpawners
@@ -265,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: senTimeMultiplier
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8521843402532623104, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
       propertyPath: SpawnerList.Array.size

@@ -39,7 +39,7 @@ public class PlayerHealthSystem : MonoBehaviour
         }
         else
         {
-            currentHealth -= damage;
+            currentHealth -= invulnerable? 0:damage;
             GUI.SendMessage("SetHealth", currentHealth/maxHealth);
 
             if (currentHealth <= 0)
