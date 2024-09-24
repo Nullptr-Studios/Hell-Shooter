@@ -39,7 +39,6 @@ public class PlayerStats : MonoBehaviour
         xp = 0;
         GUI.SendMessage("SetExperience", xp);
         GUI.SendMessage("SetLevelPoints", levelPoints);
-        Debug.Log("Si lo hace");
     }
 
     /**
