@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats _stats;
     
     // Public variables
-    [SerializeField] [Range(1.0f, 30.0f)] private float maxSpeed;
+    [SerializeField] [Range(10.0f, 300.0f)] private float maxSpeed;
     [SerializeField] [ReadOnly] private float currentSpeed;
     [Header("Acceleration variables")]
     [SerializeField] private float accelerationTime;
