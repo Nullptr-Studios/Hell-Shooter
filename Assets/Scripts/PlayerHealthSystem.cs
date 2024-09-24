@@ -11,7 +11,12 @@ public class PlayerHealthSystem : MonoBehaviour
     public float maxHealth = 100.0f;
     public float currentHealth;
 
+
     private GameObject GUI;
+
+    [Header("Debug")]
+    public bool invulnerable;
+
     
     // Start is called before the first frame update
     void Awake()

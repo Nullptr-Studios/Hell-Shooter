@@ -183,7 +183,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 15
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -239,9 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f07d9ac7471f042b6c59176773e531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 20
-  currentSpeed: 0
-  accelerationTime: 1
+  maxSpeed: 100
+  accelerationTime: 0.1
 --- !u!114 &2469250651799902263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statEffectMultiplier: 1
-  statXpRatio: 0.25
-  statXpMultiplier: 1.63
+  statXpCurve: 5
+  debugLevelUp: 0
   requiredXP: 100

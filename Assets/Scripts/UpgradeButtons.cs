@@ -8,7 +8,11 @@ public class UpgradeButtons : MonoBehaviour
     [Header("Stats")]
     public StatID statId;
     public int maxLevel = 5;
-    [Tooltip("Please do not use ID 0")] // TODO: Find a way to fix this, maybe with a try catch
+    /**
+     *  Value needed to upgrade to level menu
+     *  INDEX WILL ALWAYS BE 1 LOWER THAN maxLevel
+     */
+    [Tooltip("Please do not use ID 0")]
     public int[] upgradeCost;
     [NonSerialized] public int currentLevel = 1;
     [Header("Buttons")]
@@ -44,14 +48,11 @@ public class UpgradeButtons : MonoBehaviour
         // All fom here is UI related
         levelSlider.value = (float)currentLevel/maxLevel;
         levelText.text = currentLevel.ToString();
-        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
+        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[Mathf.Clamp(currentLevel, 1, maxLevel-1)].ToString();
         downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
-        if (currentLevel == maxLevel) // This disables the buttons on reach level limit
-            upgradeButton.interactable = false;
         if (downgradeButton.interactable == false) // This enabled the downgrade button again if disabled
             downgradeButton.interactable = true;
-        // TODO: I dont think these are necessary since there is the UpdateLevelPoints
     }
     
     /// <summary>
@@ -72,9 +73,7 @@ public class UpgradeButtons : MonoBehaviour
         downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
         upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
-        if (currentLevel == 1) // This disables the buttons on reach level limit
+        if (currentLevel <= 1) // This disables the buttons on reach level limit
             downgradeButton.interactable = false;
-        if (upgradeButton.interactable == false) // This enabled the upgrade button again if disabled
-            upgradeButton.interactable = true;
     }
 }

@@ -4,10 +4,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerStats : MonoBehaviour
 {
+    // Privates
+    PlayerInput input;
+    
     [Header("Stat System")]
     [Range(0.9f, 1.5f)] public float statEffectMultiplier = 1f;
-    [Range(0.1f, 0.9f)] public float statXpRatio = 0.25f;
-    [Range(1f, 4f)] public float statXpMultiplier = 1.63f;
+    [Range(1f, 8f)] public float statXpCurve = 5f;
     private int[] StatLevel = new int[Enum.GetValues(typeof(StatID)).Length];
     private float[] StatMultiplier = new float[Enum.GetValues(typeof(StatID)).Length];
 
@@ -16,12 +18,13 @@ public class PlayerStats : MonoBehaviour
     // Made protected so XP and Level can only be changed by GiveXP() function
     [NonSerialized] protected internal int xp;
     [NonSerialized] protected internal int levelPoints = 0;
-    
-    PlayerInput input;
 
     private GameObject GUI;
-
-    void Start()
+    
+    [Header("Debug")]
+    public bool logLevelUp;
+    
+    private void Start()
     {
         // Initializes all stats to 1
         for (int i = 0; i < StatLevel.Length; i++)
@@ -42,6 +45,8 @@ public class PlayerStats : MonoBehaviour
     /**
      *  Increases the level of the inputted stat by 1
      *  Right now stats don't have a hardcoded limit, they can be leveled up until infinite
+     *
+     *  If you check the formula please update StatLevelUp also
      *  
      *  <param name="statID">Ability type</param>
      */
@@ -49,8 +54,8 @@ public class PlayerStats : MonoBehaviour
     {
         var id = (int)statID;
         StatLevel[id]++;
-        StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id]-1);
-        DebugPrint(statID);
+        StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
+        if (logLevelUp) DebugPrint(statID);
     }
 
     /**
@@ -62,8 +67,8 @@ public class PlayerStats : MonoBehaviour
     {
         var id = (int)statID;
         StatLevel[id]--;
-        StatMultiplier[id] = (statEffectMultiplier - statXpRatio) + statXpRatio * Mathf.Pow(statXpMultiplier, StatLevel[id] - 1);
-        DebugPrint(statID);
+        StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
+        if (logLevelUp) DebugPrint(statID);
     }
 
     /**
