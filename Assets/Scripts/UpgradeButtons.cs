@@ -39,11 +39,11 @@ public class UpgradeButtons : MonoBehaviour
         currentLevel= Mathf.Clamp(currentLevel, 1, maxLevel);
         player.BroadcastMessage("GiveLevelPoint", -upgradeCost[currentLevel]);
         player.BroadcastMessage("StatLevelUp", statId);
-        
+        currentLevel++;
+
         // All fom here is UI related
         levelSlider.value = (float)currentLevel/maxLevel;
         levelText.text = currentLevel.ToString();
-        currentLevel++;
         upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
         downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
@@ -64,11 +64,11 @@ public class UpgradeButtons : MonoBehaviour
         currentLevel = Mathf.Clamp(currentLevel, 1, maxLevel);
         player.BroadcastMessage("StatLevelDown", statId);
         player.BroadcastMessage("GiveLevelPoint", upgradeCost[currentLevel-1]);
-        
+        currentLevel--;
+
         // All fom here is UI related
         levelSlider.value = (float)currentLevel/maxLevel;
         levelText.text = currentLevel.ToString();
-        currentLevel--;
         downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
         upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
