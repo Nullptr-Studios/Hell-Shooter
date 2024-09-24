@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,7 +19,9 @@ public class PlayerStats : MonoBehaviour
     
     PlayerInput input;
 
-    private void Start()
+    private GameObject GUI;
+
+    void Start()
     {
         // Initializes all stats to 1
         for (int i = 0; i < StatLevel.Length; i++)
@@ -30,10 +31,12 @@ public class PlayerStats : MonoBehaviour
         }
         
         input = GetComponent<PlayerInput>();
+        GUI = GameObject.Find("GUI");
 
         xp = 0;
-        GameObject.Find("GUI").SendMessage("SetExperience", xp);
-        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+        GUI.SendMessage("SetExperience", xp);
+        GUI.SendMessage("SetLevelPoints", levelPoints);
+        Debug.Log("Si lo hace");
     }
 
     /**
@@ -109,11 +112,11 @@ public class PlayerStats : MonoBehaviour
         {
             xp -= requiredXP;
             levelPoints++;
-            GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+            GUI.SendMessage("SetLevelPoints", levelPoints);
         }
-        
+
         // Broadcast to GUI slider
-        GameObject.Find("GUI").SendMessage("SetExperience", xp);
+        GUI.SendMessage("SetExperience", (float)xp/requiredXP);
     }
     
     /**
@@ -125,7 +128,7 @@ public class PlayerStats : MonoBehaviour
     public void GiveLevelPoint(int number)
     {
         levelPoints += number;
-        GameObject.Find("GUI").SendMessage("SetLevelPoints", levelPoints);
+        GUI.SendMessage("SetLevelPoints", levelPoints);
     }
 
     /**

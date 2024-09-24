@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8147170271933665040}
   - component: {fileID: 5301374645903393511}
   - component: {fileID: 3539891418071210610}
-  - component: {fileID: 8219094323887871854}
   - component: {fileID: 3267707344960296414}
   m_Layer: 0
   m_Name: EnemyBullets
@@ -104,41 +103,6 @@ MonoBehaviour:
   storedDamage: 1
   storedMultiplier: 1
   player: {fileID: 0}
---- !u!58 &8219094323887871854
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029785020895981331}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!114 &3267707344960296414
 MonoBehaviour:
   m_ObjectHideFlags: 0
