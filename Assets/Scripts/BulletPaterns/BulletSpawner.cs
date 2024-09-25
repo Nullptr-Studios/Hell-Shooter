@@ -42,7 +42,7 @@ public class BulletSpawner : MonoBehaviour
     private void Start()
     {
         
-        bullet.GetComponent<BulletScript>().SetLifeAndSpeed(bulletLife,speed);
+
         bullet.GetComponent<EnemyBulletColision>().player = this.player;
         bullet.GetComponent<BulletScript>().player = this.player;
         bullet.GetComponent<EnemyBulletColision>().playerRadius = this._pRadius;
@@ -122,9 +122,11 @@ public class BulletSpawner : MonoBehaviour
 
             _spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
+            _spawnedBullet.GetComponent<BulletScript>().SetLifeAndSpeed(bulletLife, speed);
+
             /*_spawnedBullet.GetComponent<BulletScript>().speed = speed;
             _spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;*/
-            
+
             /*_spawnedBullet.SendMessage("SetSpeed", speed);
             _spawnedBullet.SendMessage("SetLife", bulletLife);*/
 

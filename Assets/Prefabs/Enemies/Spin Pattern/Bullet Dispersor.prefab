@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 367033539027907049, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 367033539027907049, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4428983268800850661, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
       propertyPath: firingRate
-      value: 0.4
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4428983268800850661, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
       propertyPath: bulletSpeed
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4717809695446394516, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
       propertyPath: m_Name
-      value: Circle Rotating Variant
+      value: Bullet Dispersor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

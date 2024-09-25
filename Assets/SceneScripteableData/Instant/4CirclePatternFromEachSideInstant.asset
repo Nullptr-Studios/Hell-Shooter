@@ -13,36 +13,40 @@ MonoBehaviour:
   m_Name: 4CirclePatternFromEachSideInstant
   m_EditorClassIdentifier: 
   EnemyWavesList:
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+  - EnemyPrefab: {fileID: 5304714768493319683, guid: 91c85bc5894ee8f42ae5c4894dd1ac01, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: -17, y: 8}
     DestinationLocation: {x: -9, y: 3}
     useLerp: 1
     speed: 1
+    spawnerAngle: 0
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 2984439843570439324, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
+  - EnemyPrefab: {fileID: 5304714768493319683, guid: 91c85bc5894ee8f42ae5c4894dd1ac01, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: 17, y: 8}
     DestinationLocation: {x: 9, y: 3}
     useLerp: 1
     speed: 1
+    spawnerAngle: 0
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+  - EnemyPrefab: {fileID: 5304714768493319683, guid: 91c85bc5894ee8f42ae5c4894dd1ac01, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: 17, y: -8}
     DestinationLocation: {x: 9, y: -3}
     useLerp: 1
     speed: 1
+    spawnerAngle: 0
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  - EnemyPrefab: {fileID: 2984439843570439324, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
+  - EnemyPrefab: {fileID: 5304714768493319683, guid: 91c85bc5894ee8f42ae5c4894dd1ac01, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: -17, y: -8}
     DestinationLocation: {x: -9, y: -3}
     useLerp: 1
     speed: 1
+    spawnerAngle: 0
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
   _currentSteppingIndex: 0

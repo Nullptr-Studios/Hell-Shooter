@@ -47,15 +47,10 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        /*if(_timer > bulletLife) 
-            Destroy(this.gameObject);*/
+        if(_timer > bulletLife) 
+            Destroy(this.gameObject);
         _timer += Time.fixedDeltaTime;
         _tr.position = Movement(_timer);
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
     }
 
     private Vector2 Movement(float timer) {

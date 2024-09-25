@@ -72,7 +72,7 @@ public class BulletSpawnerManager : MonoBehaviour
     private float _playerRadius;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _player = GameObject.FindWithTag("Player");
         _playerRadius = _player.GetComponent<PlayerBulletColision>().playerRadius;
@@ -85,6 +85,7 @@ public class BulletSpawnerManager : MonoBehaviour
         {
             //@TODO: parse here scripteable object
             this.premadeShapeType = overrideSettings.premadeShapeType;
+            shapeType = this.premadeShapeType;
             this.firingRate = overrideSettings.firingRate;
             this.backAndForth = overrideSettings.backAndForth;
             this.bulletLife = overrideSettings.bulletLife;
@@ -230,10 +231,10 @@ public class BulletSpawnerManager : MonoBehaviour
     /// <summary>
     /// OnValidate is called whenever some variable has changed in the class
     /// </summary>
-    void OnValidate()
+    /*void OnValidate()
     {
         if (changesTracker.TrackFieldChanges(this, x => x.refresh))
             SelectSettingsForShape(premadeShapeType);
-    }
+    }*/
     
 }

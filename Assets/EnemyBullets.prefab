@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cc72363da937547aaf9f32ff0a981a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLife: 10
-  speed: 2
+  bulletLife: 1
+  speed: 3
   storedDamage: 1
   storedMultiplier: 1
   player: {fileID: 0}
