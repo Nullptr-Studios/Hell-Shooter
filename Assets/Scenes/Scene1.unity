@@ -389,13 +389,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2932305367751407079, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: playerRadius
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4746165723592550958, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4765042391462002835, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: invulnerable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_RootOrder
@@ -454,10 +458,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1393595813762361167, guid: 14c11fa93d5810744bf3a565db8c7a5c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3153603196642287423, guid: 14c11fa93d5810744bf3a565db8c7a5c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -554,10 +554,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
-    - target: {fileID: 6724836535052686297, guid: 14c11fa93d5810744bf3a565db8c7a5c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7505233963060229287, guid: 14c11fa93d5810744bf3a565db8c7a5c, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -601,11 +597,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
-    TotalWaveTime: 15
-  - Wave: {fileID: 11400000, guid: 22354ff7752ae194aaf1964c3ba5f9fc, type: 2}
-    TotalWaveTime: 1
-  onBeginDelay: 3
+  - Wave: {fileID: 11400000, guid: 588d691ccf9182f4280b80e8621fd5dd, type: 2}
+    TotalWaveTime: 5
+  - Wave: {fileID: 11400000, guid: a1f9974dbcfde8c4ebc199d55b7311c8, type: 2}
+    TotalWaveTime: 8
+  onBeginDelay: 2
 --- !u!4 &1440202588
 Transform:
   m_ObjectHideFlags: 0
@@ -645,7 +641,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882998385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.56, y: 0.11, z: 0}
+  m_LocalPosition: {x: -8.32, y: 8.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

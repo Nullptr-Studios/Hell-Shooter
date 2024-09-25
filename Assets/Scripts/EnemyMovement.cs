@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour
 
     public GameObject bulletSpawner;
 
+    public bool destroyAtArrival = false;
 
     private Transform _tr;
     
@@ -35,8 +36,19 @@ public class EnemyMovement : MonoBehaviour
                 //lerp interpolates between 2 vectors, so iths the same result as the function above except this time is interpolated.
                 _tr.position = Vector3.Lerp(_tr.position, destination, Time.deltaTime * speed);
             }
-            if (_tr.position == new Vector3(destination.x, destination.y, 0))
+
+            float d = (destination.x - _tr.position.x) * (destination.x - _tr.position.x) +
+                (destination.y - _tr.position.y) * (destination.y - _tr.position.y) - (0.1f);
+            if (d <= 0f)
+            {
                 moveToPosition = false;
+
+                if (destroyAtArrival)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+                
         }
     }
 }

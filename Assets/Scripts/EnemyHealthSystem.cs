@@ -19,6 +19,12 @@ public class EnemyHealthSystem : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void ChangeMaxHealth(float newMax)
+    {
+        this.maxHealth = newMax;
+        currentHealth = maxHealth;
+    }
+
     /// <summary>
     ///  Custom damage event
     ///     - damage: amount of damage to deal

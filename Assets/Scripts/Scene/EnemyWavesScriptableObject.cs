@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,6 +13,14 @@ public class EnemyWavesScriptableObject : ScriptableObject
      private bool _started = false;
      private bool _isLast = false;
      private float _timer = 0.0f;
+
+     private void OnDisable()
+     {
+         _currentSteppingIndex = 0;
+         _started = false;
+         _isLast = false;
+         _timer = 0.0f;
+     }
 
      // 👍 THIS FUNCTION IS ALL CORRECT 1:15 am
      //Spawning logic is inside Scriptable object to be more organized-d
@@ -58,12 +67,20 @@ public class EnemyWavesScriptableObject : ScriptableObject
              new Quaternion());
          // Gets the EnemyMovement component
          var movement = Enemy.GetComponent<EnemyMovement>();
+
+         if (Wave.overrideHealth > 0)
+         {
+             var health = Enemy.GetComponent<EnemyHealthSystem>();
+             health.ChangeMaxHealth(Wave.overrideHealth);
+         }
+
          // Sets destination
          movement.destination = Wave.DestinationLocation;
          // Set use lerp
          movement.useLerp = Wave.useLerp;
          // Set movement speed 
          movement.speed = Wave.speed;
+         movement.destroyAtArrival = Wave.DestroyOnArrival;
          // Set move to position if speed is > 0
          if (Wave.speed > 0)
          {
@@ -83,6 +100,8 @@ public struct EnemyWave
     public Vector2 SpawnLocation;
     //@TODO: Add support for enemies
     public Vector2 DestinationLocation;
+    public bool DestroyOnArrival;
+    public float overrideHealth;
     public bool useLerp;
     public float speed;
     public float spawnerAngle;

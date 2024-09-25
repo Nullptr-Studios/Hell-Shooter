@@ -17,7 +17,7 @@ public class SpawnerScriptableObjects : ScriptableObject
     public bool backAndForth = false;
 
     [Header("Bullet Configs")]
-    public float bulletLife = 10.0f;
+    public float bulletLife = 30.0f;
     public float bulletSpeed = 1.0f;
 
     [Header("Circle Configs")]
