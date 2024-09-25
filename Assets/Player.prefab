@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 4765042391462002835}
   - component: {fileID: 2932305367751407079}
   - component: {fileID: 8922869638395032004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ Transform:
   m_Children:
   - {fileID: 1589891957697238923}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3454903302259173526
 SpriteRenderer:
