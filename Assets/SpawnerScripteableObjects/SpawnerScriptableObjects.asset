@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c486c922eb369e141be92dd8425d4deb, type: 3}
   m_Name: SpawnerScriptableObjects
   m_EditorClassIdentifier: 
-  premadeShapeType: 0
+  premadeShapeType: 4
   firingRate: 0.25
   backAndForth: 0
   bulletLife: 10
@@ -26,7 +26,10 @@ MonoBehaviour:
   localDistanceFromCenter: {x: -1.5, y: 1.5}
   overrideDistanceBetweenPoints: 0
   distanceBetweenSpawnPoints: 3
-  angleBetweenSpawnPoints: []
+  angleBetweenSpawnPoints:
+  - 120
+  - 60
+  - 120
   InitialAngle: 0
   amountOfSpawners: 0
   overrideComplexSpawnerType: 0
