@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 479591080055229259, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_Name
-      value: Slow Double Spin Variant
+      value: Eye of the Universe
       objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_RootOrder
@@ -71,6 +71,50 @@ PrefabInstance:
     - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: bulletSpeed
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: InitialAngle
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: amountOfSpawners
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: premadeShapeType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: localDistanceFromCenter.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: localDistanceFromCenter.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: distanceBetweenSpawnPoints
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: overrideDistanceBetweenPoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: angleBetweenSpawnPoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: angleBetweenSpawnPoints.Array.data[0]
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: angleBetweenSpawnPoints.Array.data[1]
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: angleBetweenSpawnPoints.Array.data[2]
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
