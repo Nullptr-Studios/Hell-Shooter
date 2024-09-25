@@ -66,8 +66,8 @@ Transform:
   m_GameObject: {fileID: 4746165723592550958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1589891957697238923}
   m_Father: {fileID: 0}
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1b03b33eb0e57e7498f2f5f19f44aa38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,7 +283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: 0
   maxHealth: 100
-  currentHealth: 0
+  iFrameDuration: 3
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  flashBlinkDuration: 0.7
+  isInvencible: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,5 +314,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statEffectMultiplier: 1
   statXpCurve: 5
-  debugLevelUp: 0
   requiredXP: 100
+  logLevelUp: 0

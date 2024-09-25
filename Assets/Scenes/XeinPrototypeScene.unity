@@ -475,28 +475,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4765042391462002835, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4765042391462002835, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: invulnerable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -537,10 +521,6 @@ PrefabInstance:
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
