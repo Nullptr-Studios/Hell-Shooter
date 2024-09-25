@@ -10,6 +10,9 @@ using UnityEngine;
 public class BulletSpawnerManager : MonoBehaviour
 {
     //This is a fucking mess I don't know were to fucking begin -d
+
+    [SerializeField] SpawnerScriptableObjects overrideSettings;
+
     public enum PremadeShapeType { SimpleLine, SimpleSpin, SimpleCircle, SimpleSquare, SimpleDiamond, MultipleCircleRotating, Custom }
     
     public PremadeShapeType premadeShapeType;
@@ -78,6 +81,28 @@ public class BulletSpawnerManager : MonoBehaviour
 
     void SelectSettingsForShape(PremadeShapeType shapeType)
     {
+        if (overrideSettings)
+        {
+            //@TODO: parse here scripteable object
+            this.premadeShapeType = overrideSettings.premadeShapeType;
+            this.firingRate = overrideSettings.firingRate;
+            this.backAndForth = overrideSettings.backAndForth;
+            this.bulletLife = overrideSettings.bulletLife;
+            this.bulletSpeed = overrideSettings.bulletSpeed;
+            this.bulletsPerShotInCircle = overrideSettings.bulletsPerShotInCircle;
+            this.rotatePerCircle = overrideSettings.rotatePerCircle;
+            this.usesSen = overrideSettings.usesSen;
+            this.senTimeMultiplier = overrideSettings.senTimeMultiplier;
+            this.senAmplitude = overrideSettings.senAmplitude;
+            this.rotatePerShotLine = overrideSettings.rotatePerShotLine;
+            this.localDistanceFromCenter = overrideSettings.localDistanceFromCenter;
+            this.overrideDistanceBetweenPoints = overrideSettings.overrideDistanceBetweenPoints;
+            this.distanceBetweenSpawnPoints = overrideSettings.distanceBetweenSpawnPoints;
+            this.angleBetweenSpawnPoints = overrideSettings.angleBetweenSpawnPoints;
+            this.InitialAngle = overrideSettings.InitialAngle;
+            this.amountOfSpawners = overrideSettings.amountOfSpawners;
+            this.overrideComplexSpawnerType = overrideSettings.overrideComplexSpawnerType;
+        }
         //Refresh all spawner list
         refresh = false;
         foreach (var spawner in SpawnerList)

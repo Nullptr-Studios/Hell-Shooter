@@ -9,6 +9,9 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public bool useLerp = true;
 
+    public GameObject bulletSpawner;
+
+
     private Transform _tr;
     
     // Start is called before the first frame update

@@ -20,6 +20,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Spawner Attributes")]
     [SerializeField] public SpawnerType spawnerType;
     [SerializeField] public float firingRate = 1.0f;
+
     
     [Header("Spin Attributes")]
     [SerializeField] public float rotatingEachBullet = 5.0f;

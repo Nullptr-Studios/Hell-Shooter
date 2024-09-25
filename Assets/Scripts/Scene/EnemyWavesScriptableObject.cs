@@ -69,6 +69,7 @@ public class EnemyWavesScriptableObject : ScriptableObject
          {
              movement.moveToPosition = true;
          }
+         movement.bulletSpawner.transform.localEulerAngles = new Vector3(0,0, Wave.spawnerAngle);
      }
 }
 
@@ -84,6 +85,7 @@ public struct EnemyWave
     public Vector2 DestinationLocation;
     public bool useLerp;
     public float speed;
+    public float spawnerAngle;
     public EnemyWaypointsScriptableObject WaypointsSo;
     //@TODO: Add Follow waypoints
 }
