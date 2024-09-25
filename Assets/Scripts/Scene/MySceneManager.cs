@@ -10,7 +10,7 @@ public class MySceneManager : MonoBehaviour
     public float onBeginDelay = 3.0f;
     private bool _started = false;
 
-    private float _1timer = 0.0f;
+    private float _1Timer = 0.0f;
     private float _timer = 0.0f;
 
     private int _listMaxIndex = 0;
@@ -34,15 +34,14 @@ public class MySceneManager : MonoBehaviour
     void Update()
     {
         
-        //@TODO: Fix this stupid duplication bug
-        if (!_started && _1timer >= onBeginDelay)
+        if (!_started && _1Timer >= onBeginDelay)
         {
             _started = true;
-            _1timer = 0.0f;
+            _1Timer = 0.0f;
         }
         else
         {
-            _1timer += Time.deltaTime;
+            _1Timer += Time.deltaTime;
         }
 
         if (_started)
@@ -81,18 +80,13 @@ public class MySceneManager : MonoBehaviour
             {
                 if (_waitForObject)
                 {
-                    //If this returns true, let´s not wait more, all waves have been played, continuing to next scene
+                    //If this returns true, all waves have been played, continuing to next scene but first we'll need to wait for delay
                     if (_wave.UpdateEnemyWave(Time.deltaTime))
                     {
+                        //The stupid bug was adding + 1 in the _currentIndex, estoy cansado jefe -d
+                        //Start counting delay between scenes
                         _waitForObject = false;
                         _timer = 0.0f;
-                        _currentIndex++;
-                        if (_currentIndex > _listMaxIndex)
-                        {
-                            //@TODO: Change
-                            Debug.Log("All scripted scenes played!!");
-                            Destroy(this.gameObject);
-                        }
                     }
                 }
             }
@@ -105,6 +99,6 @@ public class MySceneManager : MonoBehaviour
 public struct SceneManagerEnum
 {
     public EnemyWavesScriptableObject Wave;
-    //Total wave time exits to avoid being stuck in a non functionin wave
+    //Total wave time exits to avoid being stuck in a non-functioning wave
     public float TotalWaveTime;
 }

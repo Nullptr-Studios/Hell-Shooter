@@ -595,6 +595,8 @@ MonoBehaviour:
   waves:
   - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
     TotalWaveTime: 10
+  - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
+    TotalWaveTime: 10
   onBeginDelay: 1
 --- !u!4 &1440202588
 Transform:

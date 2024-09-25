@@ -23,7 +23,7 @@ MonoBehaviour:
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
   - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: 11, y: 6}
     DestinationLocation: {x: 6, y: 3}
     useLerp: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
   - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: 11, y: -6}
     DestinationLocation: {x: 6, y: -3}
     useLerp: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
     WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
   - EnemyPrefab: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
     ammount: 0
-    delay: 2
+    delay: 0
     SpawnLocation: {x: -11, y: -6}
     DestinationLocation: {x: -6, y: -3}
     useLerp: 1
