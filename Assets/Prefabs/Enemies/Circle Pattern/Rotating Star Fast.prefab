@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotating Star Fast
       objectReference: {fileID: 0}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: killedXp
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

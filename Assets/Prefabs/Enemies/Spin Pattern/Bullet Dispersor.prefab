@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet Dispersor
       objectReference: {fileID: 0}
+    - target: {fileID: 6811503681011684805, guid: 9492444bb23f01b4995ec7b7750ba3d1, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

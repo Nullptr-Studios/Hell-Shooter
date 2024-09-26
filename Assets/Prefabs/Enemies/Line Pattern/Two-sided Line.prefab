@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867447796958908380, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2867447796958908380, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78,7 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7180366694138124449, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
       propertyPath: m_Name
-      value: Circle Rotating Variant
+      value: Two-sided Line
+      objectReference: {fileID: 0}
+    - target: {fileID: 8960928615812852720, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
+      propertyPath: killedXp
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

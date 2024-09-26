@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: killedXp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
       propertyPath: m_Name
       value: Circle
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8523703876709863163, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8523703876709863163, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
       propertyPath: m_LocalPosition.x

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 86398839948851000, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 86398839948851000, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,7 +74,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
       propertyPath: m_Name
-      value: Circle Rotating
+      value: Rotating Burst
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530877813392020244, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
+      propertyPath: killedXp
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotating Cross
       objectReference: {fileID: 0}
+    - target: {fileID: 6224103979528119634, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

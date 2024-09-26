@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3836263250670474331, guid: 9167069fdb9bf8d449401653ff4cc8f9, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3836263250670474331, guid: 9167069fdb9bf8d449401653ff4cc8f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -56,9 +56,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7975171890694549623, guid: 9167069fdb9bf8d449401653ff4cc8f9, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8166104722873844518, guid: 9167069fdb9bf8d449401653ff4cc8f9, type: 3}
       propertyPath: m_Name
-      value: Slow Double Spin Variant
+      value: Camera Grid
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

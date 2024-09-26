@@ -40,6 +40,7 @@ public class PlayerHealthSystem : MonoBehaviour
         // Hit animation stuff
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _material = _spriteRenderer.material;
+        _material.SetColor("_FlashColor", flashColor);
     }
 
     /// <summary>
@@ -76,7 +77,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 currentHealth = 0;
                 Destroy(this.gameObject);
-                SceneManager.LoadScene("LoseScreen");
+                SceneManager.LoadScene("MainMenu");
             }
         }
     }

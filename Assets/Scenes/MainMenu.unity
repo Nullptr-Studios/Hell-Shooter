@@ -1401,5 +1401,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170b23f90d3646440bb70a2212282cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openScene: XeinPrototypeScene
+  openScene: Scene1
   version: {fileID: 1543796686}

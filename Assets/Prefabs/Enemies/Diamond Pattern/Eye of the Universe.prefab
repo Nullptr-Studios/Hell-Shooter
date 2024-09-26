@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eye of the Universe
       objectReference: {fileID: 0}
+    - target: {fileID: 1826647141082019866, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2625747573459501595, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
+      propertyPath: killedXp
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4291600521936744778, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
       propertyPath: m_Name
-      value: Circle Rotating Variant
+      value: Regular Line
       objectReference: {fileID: 0}
     - target: {fileID: 5152467424600636731, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
       propertyPath: backAndForth
@@ -18,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9214402276687078967, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9214402276687078967, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
       propertyPath: m_LocalPosition.x

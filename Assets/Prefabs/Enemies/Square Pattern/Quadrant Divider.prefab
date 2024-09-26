@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Quadrant Divider
       objectReference: {fileID: 0}
+    - target: {fileID: 3932918285930571725, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6153379460955887853, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
       propertyPath: firingRate
       value: 0.3
@@ -38,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7855454067002803169, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7855454067002803169, guid: 2667dbbb5c971f84596a94c73f570088, type: 3}
       propertyPath: m_LocalPosition.x
