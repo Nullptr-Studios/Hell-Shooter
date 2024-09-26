@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 4765042391462002835}
   - component: {fileID: 2932305367751407079}
   - component: {fileID: 8922869638395032004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ Transform:
   m_Children:
   - {fileID: 1589891957697238923}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3454903302259173526
 SpriteRenderer:
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1b03b33eb0e57e7498f2f5f19f44aa38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -283,8 +283,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: 0
   maxHealth: 3
-  currentHealth: 0
-  invulnerable: 1
+  iFrameDuration: 3
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  flashBlinkDuration: 0.7
+  isInvencible: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
