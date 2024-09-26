@@ -16,8 +16,9 @@ MonoBehaviour:
   - EnemyPrefab: {fileID: 8459595214379296957, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
     ammount: 1
     delay: 0
-    SpawnLocation: {x: 15, y: 0}
-    DestinationLocation: {x: -15, y: 0}
+    SpawnLocation: {x: 15, y: 1}
+    DestinationLocation: {x: -15, y: 1}
+    DestroyOnArrival: 0
     overrideHealth: 15
     useLerp: 0
     speed: 1.5

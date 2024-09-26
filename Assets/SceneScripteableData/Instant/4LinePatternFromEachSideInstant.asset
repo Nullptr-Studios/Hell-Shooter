@@ -13,38 +13,46 @@ MonoBehaviour:
   m_Name: 4LinePatternFromEachSideInstant
   m_EditorClassIdentifier: 
   EnemyWavesList:
-  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
+  - EnemyPrefab: {fileID: 4291600521936744778, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: -11, y: 6}
     DestinationLocation: {x: -6, y: 3}
+    DestroyOnArrival: 0
+    overrideHealth: 0
     useLerp: 1
     speed: 1
-    spawnerAngle: -90
+    spawnerAngle: 0
     WaypointsSo: {fileID: 0}
-  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
+  - EnemyPrefab: {fileID: 4291600521936744778, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: 11, y: 6}
     DestinationLocation: {x: 6, y: 3}
+    DestroyOnArrival: 0
+    overrideHealth: 0
     useLerp: 1
     speed: 1
     spawnerAngle: 90
     WaypointsSo: {fileID: 0}
-  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
+  - EnemyPrefab: {fileID: 4291600521936744778, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: 11, y: -6}
     DestinationLocation: {x: 6, y: -3}
+    DestroyOnArrival: 0
+    overrideHealth: 0
     useLerp: 1
     speed: 1
-    spawnerAngle: 180
+    spawnerAngle: 0
     WaypointsSo: {fileID: 0}
-  - EnemyPrefab: {fileID: 4372380798192487468, guid: 34e1aada82d4d0049be1a4494ec99a2d, type: 3}
+  - EnemyPrefab: {fileID: 4291600521936744778, guid: a6d09e114a4f82b47bdd9e963d5fe1a0, type: 3}
     ammount: 0
     delay: 0
     SpawnLocation: {x: -11, y: -6}
     DestinationLocation: {x: -6, y: -3}
+    DestroyOnArrival: 0
+    overrideHealth: 90
     useLerp: 1
     speed: 1
     spawnerAngle: 360

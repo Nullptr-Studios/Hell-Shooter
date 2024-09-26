@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffaf7457114db74bbb6910cdd8eaa3e, type: 3}
+  m_Name: RotatingFastAcrosScreen4
+  m_EditorClassIdentifier: 
+  EnemyWavesList:
+  - EnemyPrefab: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+    ammount: 1
+    delay: 3
+    SpawnLocation: {x: 15, y: 4}
+    DestinationLocation: {x: -15, y: 4}
+    DestroyOnArrival: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+    ammount: 1
+    delay: 4
+    SpawnLocation: {x: -15, y: -4}
+    DestinationLocation: {x: 15, y: -4}
+    DestroyOnArrival: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+    ammount: 1
+    delay: 4
+    SpawnLocation: {x: -9, y: 9}
+    DestinationLocation: {x: -9, y: -9}
+    DestroyOnArrival: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+    ammount: 1
+    delay: 4
+    SpawnLocation: {x: 9, y: -9}
+    DestinationLocation: {x: 9, y: 9}
+    DestroyOnArrival: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  _currentSteppingIndex: 0

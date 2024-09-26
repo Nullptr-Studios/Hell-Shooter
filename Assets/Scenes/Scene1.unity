@@ -601,7 +601,15 @@ MonoBehaviour:
     TotalWaveTime: 5
   - Wave: {fileID: 11400000, guid: a1f9974dbcfde8c4ebc199d55b7311c8, type: 2}
     TotalWaveTime: 8
-  onBeginDelay: 2
+  - Wave: {fileID: 11400000, guid: de17689b84a7f304ea5b40a9481fb543, type: 2}
+    TotalWaveTime: 8
+  - Wave: {fileID: 11400000, guid: 4933d0d9b036e8f4390d084bc264ab25, type: 2}
+    TotalWaveTime: 3
+  - Wave: {fileID: 11400000, guid: 22354ff7752ae194aaf1964c3ba5f9fc, type: 2}
+    TotalWaveTime: 5
+  - Wave: {fileID: 11400000, guid: 2c24123b63dada143850b42ed8f1b6c3, type: 2}
+    TotalWaveTime: 5
+  onBeginDelay: 3
 --- !u!4 &1440202588
 Transform:
   m_ObjectHideFlags: 0
