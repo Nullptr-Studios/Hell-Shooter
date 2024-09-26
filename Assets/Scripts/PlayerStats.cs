@@ -44,7 +44,7 @@ public class PlayerStats : MonoBehaviour
         GUI.SendMessage("SetLevelPoints", levelPoints);
         
         // Get data from save file
-        goldCoins = DataSerializer.Load<int>("goldCoins");
+        goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
     }
 
     /**
@@ -168,8 +168,8 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     private void SaveData()
     {
-        DataSerializer.Save("goldCoins", goldCoins);
-        Debug.Log("Data saved: " + DataSerializer.Load<int>("goldCoins"));
+        DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins);
+        Debug.Log("Data saved: " + DataSerializer.Load<int>(SaveDataKeywords.goldCoins));
     }
 }
 

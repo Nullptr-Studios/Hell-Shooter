@@ -9,6 +9,14 @@ public class SaveDataUtilities : MonoBehaviour
     
 }
 
+/// <summary>
+/// Use this class to store variables for the save system, this prevents code to break due to typo or changed name
+/// </summary>
+public class SaveDataKeywords
+{
+    public const string goldCoins = "goldCoins";
+}
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(SaveDataUtilities))]
 public class SaveDataUtilitiesEditor : Editor
