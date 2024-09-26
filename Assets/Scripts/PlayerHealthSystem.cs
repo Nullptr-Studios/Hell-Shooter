@@ -43,10 +43,11 @@ public class PlayerHealthSystem : MonoBehaviour
             currentHealth -= invulnerable? 0:damage;
             GUI.SendMessage("SetHealth", currentHealth/maxHealth);
 
+            // Death logic
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                DataSerializer.Save("timeAlive", Time.time);
+                this.SendMessage("SaveData");
                 //@TODO:Delagate for UI?
                 //@TODO:Do something fancy (particles...etc)
                 Destroy(this.gameObject);

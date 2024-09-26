@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772546804864399664}
+  - component: {fileID: 6640582039354898557}
   - component: {fileID: 3454903302259173526}
   - component: {fileID: -623442801250498966}
   - component: {fileID: 1284963799584856429}
@@ -73,6 +74,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6640582039354898557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746165723592550958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d82552c0aa27bb42bf133cd76713fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3454903302259173526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,8 +295,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: 0
-  maxHealth: 100
+  maxHealth: 3
   currentHealth: 0
+  invulnerable: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f68fdd044bff44b298ac79e02062f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRadius: 0.1
+  playerRadius: 0.05
 --- !u!114 &8922869638395032004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,5 +325,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statEffectMultiplier: 1
   statXpCurve: 5
-  debugLevelUp: 0
   requiredXP: 100
+  goldCoins: 0
+  logLevelUp: 0

@@ -15,7 +15,7 @@ namespace ToolBox.Serialization
 		private static DeserializationContext _deserializationContext;
 		private static ReferenceResolver _referenceResolver;
 		private const string FileName = "Save";
-		private const DataFormat DataFormat = OdinSerializer.DataFormat.JSON;
+		private const DataFormat DataFormat = OdinSerializer.DataFormat.Binary;
 		private const int InitialSize = 64;
 
 		public static AssetsContainer Container { get; private set; }
@@ -122,7 +122,7 @@ namespace ToolBox.Serialization
 
 		private static void GeneratePath()
 		{
-			_savePath = Path.Combine(Application.dataPath, $"{FileName}_{_currentProfileIndex.ToString()}.json");
+			_savePath = Path.Combine(Application.dataPath, $"{FileName}_{_currentProfileIndex.ToString()}.save");
 		}
 
 		private static byte[] Serialize<T>(T data)

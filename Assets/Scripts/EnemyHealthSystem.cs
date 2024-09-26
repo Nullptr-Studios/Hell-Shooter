@@ -8,7 +8,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public float currentHealth;
     public float criticalHitMultiplier = 2.0f;
     public int killedXp = 10;
-    // public int killedGold = 2; prepared for when gold is used
+    public int killedGold = 2; 
     
     // Start is called before the first frame update
     void Awake()
@@ -35,15 +35,15 @@ public class EnemyHealthSystem : MonoBehaviour
         }
 
         currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
-        _isCrit = false;
         
-        Debug.Log("Ouch: " + currentHealth);
+        // Debug.Log("Ouch: " + currentHealth);
         
         if (currentHealth <= 0)
         {
-            Debug.Log("I'm Ded");
+            // Debug.Log("I'm Ded");
             currentHealth = 0;
             playerStats.GiveXP(killedXp);
+            playerStats.GiveGold(killedGold);
             //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
             //@TODO:Do something fancy (particles...etc)
             Destroy(this.gameObject);
@@ -52,9 +52,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
     /// <summary>
     /// Gain Health void
-    ///     - amount: amount to regen
     /// </summary>
-    /// <param name="amount"></param>
+    /// <param name="amount">Amount of health to regen</param>
     public void GainHealth(float amount)
     {
         if (currentHealth >= 100)
