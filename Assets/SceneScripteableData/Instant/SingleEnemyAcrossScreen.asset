@@ -18,7 +18,7 @@ MonoBehaviour:
     delay: 0
     SpawnLocation: {x: 15, y: 1}
     DestinationLocation: {x: -15, y: 1}
-    DestroyOnArrival: 0
+    DestroyOnArrival: 1
     overrideHealth: 15
     useLerp: 0
     speed: 1.5
