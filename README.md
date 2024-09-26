@@ -6,5 +6,3 @@ GDD: [Word Document](https://digipen824-my.sharepoint.com/:w:/g/personal/d_rodrg
 Tasks: [Plane](https://plane.xein.es/digipen/projects/0c5a9dbf-d5f8-4f3e-bdf3-e046ae39890e/issues/)
 
 Do **NOT** commit on main without an aproved PR
-
-https://gist.github.com/dariormt/408cf428dc16fcbc8d48b0ee67f8eeaa
