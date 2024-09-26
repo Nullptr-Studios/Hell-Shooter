@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using ToolBox.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,8 +19,8 @@ public class MainScreen : MonoBehaviour
         SceneManager.LoadScene(openScene);
     }
 
-    private void Awake()
+    private void Awake() 
     {
-        version.text = Application.version;
+        version.text = DataSerializer.Load<float>("timeAlive").ToString();
     }
 }

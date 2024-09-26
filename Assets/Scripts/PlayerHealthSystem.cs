@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ToolBox.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -45,6 +46,7 @@ public class PlayerHealthSystem : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                DataSerializer.Save("timeAlive", Time.time);
                 //@TODO:Delagate for UI?
                 //@TODO:Do something fancy (particles...etc)
                 Destroy(this.gameObject);
