@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2113601515689583522, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: bulletLife
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2113601515689583522, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: firingRate
@@ -50,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.934504
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.1891248
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -98,7 +98,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ea73b57ec4496c44d9e6b04856526e8d, type: 3}
     - target: {fileID: 7015178151573303251, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_Name
-      value: Circle Burst Slow
+      value: Slow Burst
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 4765042391462002835}
   - component: {fileID: 2932305367751407079}
   - component: {fileID: 8922869638395032004}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -66,12 +66,12 @@ Transform:
   m_GameObject: {fileID: 4746165723592550958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1589891957697238923}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3454903302259173526
 SpriteRenderer:
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1b03b33eb0e57e7498f2f5f19f44aa38, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,7 +157,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011163771, y: -0.041291714}
+  m_Offset: {x: -0.0010962486, y: 0.0007426441}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -168,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6693028, y: 0.48669577}
+  m_Size: {x: 0.31551373, y: 0.5707645}
   m_EdgeRadius: 0
 --- !u!50 &1284963799584856429
 Rigidbody2D:
@@ -196,7 +196,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &5220768600662927573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,8 +282,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: 0
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 3
+  iFrameDuration: 3
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  flashBlinkDuration: 0.7
+  isInvencible: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,5 +314,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statEffectMultiplier: 1
   statXpCurve: 5
-  debugLevelUp: 0
   requiredXP: 100
+  logLevelUp: 0

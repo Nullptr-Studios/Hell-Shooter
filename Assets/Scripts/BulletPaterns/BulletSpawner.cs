@@ -20,6 +20,7 @@ public class BulletSpawner : MonoBehaviour
     [Header("Spawner Attributes")]
     [SerializeField] public SpawnerType spawnerType;
     [SerializeField] public float firingRate = 1.0f;
+
     
     [Header("Spin Attributes")]
     [SerializeField] public float rotatingEachBullet = 5.0f;
@@ -41,7 +42,7 @@ public class BulletSpawner : MonoBehaviour
     private void Start()
     {
         
-        bullet.GetComponent<BulletScript>().SetLifeAndSpeed(bulletLife,speed);
+
         bullet.GetComponent<EnemyBulletColision>().player = this.player;
         bullet.GetComponent<BulletScript>().player = this.player;
         bullet.GetComponent<EnemyBulletColision>().playerRadius = this._pRadius;
@@ -102,7 +103,7 @@ public class BulletSpawner : MonoBehaviour
 
     private void FireLogic()
     {
-        if (alsobackAndForth)
+        if (alsobackAndForth && spawnerType != SpawnerType.Circle)
         {
             Fire();
             transform.eulerAngles = new Vector3(0f, 0f, transform.eulerAngles.z + 180.0f);
@@ -121,9 +122,11 @@ public class BulletSpawner : MonoBehaviour
 
             _spawnedBullet = Instantiate(bullet, transform.position, Quaternion.identity);
 
+            _spawnedBullet.GetComponent<BulletScript>().SetLifeAndSpeed(bulletLife, speed);
+
             /*_spawnedBullet.GetComponent<BulletScript>().speed = speed;
             _spawnedBullet.GetComponent<BulletScript>().bulletLife = bulletLife;*/
-            
+
             /*_spawnedBullet.SendMessage("SetSpeed", speed);
             _spawnedBullet.SendMessage("SetLife", bulletLife);*/
 

@@ -10,6 +10,9 @@ using UnityEngine;
 public class BulletSpawnerManager : MonoBehaviour
 {
     //This is a fucking mess I don't know were to fucking begin -d
+
+    [SerializeField] SpawnerScriptableObjects overrideSettings;
+
     public enum PremadeShapeType { SimpleLine, SimpleSpin, SimpleCircle, SimpleSquare, SimpleDiamond, MultipleCircleRotating, Custom }
     
     public PremadeShapeType premadeShapeType;
@@ -21,7 +24,7 @@ public class BulletSpawnerManager : MonoBehaviour
     public bool backAndForth = false;
 
     [Header("Bullet Configs")] 
-    public float bulletLife = 10.0f;
+    public float bulletLife = 30.0f;
     public float bulletSpeed = 1.0f;
     
     [Header("Circle Configs")]
@@ -69,7 +72,7 @@ public class BulletSpawnerManager : MonoBehaviour
     private float _playerRadius;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _player = GameObject.FindWithTag("Player");
         _playerRadius = _player.GetComponent<PlayerBulletColision>().playerRadius;
@@ -78,6 +81,29 @@ public class BulletSpawnerManager : MonoBehaviour
 
     void SelectSettingsForShape(PremadeShapeType shapeType)
     {
+        if (overrideSettings)
+        {
+            //@TODO: parse here scripteable object
+            this.premadeShapeType = overrideSettings.premadeShapeType;
+            shapeType = this.premadeShapeType;
+            this.firingRate = overrideSettings.firingRate;
+            this.backAndForth = overrideSettings.backAndForth;
+            this.bulletLife = overrideSettings.bulletLife;
+            this.bulletSpeed = overrideSettings.bulletSpeed;
+            this.bulletsPerShotInCircle = overrideSettings.bulletsPerShotInCircle;
+            this.rotatePerCircle = overrideSettings.rotatePerCircle;
+            this.usesSen = overrideSettings.usesSen;
+            this.senTimeMultiplier = overrideSettings.senTimeMultiplier;
+            this.senAmplitude = overrideSettings.senAmplitude;
+            this.rotatePerShotLine = overrideSettings.rotatePerShotLine;
+            this.localDistanceFromCenter = overrideSettings.localDistanceFromCenter;
+            this.overrideDistanceBetweenPoints = overrideSettings.overrideDistanceBetweenPoints;
+            this.distanceBetweenSpawnPoints = overrideSettings.distanceBetweenSpawnPoints;
+            this.angleBetweenSpawnPoints = overrideSettings.angleBetweenSpawnPoints;
+            this.InitialAngle = overrideSettings.InitialAngle;
+            this.amountOfSpawners = overrideSettings.amountOfSpawners;
+            this.overrideComplexSpawnerType = overrideSettings.overrideComplexSpawnerType;
+        }
         //Refresh all spawner list
         refresh = false;
         foreach (var spawner in SpawnerList)
@@ -205,10 +231,10 @@ public class BulletSpawnerManager : MonoBehaviour
     /// <summary>
     /// OnValidate is called whenever some variable has changed in the class
     /// </summary>
-    void OnValidate()
+    /*void OnValidate()
     {
         if (changesTracker.TrackFieldChanges(this, x => x.refresh))
             SelectSettingsForShape(premadeShapeType);
-    }
+    }*/
     
 }

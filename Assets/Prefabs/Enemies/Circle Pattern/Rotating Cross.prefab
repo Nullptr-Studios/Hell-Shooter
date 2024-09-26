@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1004531530585883006, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1004531530585883006, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3860094799594658418, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
       propertyPath: senAmplitude
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3860094799594658418, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
       propertyPath: rotatePerCircle
@@ -86,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5304714768493319683, guid: 8f0f1479072c390469cfba6b1cc91474, type: 3}
       propertyPath: m_Name
-      value: DefaultEnemy Variant
+      value: Rotating Cross
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
