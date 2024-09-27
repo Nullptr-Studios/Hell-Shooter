@@ -18,6 +18,8 @@
 
 //#define PREFAB_DEBUG
 
+#pragma warning disable
+
 namespace ToolBox.Serialization.OdinSerializer
 {
     using System.Globalization;
@@ -2823,3 +2825,5 @@ namespace ToolBox.Serialization.OdinSerializer
 #endif
     }
 }
+
+#pragma warning restore
