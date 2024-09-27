@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using ToolBox.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -76,6 +79,7 @@ public class PlayerHealthSystem : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
+                this.SendMessage("SaveData");
                 Destroy(this.gameObject);
                 SceneManager.LoadScene("MainMenu");
             }

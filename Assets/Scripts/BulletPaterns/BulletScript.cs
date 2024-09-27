@@ -71,7 +71,7 @@ public class BulletScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
+        // Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
         if (other.gameObject.CompareTag("Enemy") && CompareTag("PlayerBullet"))
         {
             //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d

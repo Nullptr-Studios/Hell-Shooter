@@ -1,6 +1,8 @@
 using System;
+using ToolBox.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -18,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     // Made protected so XP and Level can only be changed by GiveXP() function
     [NonSerialized] protected internal int xp;
     [NonSerialized] protected internal int levelPoints = 0;
+    public int goldCoins;
 
     private GameObject GUI;
     
@@ -39,6 +42,9 @@ public class PlayerStats : MonoBehaviour
         xp = 0;
         GUI.SendMessage("SetExperience", xp);
         GUI.SendMessage("SetLevelPoints", levelPoints);
+        
+        // Get data from save file
+        goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
     }
 
     /**
@@ -129,11 +135,13 @@ public class PlayerStats : MonoBehaviour
      *
      *  <param name="number">Number of Level Points given to player</param>
      */  
-    public void GiveLevelPoint(int number)
-    {
-        levelPoints += number;
-        GUI.SendMessage("SetLevelPoints", levelPoints);
-    }
+    public void GiveLevelPoint(int number) => levelPoints += number;
+
+    /// <summary>
+    /// Gives player Gold Coins
+    /// </summary>
+    /// <param name="value">Number of gold coins to give</param>
+    public void GiveGold(int value) => goldCoins += value;
 
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu
@@ -153,6 +161,15 @@ public class PlayerStats : MonoBehaviour
         input.SwitchCurrentActionMap("Gameplay");
         LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
         levelMenuScript.Close();
+    }
+
+    /// <summary>
+    /// Saves values onto file
+    /// </summary>
+    private void SaveData()
+    {
+        DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins);
+        Debug.Log("Data saved: " + DataSerializer.Load<int>(SaveDataKeywords.goldCoins));
     }
 }
 

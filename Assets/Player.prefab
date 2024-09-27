@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7772546804864399664}
+  - component: {fileID: 6640582039354898557}
   - component: {fileID: 3454903302259173526}
   - component: {fileID: -623442801250498966}
   - component: {fileID: 1284963799584856429}
@@ -73,6 +74,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6640582039354898557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746165723592550958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d82552c0aa27bb42bf133cd76713fcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3454903302259173526
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -209,7 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f,
+    type: 3}
   m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -266,7 +280,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69b3729f21dcdd4c85fe53f03779f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2029785020895981331, guid: 11a5caa7357fa60439d37c93e83bae78, type: 3}
+  bulletPrefab: {fileID: 2029785020895981331, guid: 11a5caa7357fa60439d37c93e83bae78,
+    type: 3}
   bulletSpawn: {fileID: 1589891957697238923}
   fireRate: 0.2
 --- !u!114 &4765042391462002835
@@ -287,6 +302,7 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   flashBlinkDuration: 0.7
   isInvencible: 0
+  invulnerable: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f68fdd044bff44b298ac79e02062f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRadius: 0.1
+  playerRadius: 0.05
 --- !u!114 &8922869638395032004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,3 +332,4 @@ MonoBehaviour:
   statXpCurve: 5
   requiredXP: 100
   logLevelUp: 0
+  goldCoins: 0

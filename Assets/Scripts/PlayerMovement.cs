@@ -45,6 +45,6 @@ public class PlayerMovement : MonoBehaviour
     // Calls InputAction OnDebug for testing purposes
     private void OnDebug()
     {
-        _stats.GiveXP(100);
+        this.SendMessage("SaveData");
     }
 }
