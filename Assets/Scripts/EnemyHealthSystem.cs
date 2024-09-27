@@ -10,9 +10,18 @@ public class EnemyHealthSystem : MonoBehaviour
     public int killedXp = 10;
     public int killedGold = 2; 
     
+    private PlayerStats playerStats;
+    
     // Start is called before the first frame update
     void Awake()
     {
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        currentHealth = maxHealth;
+    }
+
+    public void ChangeMaxHealth(float newMax)
+    {
+        this.maxHealth = newMax;
         currentHealth = maxHealth;
     }
 
@@ -24,7 +33,6 @@ public class EnemyHealthSystem : MonoBehaviour
     public void DoDamage(float damage)
     {
         //@TODO: Change this to bullet
-        var playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         var damageMultiplier = playerStats.GetStat(StatID.damageMultiplier);
         var critHitPercentage = playerStats.GetStat(StatID.criticalHitPercentage);
         bool _isCrit = false;

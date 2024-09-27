@@ -10,7 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2561731431333060820, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
       propertyPath: m_Name
-      value: Slow Double Spin Variant
+      value: Rotating Diamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355910220334044037, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
+      propertyPath: killedXp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6882334859628604581, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
+      propertyPath: bulletLife
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6882334859628604581, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
       propertyPath: premadeShapeType
@@ -18,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7486082956178438057, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7486082956178438057, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
       propertyPath: m_LocalPosition.x

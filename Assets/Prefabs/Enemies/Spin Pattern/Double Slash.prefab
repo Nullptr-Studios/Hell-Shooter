@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 678191123856893132, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
       propertyPath: bulletSpeed
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 678191123856893132, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
       propertyPath: backAndForth
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3533202438666092480, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3533202438666092480, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -70,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8459595214379296957, guid: e04043a32cda33c4488186154eeef6c5, type: 3}
       propertyPath: m_Name
-      value: Circle Rotating Variant
+      value: Double Slash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

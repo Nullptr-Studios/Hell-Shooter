@@ -9,6 +9,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2113601515689583522, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: usesSen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113601515689583522, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: rotatePerCircle
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113601515689583522, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: SpawnerList.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -18,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2680797086974998702, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -62,7 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7015178151573303251, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_Name
-      value: DefaultEnemy Variant
+      value: Rotating Star Fast
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: killedXp
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

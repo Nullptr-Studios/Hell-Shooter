@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 4254636645907878143}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4140132037290987671
 SpriteRenderer:
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -150,7 +150,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &9125628967143201922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +182,8 @@ MonoBehaviour:
   moveToPosition: 0
   destination: {x: 0, y: 0}
   speed: 1
+  useLerp: 1
+  bulletSpawner: {fileID: 8709604987579895752}
 --- !u!1001 &7716546385961627810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,5 +316,10 @@ PrefabInstance:
 --- !u!4 &4254636645907878143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5772822460066160733, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
+  m_PrefabInstance: {fileID: 7716546385961627810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8709604987579895752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1425413037237124970, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
   m_PrefabInstance: {fileID: 7716546385961627810}
   m_PrefabAsset: {fileID: 0}

@@ -12,17 +12,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Eye of the Universe
       objectReference: {fileID: 0}
+    - target: {fileID: 1826647141082019866, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: killedXp
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.805283
       objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.1956427
       objectReference: {fileID: 0}
     - target: {fileID: 4812422108136283190, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63,6 +67,10 @@ PrefabInstance:
     - target: {fileID: 8267941248467475083, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
+      propertyPath: bulletLife
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8838375527562561338, guid: db7c540d2b6b27d479ae5e701c70eebc, type: 3}
       propertyPath: firingRate
