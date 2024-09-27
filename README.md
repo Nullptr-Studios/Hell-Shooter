@@ -16,12 +16,17 @@ Functions and classes are named using `PascalCase` and **MUST** have proper docu
 When using `Unity.Log("message");`, a variable must be declared so it can be turn on or off. 
 Variable **MUST** be declared like this: 
 ```csharp
+#if UNITY_EDITOR
 [Header("Debug")]
 [SerializeField] private bool log = false;
+#endif
 
 // Example of Log
+#if UNITY_EDITOR
 if (log) Debug.Log("message");
+#endif
 ```
+Remember to put debug staff on compiler IFs so they aren't included on build
 
 ## Git repository
 

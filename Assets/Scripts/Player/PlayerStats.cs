@@ -24,11 +24,11 @@ public class PlayerStats : MonoBehaviour
 
     private GameObject GUI;
     
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [Header("Debug")]
     public bool logLevelUp;
     public bool logSave = false;
-    #endif
+#endif
     
     private void Start()
     {
@@ -48,9 +48,11 @@ public class PlayerStats : MonoBehaviour
         
         // Get data from save file
         goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
-        #if UNITY_EDITOR
+        
+#if UNITY_EDITOR
         if (logSave) Debug.Log("Loaded gold coins: " + goldCoins);
-        #endif
+#endif
+        
     }
 
     /**
@@ -79,9 +81,11 @@ public class PlayerStats : MonoBehaviour
         var id = (int)statID;
         StatLevel[id]--;
         StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
-        #if UNITY_EDITOR
+        
+#if UNITY_EDITOR
         if (logLevelUp) DebugPrint(statID);
-        #endif
+#endif
+        
     }
 
     /**
@@ -177,9 +181,11 @@ public class PlayerStats : MonoBehaviour
     private void SaveData()
     {
         DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins);
-        #if UNITY_EDITOR
+        
+#if UNITY_EDITOR
         if (logSave) Debug.Log("Data saved: " + DataSerializer.Load<int>(SaveDataKeywords.goldCoins));
-        #endif
+#endif
+        
     }
 }
 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,12 +17,14 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private bool _dNullCheck;
     
+    /// <summary>
+    /// Raw value of the movement input. Read only.
+    /// </summary>
     public Vector2 dir
     {
         // I am doing this because I don't want _direction to be public
         // It is just good coding practice
         get => _direction;
-        set => _direction = value;
     }
 
     // Public variables
@@ -29,9 +32,15 @@ public class PlayerMovement : MonoBehaviour
     [Header("Acceleration variables")]
     [Tooltip("Time it takes for the player to accelerate to max speed")]
     [SerializeField] private float accelerationTime;
+
+#if UNITY_EDITOR
+    [FormerlySerializedAs("debug")]
+    [Header("Debug")]
+    [SerializeField] private bool log;
+#endif
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _stats = GetComponent<PlayerStats>();
@@ -40,20 +49,25 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (!_dNullCheck) _direction *= !_dash.isDashActive? 1f:0f; // Prevents movement to continue if player releases button mid-dash
-        // @TODO:: Right now movement stops when dash is finished, fix that 
-        _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        if (!_dNullCheck && _dash.isDashActive)
+        {
+            _rb.velocity += Vector2.Lerp(Vector2.zero, _dash.direction, _accelTimer) * (_dash.speed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+        else
+        {
+            _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+        
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
     }
 
-    /**
-     *  Grabs direction from Move input.
-     *  Called by message broadcast from Player Input component
-     *  
-     *  <param name="value">Value raw from PlayerInput component</param>>
-     */
+    /// <summary>
+    /// Grabs direction from Move input.
+    /// Called by message broadcast from Player Input component
+    /// </summary>
+    /// <param name="value">Value raw from PlayerInput component</param>
     private void OnMove(InputValue value)
     {
         // Negates movement if player is dashing
@@ -68,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
     // Calls InputAction OnDebug for testing purposes
     private void OnDebug()
     {
-        this.SendMessage("SaveData");
+#if UNITY_EDITOR
+        if (log) SendMessage("SaveData");
+#endif
     }
 }

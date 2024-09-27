@@ -35,10 +35,10 @@ public class PlayerHealthSystem : MonoBehaviour
     /// </summary>
     private bool _dNullCheck;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [FormerlySerializedAs("invulnerable")] [Header("Debug")]
     public bool isInvencible;
-    #endif
+#endif
     
     // Start is called before the first frame update
     void Awake()
@@ -63,9 +63,9 @@ public class PlayerHealthSystem : MonoBehaviour
     public void DoDamage(float damage)
     {
         // Exit function if debug mode active
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         if (isInvencible) return;
-        #endif
+#endif
         
         // Exit function with iFrame
         if (Time.time - iLastHit <= iFrameDuration)

@@ -4,14 +4,17 @@ using UnityEngine.InputSystem;
 
 public class Dash : MonoBehaviour
 {
-    [NonSerialized] public bool isDashActive;
-    [NonSerialized] public bool canDash = true;
     public float speedMultiplier;
     public float duration;
     public float cooldown;
+    public bool disableMovementOnDash = true;
+    
+    [NonSerialized] public bool isDashActive;
+    [NonSerialized] public bool canDash = true;
+    [NonSerialized] public Vector2 direction;
+    [NonSerialized] public float speed;
     private float startedDash;
     private float startedCooldown;
-    public bool disableMovementOnDash = true;
     
     [Header("Graphics")]
     public TrailRenderer trailRenderer;
@@ -19,15 +22,16 @@ public class Dash : MonoBehaviour
     private PlayerMovement _movement;
     private PlayerLookAt _lookAt;
     
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [Header("Debug")]
     public bool log;
-    #endif
+ #endif
 
     void Awake()
     {
         _movement = transform.parent.GetComponent<PlayerMovement>();
         _lookAt = transform.parent.GetComponent<PlayerLookAt>();
+        speed = _movement.maxSpeed * speedMultiplier;
         
         trailRenderer.enabled = false;
         trailRenderer.time = duration * 2;
@@ -39,8 +43,6 @@ public class Dash : MonoBehaviour
         if (isDashActive && Time.time - startedDash >= duration)
         {   
             isDashActive = false;
-            _movement.maxSpeed /= speedMultiplier;
-            _movement.dir = Vector2.zero;
             canDash = false;
             startedCooldown = Time.time;
             
@@ -72,11 +74,11 @@ public class Dash : MonoBehaviour
         
         isDashActive = true;
         startedDash = Time.time;
-        _movement.maxSpeed *= speedMultiplier;
+        direction = _movement.dir;
         trailRenderer.enabled = true;
         
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         if (log) Debug.Log("Dash");
-        #endif
+#endif
     }
 }
