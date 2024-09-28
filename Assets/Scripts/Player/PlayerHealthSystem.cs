@@ -47,13 +47,16 @@ public class PlayerHealthSystem : MonoBehaviour
         GUI = GameObject.Find("GUI");
         GUI.SendMessage("SetHealth", currentHealth/maxHealth);
         
-        _dash = GetComponentInChildren<Dash>();
-        _dNullCheck = _dash == null;
-        
         // Hit animation stuff
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _material = _spriteRenderer.material;
         _material.SetColor("_FlashColor", flashColor);
+    }
+
+    void Start()
+    {
+        _dash = GetComponentInChildren<Dash>();
+        _dNullCheck = _dash == null;
     }
 
     /// <summary>
@@ -72,7 +75,7 @@ public class PlayerHealthSystem : MonoBehaviour
             return;
         
         // Make player invulnerable when dashing
-        if (_dNullCheck && _dash.isDashActive)
+        if (!_dNullCheck && _dash.isDashActive)
             return;
         
         if (shield > 0)
