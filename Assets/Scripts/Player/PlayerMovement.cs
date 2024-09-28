@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats _stats;
     private Dash _dash;
 
+    private PlayerInput _playerInput;
+
     /// <summary>
     /// This function is true if _dash is null, use it to avoid null references to _dash.
     /// Use this instead of <c>if(_dash != null)</c> as this is far less expensive
@@ -38,12 +40,17 @@ public class PlayerMovement : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool log;
 #endif
-    
+
     // Start is called before the first frame update
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _stats = GetComponent<PlayerStats>();
+        
+        _playerInput = GetComponent<PlayerInput>();
+        _playerInput.onActionTriggered += OnDebug;
+        _playerInput.onActionTriggered += OnMove;
+        
         _dash = GetComponentInChildren<Dash>();
         _dNullCheck = _dash == null;
     }
@@ -68,22 +75,32 @@ public class PlayerMovement : MonoBehaviour
     /// Called by message broadcast from Player Input component
     /// </summary>
     /// <param name="value">Value raw from PlayerInput component</param>
-    private void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        // Negates movement if player is dashing
-        if (!_dNullCheck && _dash.isDashActive && _dash.disableMovementOnDash) 
+        if (context.action.name != "Move")
             return;
         
-        if (value.Get<Vector2>() != Vector2.zero && _direction == Vector2.zero)
+        // // Negates movement if player is dashing
+        // if (!_dNullCheck && _dash.isDashActive && _dash.disableMovementOnDash) 
+        //     return;
+
+        if (context.ReadValue<Vector2>() != Vector2.zero && _direction == Vector2.zero)
             _accelTimer = 0;
-        _direction = value.Get<Vector2>();
+        _direction = context.ReadValue<Vector2>();
     }
 
     // Calls InputAction OnDebug for testing purposes
-    private void OnDebug()
+    public void OnDebug(InputAction.CallbackContext context)
     {
+        
+        if (context.action.name != "Debug")
+            return;
+        
 #if UNITY_EDITOR
+        if (!context.performed) 
+            return;
         if (log) SendMessage("SaveData");
 #endif
+        
     }
 }

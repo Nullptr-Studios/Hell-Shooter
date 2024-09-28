@@ -10,30 +10,35 @@ public class PlayerLookAt : MonoBehaviour
     private Vector3 dir = Vector3.zero;
     private Vector3 _currentDir = Vector3.zero;
     
-    private PlayerInput playerInput;
+    private PlayerInput _playerInput;
     private LevelMenu _levelMenu; // This is needed to disable rotation on Level Menu
     
     private bool UsingMouse = false;
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
+        _playerInput = GetComponent<PlayerInput>();
         _levelMenu = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
+        
+        _playerInput.onActionTriggered += OnLook;
     }
     
     //fuck unity
     public bool IsGamepad()
     {
-        return playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
+        return _playerInput.currentControlScheme.Equals("Gamepad") ? true : false;
     }
     
-    private void OnLook(InputValue value)
+    private void OnLook(InputAction.CallbackContext context)
     {
+        if (context.action.name != "Look")
+            return;
+        
         //Check if we are receiving the input from a gamepad or mouse
         if (IsGamepad())
         {
-            UsingMouse = false;
+            UsingMouse = false; 
             // since the joystick is not in world coordinates, we add them to the player coordinates and then convert them to screen coordinates
-            dir = Camera.main.WorldToScreenPoint(new Vector3(value.Get<Vector2>().x, value.Get<Vector2>().y, 0.0f) 
+            dir = Camera.main.WorldToScreenPoint(new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 0.0f) 
                                                  + gameObject.transform.position) - Camera.main.WorldToScreenPoint(gameObject.transform.position);
             dir.Normalize();
         }

@@ -21,6 +21,7 @@ public class Dash : MonoBehaviour
     [Header("Graphics")]
     public TrailRenderer trailRenderer;
 
+    private PlayerInput _playerInput;
     private PlayerMovement _movement;
     private PlayerLookAt _lookAt;
     
@@ -34,6 +35,9 @@ public class Dash : MonoBehaviour
         _movement = transform.parent.GetComponent<PlayerMovement>();
         _lookAt = transform.parent.GetComponent<PlayerLookAt>();
         speed = _movement.maxSpeed * speedMultiplier;
+        
+        _playerInput = transform.parent.GetComponent<PlayerInput>();
+        _playerInput.onActionTriggered += OnDash;
         
         trailRenderer.enabled = false;
         trailRenderer.time = duration * 2;
@@ -50,18 +54,21 @@ public class Dash : MonoBehaviour
             
             trailRenderer.enabled = false;
             
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (log) Debug.Log("Dash cooldown started");
-            #endif
+#endif
+            
         }
         
         // Stops cooldown
         if (!canDash && Time.time - startedDash >= cooldown)
         {
             canDash = true;
-            #if UNITY_EDITOR
+            
+#if UNITY_EDITOR
             if (log) Debug.Log("Dash cooldown ended");
-            #endif
+#endif
+            
         }
     }
     
@@ -69,8 +76,14 @@ public class Dash : MonoBehaviour
     /// Dash logic when button is pressed.
     /// Called by PlayerInput component. Need to be in BroadcastMessage mode.
     /// </summary>
-    private void OnDash()
+    private void OnDash(InputAction.CallbackContext context)
     {
+        if (context.action.name != "Dash")
+            return;
+
+        if (!context.performed)
+            return;
+        
         if (!canDash) 
             return;
         if (_movement.dir.magnitude < DASH_THRESHOLD)
@@ -84,5 +97,6 @@ public class Dash : MonoBehaviour
 #if UNITY_EDITOR
         if (log) Debug.Log("Dash");
 #endif
+        
     }
 }
