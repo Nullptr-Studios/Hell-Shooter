@@ -44,7 +44,7 @@ public class BulletSpawnerManager : MonoBehaviour
     public bool overrideDistanceBetweenPoints = false;
     public float distanceBetweenSpawnPoints = 3.0f;
     public List<float> angleBetweenSpawnPoints = new List<float>();
-    //@TODO: Refactor all these variables
+
     public float InitialAngle = 0.0f;
 
     public int amountOfSpawners = 0;
@@ -83,7 +83,6 @@ public class BulletSpawnerManager : MonoBehaviour
     {
         if (overrideSettings)
         {
-            //@TODO: parse here scripteable object
             this.premadeShapeType = overrideSettings.premadeShapeType;
             shapeType = this.premadeShapeType;
             this.firingRate = overrideSettings.firingRate;

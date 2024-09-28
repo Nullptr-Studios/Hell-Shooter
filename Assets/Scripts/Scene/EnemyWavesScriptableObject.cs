@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+//@TODO: Make Warning indicator predict enemy spawn, cuz for now it spawns at the same time as the enemy, it works ngl -d
+
 [CreateAssetMenu(fileName = "EnemyWaveScriptableObject", menuName = "ScriptableObject/EnemyWaveScriptableObject")]
 public class EnemyWavesScriptableObject : ScriptableObject
 {
@@ -14,12 +16,19 @@ public class EnemyWavesScriptableObject : ScriptableObject
      private bool _isLast = false;
      private float _timer = 0.0f;
 
+     private GameObject _Wi;
+
      private void OnDisable()
      {
          _currentSteppingIndex = 0;
          _started = false;
          _isLast = false;
          _timer = 0.0f;
+     }
+
+     public void SetWarningIndicator(GameObject warning)
+     {
+         this._Wi = warning;
      }
 
      // 👍 THIS FUNCTION IS ALL CORRECT 1:15 am
@@ -87,6 +96,14 @@ public class EnemyWavesScriptableObject : ScriptableObject
              movement.moveToPosition = true;
          }
          movement.bulletSpawner.transform.localEulerAngles = new Vector3(0,0, Wave.spawnerAngle);
+         WarningLogic(Wave);
+     }
+
+     private void WarningLogic(EnemyWave w)
+     {
+         float x = Mathf.Clamp(w.SpawnLocation.x, -13, 13);
+         float y = Mathf.Clamp(w.SpawnLocation.y, -7, 7);
+         Instantiate(_Wi, new Vector3(x, y, 0), new Quaternion());
      }
 }
 
@@ -98,7 +115,7 @@ public struct EnemyWave
     //Delay between waves
     public float delay;
     public Vector2 SpawnLocation;
-    //@TODO: Add support for enemies
+
     public Vector2 DestinationLocation;
     public bool DestroyOnArrival;
     public float overrideHealth;

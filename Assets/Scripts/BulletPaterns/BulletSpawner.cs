@@ -41,10 +41,7 @@ public class BulletSpawner : MonoBehaviour
     public float _pRadius;
     private void Start()
     {
-        
-
         bullet.GetComponent<EnemyBulletColision>().player = this.player;
-        bullet.GetComponent<BulletScript>().player = this.player;
         bullet.GetComponent<EnemyBulletColision>().playerRadius = this._pRadius;
     }
 
