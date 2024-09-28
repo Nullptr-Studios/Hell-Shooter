@@ -1,0 +1,89 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+
+public class PlayerMovement : MonoBehaviour
+{
+    // Private variables
+    private Rigidbody2D _rb;
+    private Vector2 _direction;
+    private float _accelTimer;
+    private PlayerStats _stats;
+    private Dash _dash;
+
+    /// <summary>
+    /// This function is true if _dash is null, use it to avoid null references to _dash.
+    /// Use this instead of <c>if(_dash != null)</c> as this is far less expensive
+    /// </summary>
+    private bool _dNullCheck;
+    
+    /// <summary>
+    /// Raw value of the movement input. Read only.
+    /// </summary>
+    public Vector2 dir
+    {
+        // I am doing this because I don't want _direction to be public
+        // It is just good coding practice
+        get => _direction;
+    }
+
+    // Public variables
+    [Range(10.0f, 300.0f)] public float maxSpeed;
+    [Header("Acceleration variables")]
+    [Tooltip("Time it takes for the player to accelerate to max speed")]
+    [SerializeField] private float accelerationTime;
+
+#if UNITY_EDITOR
+    [FormerlySerializedAs("debug")]
+    [Header("Debug")]
+    [SerializeField] private bool log;
+#endif
+    
+    // Start is called before the first frame update
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _stats = GetComponent<PlayerStats>();
+        _dash = GetComponentInChildren<Dash>();
+        _dNullCheck = _dash == null;
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (!_dNullCheck && _dash.isDashActive)
+        {
+            _rb.velocity += Vector2.Lerp(Vector2.zero, _dash.direction, _accelTimer) * (_dash.speed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+        else
+        {
+            _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+        
+        if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
+    }
+
+    /// <summary>
+    /// Grabs direction from Move input.
+    /// Called by message broadcast from Player Input component
+    /// </summary>
+    /// <param name="value">Value raw from PlayerInput component</param>
+    private void OnMove(InputValue value)
+    {
+        // Negates movement if player is dashing
+        if (!_dNullCheck && _dash.isDashActive && _dash.disableMovementOnDash) 
+            return;
+        
+        if (value.Get<Vector2>() != Vector2.zero && _direction == Vector2.zero)
+            _accelTimer = 0;
+        _direction = value.Get<Vector2>();
+    }
+
+    // Calls InputAction OnDebug for testing purposes
+    private void OnDebug()
+    {
+#if UNITY_EDITOR
+        if (log) SendMessage("SaveData");
+#endif
+    }
+}

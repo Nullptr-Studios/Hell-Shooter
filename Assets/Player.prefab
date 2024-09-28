@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &955806414897681323
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1589891957697238923}
-  m_Layer: 0
-  m_Name: BulletSpawnLoc
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1589891957697238923
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 955806414897681323}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.486, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7772546804864399664}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &4746165723592550958
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,10 +16,10 @@ GameObject:
   - component: {fileID: 5220768600662927573}
   - component: {fileID: -3816513828680154254}
   - component: {fileID: 2469250651799902263}
-  - component: {fileID: 7979014889687790743}
   - component: {fileID: 4765042391462002835}
   - component: {fileID: 2932305367751407079}
   - component: {fileID: 8922869638395032004}
+  - component: {fileID: 6077452691202961435}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -69,8 +38,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1589891957697238923}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -127,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de1f258dc7f04424ab87db8b35643995, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75361cfd7033bbd43a785d694f064f82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,7 +142,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.75609756}
+    oldSize: {x: 0.99, y: 0.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -222,8 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f,
-    type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f, type: 3}
   m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -255,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 100
   accelerationTime: 0.1
+  log: 0
 --- !u!114 &2469250651799902263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,22 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpMagnitude: 15
---- !u!114 &7979014889687790743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4746165723592550958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d69b3729f21dcdd4c85fe53f03779f4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 2029785020895981331, guid: 11a5caa7357fa60439d37c93e83bae78,
-    type: 3}
-  bulletSpawn: {fileID: 1589891957697238923}
-  fireRate: 0.2
 --- !u!114 &4765042391462002835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +254,6 @@ MonoBehaviour:
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   flashBlinkDuration: 0.7
   isInvencible: 0
-  invulnerable: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,5 +282,38 @@ MonoBehaviour:
   statEffectMultiplier: 1
   statXpCurve: 5
   requiredXP: 100
-  logLevelUp: 0
   goldCoins: 0
+  logLevelUp: 0
+  logSave: 0
+--- !u!114 &6077452691202961435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746165723592550958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09aa3661b5e38f340aa32931ef485cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash:
+    prefab: {fileID: 8203038699776634909, guid: 819a7245b2d83704991129d926205f5c, type: 3}
+    isBought: 0
+    isEquipped: 0
+  shield:
+    prefab: {fileID: 0}
+    isBought: 0
+    isEquipped: 0
+  defaultWeapon:
+    prefab: {fileID: 7649456685617930760, guid: b1c1423ce09a110459b57597856c426a, type: 3}
+    isBought: 0
+    isEquipped: 0
+  burstWeapon:
+    prefab: {fileID: 0}
+    isBought: 0
+    isEquipped: 0
+  aimbotWeapon:
+    prefab: {fileID: 0}
+    isBought: 0
+    isEquipped: 0
