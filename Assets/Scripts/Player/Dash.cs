@@ -7,6 +7,8 @@ public class Dash : MonoBehaviour
     public float speedMultiplier;
     public float duration;
     public float cooldown;
+    [Tooltip("Threshold to disable dash when player is not moving")]
+    private const float DASH_THRESHOLD = 0.15f;
     public bool disableMovementOnDash = true;
     
     [NonSerialized] public bool isDashActive;
@@ -70,6 +72,8 @@ public class Dash : MonoBehaviour
     private void OnDash()
     {
         if (!canDash) 
+            return;
+        if (_movement.dir.magnitude < DASH_THRESHOLD)
             return;
         
         isDashActive = true;
