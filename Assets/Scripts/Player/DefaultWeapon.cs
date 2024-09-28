@@ -1,23 +1,27 @@
 using UnityEngine.InputSystem;
-using System;
-using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PlayerShoot : MonoBehaviour
+public class DefaultWeapon : MonoBehaviour
 {
     //exposed variables
     public GameObject bulletPrefab;
-    public Transform bulletSpawn;
     [Range(0.1f, 1.0f)] public float fireRate;
     
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool logFire = false;
+#endif
+    
     //Internal Variables
-    private float _nextFire = 0.0f;
-    private float _wantsToFire = 0.0f;
+    private float _nextFire;
+    private float _wantsToFire;
     private PlayerStats _stats;
 
     void Start()
     {
-        _stats = GetComponent<PlayerStats>();
+        _stats = transform.parent.GetComponent<PlayerStats>();
+        if (_stats == null) Debug.LogWarning("No player stats attached to player");
     }
 
     // Update is called once per frame
@@ -49,11 +53,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void Fire()
     {
-        // Debug.Log("Fire");
+        
+#if UNITY_EDITOR
+        if (logFire) Debug.Log("Fire");
+#endif
+
         //Instantiate bullet in given spawn location
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.GetComponent<BulletScript>().speed *= _stats.GetStat(StatID.bulletSpeedMultiplier);
-
-
     }
 }

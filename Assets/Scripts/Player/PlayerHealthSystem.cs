@@ -28,10 +28,17 @@ public class PlayerHealthSystem : MonoBehaviour
     private float _currentFlash;
     
     private GameObject GUI;
+    private Dash _dash;
+    /// <summary>
+    /// This function is true if _dash is null, use it to avoid null references to _dash.
+    /// Use this instead of <c>if(_dash != null)</c> as this is far less expensive
+    /// </summary>
+    private bool _dNullCheck;
 
+#if UNITY_EDITOR
     [FormerlySerializedAs("invulnerable")] [Header("Debug")]
     public bool isInvencible;
-
+#endif
     
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +53,12 @@ public class PlayerHealthSystem : MonoBehaviour
         _material.SetColor("_FlashColor", flashColor);
     }
 
+    void Start()
+    {
+        _dash = GetComponentInChildren<Dash>();
+        _dNullCheck = _dash == null;
+    }
+
     /// <summary>
     ///  Custom damage event because unity doesn't have one
     /// </summary>
@@ -53,10 +66,16 @@ public class PlayerHealthSystem : MonoBehaviour
     public void DoDamage(float damage)
     {
         // Exit function if debug mode active
+#if UNITY_EDITOR
         if (isInvencible) return;
+#endif
         
         // Exit function with iFrame
         if (Time.time - iLastHit <= iFrameDuration)
+            return;
+        
+        // Make player invulnerable when dashing
+        if (!_dNullCheck && _dash.isDashActive)
             return;
         
         if (shield > 0)

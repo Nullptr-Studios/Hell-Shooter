@@ -15,6 +15,16 @@ public class SaveDataUtilities : MonoBehaviour
 public class SaveDataKeywords
 {
     public const string goldCoins = "goldCoins";
+
+    public const string dashBought = "itemDashBought";
+    public const string dashEquipped = "itemDashEquipped";
+    public const string shieldBought = "itemShieldBought";
+    public const string shieldEquipped = "itemShieldEquipped";
+    
+    public const string burstBought = "itemBurstWeaponBought";
+    public const string burstEquipped = "itemBurstWeaponEquipped";
+    public const string aimBought = "itemAimbotWeaponBought";
+    public const string aimEquipped = "itemAimbotWeaponEquipped";
 }
 
 #if UNITY_EDITOR
