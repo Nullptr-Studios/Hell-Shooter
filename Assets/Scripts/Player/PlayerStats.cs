@@ -68,7 +68,7 @@ public class PlayerStats : MonoBehaviour
         var id = (int)statID;
         StatLevel[id]++;
         StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
-        if (logLevelUp) DebugPrint(statID);
+        //if (logLevelUp) DebugPrint(statID);
     }
 
     /**

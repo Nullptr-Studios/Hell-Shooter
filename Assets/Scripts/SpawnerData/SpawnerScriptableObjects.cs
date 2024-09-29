@@ -37,7 +37,7 @@ public class SpawnerScriptableObjects : ScriptableObject
     public bool overrideDistanceBetweenPoints = false;
     public float distanceBetweenSpawnPoints = 3.0f;
     public List<float> angleBetweenSpawnPoints = new List<float>();
-    //@TODO: Refactor all these variables
+
     public float InitialAngle = 0.0f;
 
     public int amountOfSpawners = 0;

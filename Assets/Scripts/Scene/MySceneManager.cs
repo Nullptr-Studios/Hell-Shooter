@@ -8,6 +8,8 @@ public class MySceneManager : MonoBehaviour
 
     //Scene starting delay
     public float onBeginDelay = 3.0f;
+
+    public GameObject warningIndicator;
     private bool _started = false;
 
     private float _1Timer = 0.0f;
@@ -62,6 +64,7 @@ public class MySceneManager : MonoBehaviour
                 _wave = waves[_currentIndex].Wave;
                 _currentEnemyWave = _wave.EnemyWavesList;
                 _waitForObject = true;
+                _wave.SetWarningIndicator(warningIndicator);
             }
 
             if (_timer >= _currentWaveTimer)

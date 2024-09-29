@@ -27,9 +27,9 @@ public class EnemyHealthSystem : MonoBehaviour
 
     /// <summary>
     ///  Custom damage event
-    ///     - damage: amount of damage to deal
+    /// 
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage">amount of damage to deal</param>
     public void DoDamage(float damage)
     {
         //@TODO: Change this to bullet

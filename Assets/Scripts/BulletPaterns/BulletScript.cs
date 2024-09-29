@@ -8,25 +8,12 @@ public class BulletScript : MonoBehaviour
     
     //Damage and multiplier is stored inside each bullet.
     public float storedDamage = 1.0f;
-    public float storedMultiplier = 1.0f;
-
-    public GameObject player;
 
     private Vector2 _spawnPoint;
     private float _timer = 0.0f;
 
     private Vector3 _transformRight;
     private Transform _tr;
-
-    public void SetSpeed(float _speed)
-    {
-        this.speed = _speed;
-    }
-
-    public void SetLife(float life)
-    {
-        this.bulletLife = life;
-    }
 
     public void SetLifeAndSpeed(float life, float s)
     {
@@ -60,27 +47,17 @@ public class BulletScript : MonoBehaviour
         float y = timer * speed * _transformRight.y;
         return new Vector2(x+_spawnPoint.x, y+_spawnPoint.y);
     }
-
-    public void MyTriggerEnter()
-    {
-        //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d
-        float calculatedDamage = storedDamage * storedMultiplier;
-        player.gameObject.SendMessage("DoDamage", calculatedDamage);
-        Destroy(this.gameObject);
-    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
         if (other.gameObject.CompareTag("Enemy") && CompareTag("PlayerBullet"))
         {
-            //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d
-            float calculatedDamage = storedDamage * storedMultiplier;
-            other.gameObject.SendMessage("DoDamage", calculatedDamage);
+            other.gameObject.SendMessage("DoDamage", storedDamage);
             Destroy(this.gameObject);
         }
         
-        //Warning Asteroid implementation is on AsteroidController
+        //Warning! Asteroid implementation is on AsteroidController
 
         //@TODO: Add fancy effects
         
