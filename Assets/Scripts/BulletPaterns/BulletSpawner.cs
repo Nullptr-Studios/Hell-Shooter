@@ -42,7 +42,6 @@ public class BulletSpawner : MonoBehaviour
     private void Start()
     {
         bullet.GetComponent<EnemyBulletColision>().player = this.player;
-        bullet.GetComponent<BulletScript>().player = this.player;
         bullet.GetComponent<EnemyBulletColision>().playerCollider = this._pCollider;
     }
 

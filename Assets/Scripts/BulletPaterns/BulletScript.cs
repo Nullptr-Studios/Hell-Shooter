@@ -27,7 +27,6 @@ public class BulletScript : MonoBehaviour
         _tr = this.transform;
         _spawnPoint = new Vector2(transform.position.x, transform.position.y);
         _transformRight = _tr.right;
-        
     }
 
 
