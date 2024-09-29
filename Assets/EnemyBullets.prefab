@@ -117,4 +117,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   radius: 0.05
-  playerRadius: 0.1
+  playerCollider: {fileID: 0}
+  drawGizmos: 0

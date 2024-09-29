@@ -69,13 +69,13 @@ public class BulletSpawnerManager : MonoBehaviour
 
     private GameObject _player;
 
-    private float _playerRadius;
+    private PlayerBulletColision _playerCollider;
     
     // Start is called before the first frame update
     void Awake()
     {
         _player = GameObject.FindWithTag("Player");
-        _playerRadius = _player.GetComponent<PlayerBulletColision>().playerRadius;
+        _playerCollider = _player.GetComponent<PlayerBulletColision>();
         SelectSettingsForShape(premadeShapeType);
     }
 
@@ -222,7 +222,7 @@ public class BulletSpawnerManager : MonoBehaviour
             spawner.senTimeMultiplier = this.senTimeMultiplier;
 
             spawner.player = this._player;
-            spawner._pRadius = this._playerRadius;
+            spawner._pCollider = this._playerCollider;
             
             index++;
         }

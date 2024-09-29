@@ -1,10 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerBulletColision : MonoBehaviour
 {
-    [Header("CollisionWithEnemyBullets")] 
-    public float playerRadius = 2.0f;
+    public float defaultRadius = 0.05f;
+    [NonSerialized] public float playerRadius = 0.05f;
+
+    void Start()
+    {
+        playerRadius = defaultRadius;
+    }
+
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool drawGizmos = true;
+
+    private void OnDrawGizmos()
+    {
+        if (!drawGizmos)
+            return;
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, playerRadius);
+    }
+#endif
     
 }

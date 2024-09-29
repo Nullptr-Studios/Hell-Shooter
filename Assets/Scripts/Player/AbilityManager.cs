@@ -72,6 +72,20 @@ class AbilityManagerEditor : Editor
             Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.dashEquipped));
         }
         
+        if (GUILayout.Button("Give Shield"))
+        {
+            DataSerializer.Save(SaveDataKeywords.shieldBought, true); 
+            DataSerializer.Save(SaveDataKeywords.shieldEquipped, true); 
+            Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped));
+        }
+        
+        if (GUILayout.Button("Remove Shield"))
+        {
+            DataSerializer.Save(SaveDataKeywords.shieldBought, false); 
+            DataSerializer.Save(SaveDataKeywords.shieldEquipped, false); 
+            Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped));
+        }
+        
         DrawDefaultInspector();
     }
 }
