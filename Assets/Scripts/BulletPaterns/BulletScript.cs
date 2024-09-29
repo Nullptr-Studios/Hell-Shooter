@@ -10,42 +10,42 @@ public class BulletScript : MonoBehaviour
     public float storedDamage = 1.0f;
 
     private Vector2 _spawnPoint;
-    private float _timer = 0.0f;
+    private float _timer;
 
-    private Vector3 _transformRight;
+    private Vector2 _direction;
     private Transform _tr;
 
     public void SetLifeAndSpeed(float life, float s)
     {
-        this.speed = s;
-        this.bulletLife = life;
+        speed = s;
+        bulletLife = life;
     }
-    
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        _tr = this.transform;
-        _spawnPoint = new Vector2(transform.position.x, transform.position.y);
-        _transformRight = _tr.right;
-        
+        _tr = transform;  // Cache the transform reference
+        _spawnPoint = _tr.position;  // Use Vector2 directly for more efficient storage
+        _direction = _tr.right.normalized;  // Cache direction to avoid recomputing per frame
     }
 
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(_timer > bulletLife) 
-            Destroy(this.gameObject);
-        _timer += Time.fixedDeltaTime;
-        _tr.position = Movement(_timer);
-    }
+        _timer += Time.deltaTime;
 
-    private Vector2 Movement(float timer) {
-        //this is done, so we can avoid Unity expensive RigidBody
-        //Moves right according to the bullet's rotation
-        float x = timer * speed * _transformRight.x;
-        float y = timer * speed * _transformRight.y;
-        return new Vector2(x+_spawnPoint.x, y+_spawnPoint.y);
+        if (_timer > bulletLife)
+        {
+            Destroy(gameObject);  // Slightly faster than `this.gameObject`
+            return;  // Early return to avoid unnecessary movement calculations
+        }
+        
+        // Only move if the bullet is alive
+        _tr.position = _spawnPoint + _direction * (_timer * speed);  // Avoid calling the Movement() method
     }
     
     private void OnTriggerEnter2D(Collider2D other)

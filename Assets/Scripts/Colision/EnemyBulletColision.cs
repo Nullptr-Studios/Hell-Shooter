@@ -8,13 +8,15 @@ public class EnemyBulletColision : MonoBehaviour
 {
     public GameObject player;
 
-    public float radius = 1.0f;
-    public float playerRadius = 1.0f;
+    public float radius = 0.05f;
+    public float playerRadius = 0f;
 
     private Transform _tr;
     private Transform _pTr;
     private Vector2 _pos;
     private Vector2 _playerPos;
+
+    private bool _playerValid;
 
     private void Start()
     {
@@ -33,23 +35,68 @@ public class EnemyBulletColision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            _pos = _tr.position;
-            _playerPos = _pTr.position;
-            if (TouchesPlayer())
-            {
-                //this.SendMessage("MyTriggerEnter");
-                player.GetComponent<PlayerHealthSystem>().DoDamage(1);
-                Destroy(this.gameObject);
-            }
+        if (TouchesPlayer())
+        { 
+            //this.SendMessage("MyTriggerEnter");
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Destroy(this.gameObject);
         }
     }
     
     private bool TouchesPlayer()
     {
-        //returnVector2.Distance(unit.Position(), Position())- unit.Radius()- Radius()<= 0f;
+        _pos = _tr.position;
+        _playerPos = _pTr.position;
+
         return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
             (playerRadius + radius) <= 0f;
     }
 }
+
+/*public class EnemyBulletColision : MonoBehaviour
+{
+    public GameObject player;
+
+    public float radius = 0.05f;
+    public float playerRadius = 0f;
+
+    private Transform _tr;
+    private Transform _pTr;
+    private Vector2 _pos;
+    private Vector2 _playerPos;
+    private float _combinedRadius;
+    private float _combinedRadiusSquared;
+
+    private void Start()
+    {
+        // Cache the Transform references and precompute combined radius squared
+        if (player)
+        {
+            _tr = transform; // Slightly faster than 'this.transform'
+            _pTr = player.transform;
+            _combinedRadius = radius + playerRadius;
+            _combinedRadiusSquared = _combinedRadius * _combinedRadius; // Avoid recalculating every frame
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    private void Update()
+    {
+        // Avoid calling GetComponent every frame, cache it in Start if possible.
+        if (TouchesPlayer())
+        {
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Destroy(gameObject); // Slightly faster than 'this.gameObject'
+        }
+    }
+
+    private bool TouchesPlayer()
+    {
+        // Use Vector2 sqrMagnitude to avoid computing expensive sqrt
+        Vector2 diff = (_tr.position - _pTr.position); // Cast only once
+        return diff.sqrMagnitude <= _combinedRadiusSquared;
+    }
+}*/

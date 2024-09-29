@@ -13,10 +13,38 @@ MonoBehaviour:
   m_Name: EnemyWaypointsScriptableObject
   m_EditorClassIdentifier: 
   waypointsList:
-  - {x: -14, y: 4}
-  - {x: -10, y: 6.5}
-  - {x: -5, y: 2}
-  - {x: 0, y: 6.5}
-  - {x: 5, y: 2}
-  - {x: 10, y: 6.5}
-  - {x: 14, y: 4}
+  - WaypointPosition: {x: -14, y: 4}
+    DoOverride: 1
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 5
+  - WaypointPosition: {x: -10, y: 6}
+    DoOverride: 1
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 5
+  - WaypointPosition: {x: -5, y: 1}
+    DoOverride: 1
+    OverrideUseLerp: 1
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 1
+  - WaypointPosition: {x: 0, y: 6}
+    DoOverride: 0
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 0
+  - WaypointPosition: {x: 5, y: 1}
+    DoOverride: 0
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 0
+  - WaypointPosition: {x: 10, y: 6}
+    DoOverride: 0
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 0
+    OverrideSpeed: 0
+  - WaypointPosition: {x: 14, y: 4}
+    DoOverride: 1
+    OverrideUseLerp: 0
+    OverrideDestroyAtArrival: 1
+    OverrideSpeed: 5

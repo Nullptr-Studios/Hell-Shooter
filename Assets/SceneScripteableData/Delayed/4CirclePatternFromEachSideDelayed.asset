@@ -23,7 +23,7 @@ MonoBehaviour:
     useLerp: 1
     speed: 1
     spawnerAngle: 0
-    WaypointsSo: {fileID: 0}
+    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
     ammount: 0
     delay: 3

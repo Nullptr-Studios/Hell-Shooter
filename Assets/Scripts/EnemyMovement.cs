@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     private int _currentWaypointIndex = 0;
 
-    private List<Vector2> _waypointsList;
+    private List<Waypoint> _waypointsList;
 
     private Transform _tr;
     
@@ -40,21 +40,15 @@ public class EnemyMovement : MonoBehaviour
         {
             if (waypoints)
             {
-                //UseWaypoints
-                if (!useLerp)
+                destination = _waypointsList[_currentWaypointIndex].WaypointPosition;
+                if (_waypointsList[_currentWaypointIndex].DoOverride)
                 {
-                    float step = speed * Time.deltaTime; // calculate distance to move
-                    _tr.position = Vector3.MoveTowards(_tr.position, _waypointsList[_currentWaypointIndex], step);
+                    this.speed = _waypointsList[_currentWaypointIndex].OverrideSpeed;
+                    this.destroyAtArrival = _waypointsList[_currentWaypointIndex].OverrideDestroyAtArrival;
+                    this.useLerp = _waypointsList[_currentWaypointIndex].OverrideUseLerp;
                 }
-                else
-                {
-                    //lerp interpolates between 2 vectors, so iths the same result as the function above except this time is interpolated.
-                    _tr.position = Vector3.Lerp(_tr.position, _waypointsList[_currentWaypointIndex], Time.deltaTime * speed);
-                }
-
-                destination = _waypointsList[_currentWaypointIndex];
             }
-            else
+            
             {
                 //Do not use Waypoints
                 if (!useLerp)

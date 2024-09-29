@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: ea73b57ec4496c44d9e6b04856526e8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   currentHealth: 0
   criticalHitMultiplier: 2
   killedXp: 10
+  killedGold: 2
 --- !u!114 &5588805392906202844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,8 @@ MonoBehaviour:
   speed: 1
   useLerp: 1
   bulletSpawner: {fileID: 8709604987579895752}
+  destroyAtArrival: 0
+  waypoints: {fileID: 0}
 --- !u!1001 &7716546385961627810
 PrefabInstance:
   m_ObjectHideFlags: 0
