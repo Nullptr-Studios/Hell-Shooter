@@ -558,6 +558,7 @@ MonoBehaviour:
   - Wave: {fileID: 11400000, guid: 2c24123b63dada143850b42ed8f1b6c3, type: 2}
     TotalWaveTime: 5
   onBeginDelay: 3
+  warningIndicator: {fileID: 8190051827322315488, guid: 77825e73a5677a9429167bb905e9b08f, type: 3}
 --- !u!4 &1440202588
 Transform:
   m_ObjectHideFlags: 0
@@ -597,7 +598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882998385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.32, y: 8.66, z: 0}
+  m_LocalPosition: {x: -13.53, y: 7.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

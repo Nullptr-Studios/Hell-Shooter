@@ -53,8 +53,9 @@ public class EnemyBulletColision : MonoBehaviour
             _playerPos = _pTr.position;
             if (TouchesPlayer())
             {
-                this.SendMessage("MyTriggerEnter");
-                Destroy(this);
+                //this.SendMessage("MyTriggerEnter");
+                player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+                Destroy(this.gameObject);
             }
         }
     }
