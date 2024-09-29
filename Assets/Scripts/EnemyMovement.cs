@@ -12,6 +12,14 @@ public class EnemyMovement : MonoBehaviour
     public GameObject bulletSpawner;
 
     public bool destroyAtArrival = false;
+    
+    public EnemyWaypointsScriptableObject waypoints;
+
+    private bool _arrivedAtLocation;
+
+    private int _currentWaypointIndex = 0;
+
+    private List<Vector2> _waypointsList;
 
     private Transform _tr;
     
@@ -19,6 +27,10 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         _tr = this.transform;
+        if (waypoints)
+        {
+            _waypointsList = waypoints.waypointsList;
+        }
     }
 
     // Update is called once per frame
@@ -26,29 +38,67 @@ public class EnemyMovement : MonoBehaviour
     {
         if (moveToPosition)
         {
-            if (!useLerp)
+            if (waypoints)
             {
-                float step = speed * Time.deltaTime; // calculate distance to move
-                _tr.position = Vector3.MoveTowards(_tr.position, destination, step);
+                //UseWaypoints
+                if (!useLerp)
+                {
+                    float step = speed * Time.deltaTime; // calculate distance to move
+                    _tr.position = Vector3.MoveTowards(_tr.position, _waypointsList[_currentWaypointIndex], step);
+                }
+                else
+                {
+                    //lerp interpolates between 2 vectors, so iths the same result as the function above except this time is interpolated.
+                    _tr.position = Vector3.Lerp(_tr.position, _waypointsList[_currentWaypointIndex], Time.deltaTime * speed);
+                }
+
+                destination = _waypointsList[_currentWaypointIndex];
             }
             else
             {
-                //lerp interpolates between 2 vectors, so iths the same result as the function above except this time is interpolated.
-                _tr.position = Vector3.Lerp(_tr.position, destination, Time.deltaTime * speed);
+                //Do not use Waypoints
+                if (!useLerp)
+                {
+                    float step = speed * Time.deltaTime; // calculate distance to move
+                    _tr.position = Vector3.MoveTowards(_tr.position, destination, step);
+                }
+                else
+                {
+                    //lerp interpolates between 2 vectors, so iths the same result as the function above except this time is interpolated.
+                    _tr.position = Vector3.Lerp(_tr.position, destination, Time.deltaTime * speed);
+                }
+                
             }
-
+            
             float d = (destination.x - _tr.position.x) * (destination.x - _tr.position.x) +
-                (destination.y - _tr.position.y) * (destination.y - _tr.position.y) - (0.1f);
+                (destination.y - _tr.position.y) * (destination.y - _tr.position.y) - (0.1f);   //.1f offset
             if (d <= 0f)
             {
-                moveToPosition = false;
-
-                if (destroyAtArrival)
+                if (waypoints)
                 {
-                    Destroy(this.gameObject);
+                    _currentWaypointIndex++;
+                    if (_currentWaypointIndex > _waypointsList.Count - 1)
+                    {
+                        moveToPosition = false;
+                        
+                        if (destroyAtArrival)
+                        {
+                            Destroy(this.gameObject);
+                        }
+                    }
+                }
+                else
+                {
+                    //No waypoints Logic
+                    moveToPosition = false;
+
+                    if (destroyAtArrival)
+                    {
+                        Destroy(this.gameObject);
+                    }
                 }
             }
-                
+
         }
     }
 }

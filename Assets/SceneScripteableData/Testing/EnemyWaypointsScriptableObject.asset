@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: EnemyWaypointsScriptableObject
   m_EditorClassIdentifier: 
   waypointsList:
-  - {x: 0, y: 0}
+  - {x: -14, y: 4}
+  - {x: -10, y: 6.5}
+  - {x: -5, y: 2}
+  - {x: 0, y: 6.5}
+  - {x: 5, y: 2}
+  - {x: 10, y: 6.5}
+  - {x: 14, y: 4}
