@@ -101,8 +101,6 @@ MonoBehaviour:
   bulletLife: 1
   speed: 3
   storedDamage: 1
-  storedMultiplier: 1
-  player: {fileID: 0}
 --- !u!114 &3267707344960296414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,4 +115,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   radius: 0.05
-  playerRadius: 0.1
+  playerRadius: 0
