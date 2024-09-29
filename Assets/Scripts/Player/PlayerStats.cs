@@ -40,6 +40,9 @@ public class PlayerStats : MonoBehaviour
         }
         
         input = GetComponent<PlayerInput>();
+        input.onActionTriggered += OnOpenLevelMenu;
+        input.onActionTriggered += OnCloseLevelMenu;
+        
         GUI = GameObject.Find("GUI");
 
         xp = 0;
@@ -158,8 +161,11 @@ public class PlayerStats : MonoBehaviour
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu
      */  
-    private void OnOpenLevelMenu()
+    private void OnOpenLevelMenu(InputAction.CallbackContext context)
     {
+        if (context.action.name != "OpenLevelMenu" || !context.performed)
+            return;
+        
         input.SwitchCurrentActionMap("UI");
         LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
         levelMenuScript.Open();
@@ -168,8 +174,11 @@ public class PlayerStats : MonoBehaviour
     /**
      *  Calls level menu to be closed and switches ActionMap back to default (gameplay)
      */  
-    private void OnCloseLevelMenu()
+    private void OnCloseLevelMenu(InputAction.CallbackContext context)
     {
+        if (context.action.name != "CloseLevelMenu" || !context.performed)
+            return;
+        
         input.SwitchCurrentActionMap("Gameplay");
         LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
         levelMenuScript.Close();
