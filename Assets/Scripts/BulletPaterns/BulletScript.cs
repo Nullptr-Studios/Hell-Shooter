@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour
     private Vector2 _spawnPoint;
     private float _timer;
 
-    private Vector3 _transformRight;
+    private Vector2 _transformRight;
     private Transform _tr;
 
     public void SetLifeAndSpeed(float life, float s)
@@ -45,7 +45,7 @@ public class BulletScript : MonoBehaviour
         }
         
         // Only move if the bullet is alive
-        _tr.position = _spawnPoint + _direction * (_timer * speed);  // Avoid calling the Movement() method
+        _tr.position = _spawnPoint + _transformRight * (_timer * speed);  // Avoid calling the Movement() method
     }
     
     private void OnTriggerEnter2D(Collider2D other)
