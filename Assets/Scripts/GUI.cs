@@ -16,11 +16,10 @@ public class HUD : MonoBehaviour
     private int _currentHealth;
 
     [Header("XP")]
+    public float xpBarLength = 394;
     public Image xpBar;
     public TextMeshProUGUI xpNumber;
     public Image xpBackground;
-
-    private float xpBarLength;
 
     private PlayerStats _stats;
     private PlayerHealthSystem _health;
@@ -46,8 +45,6 @@ public class HUD : MonoBehaviour
         }
 
         _currentHealth = _maxHealth;
-
-        xpBarLength = xpBar.rectTransform.rect.width;
     }
 
     private void DecreaseHealth()
@@ -69,7 +66,7 @@ public class HUD : MonoBehaviour
 
     private void SetLevelPoints(int value)
     {
-        if (value <= 0 && xpNumber.enabled != false)
+        if (value <= 0 && xpNumber.enabled)
         { 
             xpNumber.enabled = false; 
             xpBackground.enabled = false;
