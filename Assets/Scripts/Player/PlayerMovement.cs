@@ -99,7 +99,9 @@ public class PlayerMovement : MonoBehaviour
 #if UNITY_EDITOR
         if (!context.performed) 
             return;
-        if (log) SendMessage("SaveData");
+
+        _stats.GiveXP(100);
+
 #endif
         
     }

@@ -13,6 +13,11 @@ public class PlayerHealthSystem : MonoBehaviour
     private float currentHealth;
     public int iFrameDuration = 3;
     private float iLastHit;
+
+    public int current
+    {
+        get => (int)currentHealth;
+    }
     
     [Header("Hit Animation")]
     [SerializeField] private Color flashColor;
@@ -52,7 +57,6 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         currentHealth = maxHealth;
         GUI = GameObject.Find("GUI");
-        GUI.SendMessage("SetHealth", currentHealth/maxHealth);
         
         // Hit animation stuff
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -101,7 +105,7 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             // Subtract health logic
             currentHealth -= damage;
-            GUI.SendMessage("SetHealth", currentHealth/maxHealth);
+            GUI.SendMessage("DecreaseHealth");
 
 #if UNITY_EDITOR
             if(logHit) Debug.Log("Hit");
