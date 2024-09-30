@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 44af166c60fa70d46bf027e6840e1d0f, type: 3}
-  m_NotificationBehavior: 1
+  m_NotificationBehavior: 3
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -248,12 +248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea8e9996b1c22a4db8934d5c8fc2657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shield: 0
   maxHealth: 3
   iFrameDuration: 3
   flashColor: {r: 1, g: 1, b: 1, a: 0}
   flashBlinkDuration: 0.7
   isInvencible: 0
+  logShield: 0
+  logHit: 0
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4f68fdd044bff44b298ac79e02062f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRadius: 0.05
+  defaultRadius: 0.05
+  drawGizmos: 1
 --- !u!114 &8922869638395032004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +304,7 @@ MonoBehaviour:
     isBought: 0
     isEquipped: 0
   shield:
-    prefab: {fileID: 0}
+    prefab: {fileID: 1686454078229014943, guid: 5b6cdce60495e4d4d88f8382bda2d1a5, type: 3}
     isBought: 0
     isEquipped: 0
   defaultWeapon:

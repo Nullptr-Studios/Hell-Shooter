@@ -225,4 +225,4 @@ MonoBehaviour:
   cooldown: 5
   disableMovementOnDash: 1
   trailRenderer: {fileID: 8144051064202068669}
-  log: 1
+  log: 0

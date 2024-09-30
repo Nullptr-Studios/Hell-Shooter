@@ -8,6 +8,8 @@ public class DefaultWeapon : MonoBehaviour
     public GameObject bulletPrefab;
     [Range(0.1f, 1.0f)] public float fireRate;
     
+    private PlayerInput _playerInput;
+    
 #if UNITY_EDITOR
     [Header("Debug")]
     [SerializeField] private bool logFire = false;
@@ -22,6 +24,9 @@ public class DefaultWeapon : MonoBehaviour
     {
         _stats = transform.parent.GetComponent<PlayerStats>();
         if (_stats == null) Debug.LogWarning("No player stats attached to player");
+        
+        _playerInput = transform.parent.GetComponent<PlayerInput>();
+        _playerInput.onActionTriggered += OnFire;
     }
 
     // Update is called once per frame
@@ -44,11 +49,14 @@ public class DefaultWeapon : MonoBehaviour
         }
     }
 
-    private void OnFire(InputValue value)
+    public void OnFire(InputAction.CallbackContext context)
     {
+        if (context.action.name != "Fire")
+            return;
+        
         //fuck unity, a fucking button does not return bool it returns a fucking float, thanks unity -d
         //xd why aren't we in godot? -x
-        _wantsToFire = value.Get<float>();
+        _wantsToFire = context.ReadValue<float>();
     }
 
     private void Fire()

@@ -27,7 +27,6 @@ public class AbilityManager : MonoBehaviour
         if (shield.isBought && shield.isEquipped)
             Instantiate(shield.prefab, this.transform);
         
-        
         burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
         burstWeapon.isEquipped = DataSerializer.Load<bool>(SaveDataKeywords.burstEquipped);
         aimbotWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.aimBought);
@@ -39,7 +38,6 @@ public class AbilityManager : MonoBehaviour
         else
             Instantiate(defaultWeapon.prefab, this.transform);
     }
-
     
 }
 
@@ -47,12 +45,18 @@ public class AbilityManager : MonoBehaviour
 [CustomEditor(typeof(AbilityManager))]
 class AbilityManagerEditor : Editor
 {
+    /// <summary>
+    /// This is all for the custom component buttons that appear on the inspector.
+    /// This code is not included on build as there is no need to.
+    /// </summary>
     public override void OnInspectorGUI()
     {
         var abilityManager = (AbilityManager)target;
         if (abilityManager == null) return;
         
         Undo.RecordObject(abilityManager, "AbilityManager");
+        
+        EditorGUILayout.LabelField("Buttons only work on play, do not use them in editor");
 
         if (GUILayout.Button("Give Dash"))
         {
@@ -60,11 +64,26 @@ class AbilityManagerEditor : Editor
             DataSerializer.Save(SaveDataKeywords.dashEquipped, true); 
             Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.dashEquipped));
         }
+        
         if (GUILayout.Button("Remove Dash"))
         {
             DataSerializer.Save(SaveDataKeywords.dashBought, false); 
             DataSerializer.Save(SaveDataKeywords.dashEquipped, false); 
             Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.dashEquipped));
+        }
+        
+        if (GUILayout.Button("Give Shield"))
+        {
+            DataSerializer.Save(SaveDataKeywords.shieldBought, true); 
+            DataSerializer.Save(SaveDataKeywords.shieldEquipped, true); 
+            Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped));
+        }
+        
+        if (GUILayout.Button("Remove Shield"))
+        {
+            DataSerializer.Save(SaveDataKeywords.shieldBought, false); 
+            DataSerializer.Save(SaveDataKeywords.shieldEquipped, false); 
+            Debug.Log("Dash set to: " + DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped));
         }
         
         DrawDefaultInspector();

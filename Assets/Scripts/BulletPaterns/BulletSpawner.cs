@@ -38,11 +38,11 @@ public class BulletSpawner : MonoBehaviour
     private float _timer = 0.0f;
     private float _senTimer = 0.0f;
 
-    public float _pRadius;
+    public PlayerBulletColision _pCollider;
     private void Start()
     {
         bullet.GetComponent<EnemyBulletColision>().player = this.player;
-        bullet.GetComponent<EnemyBulletColision>().playerRadius = this._pRadius;
+        bullet.GetComponent<EnemyBulletColision>().playerCollider = this._pCollider;
     }
 
     // Update is called once per frame

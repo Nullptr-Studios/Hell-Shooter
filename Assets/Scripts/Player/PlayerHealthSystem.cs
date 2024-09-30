@@ -8,9 +8,6 @@ using UnityEngine.Serialization;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
-    [Header("Shield Settings")]
-    public int shield = 0;
-    
     [Header("Health Settings")]
     public float maxHealth = 100.0f; 
     private float currentHealth;
@@ -29,15 +26,25 @@ public class PlayerHealthSystem : MonoBehaviour
     
     private GameObject GUI;
     private Dash _dash;
+    private Shield _shield;
+    
     /// <summary>
     /// This function is true if _dash is null, use it to avoid null references to _dash.
     /// Use this instead of <c>if(_dash != null)</c> as this is far less expensive
     /// </summary>
     private bool _dNullCheck;
 
+    /// <summary>
+    /// This function is true if _shield is null, use it to avoid null references to _shield.
+    /// Use this instead of <c>if(_shield != null)</c> as this is far less expensive
+    /// </summary>
+    private bool _sNullCheck;
+
 #if UNITY_EDITOR
-    [FormerlySerializedAs("invulnerable")] [Header("Debug")]
-    public bool isInvencible;
+    [Header("Debug")]
+    [SerializeField] private bool isInvencible = false;
+    [SerializeField] private bool logShield = false;
+    [SerializeField] private bool logHit = false;
 #endif
     
     // Start is called before the first frame update
@@ -57,6 +64,9 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         _dash = GetComponentInChildren<Dash>();
         _dNullCheck = _dash == null;
+        
+        _shield = GetComponentInChildren<Shield>();
+        _sNullCheck = _shield == null;
     }
 
     /// <summary>
@@ -78,21 +88,24 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!_dNullCheck && _dash.isDashActive)
             return;
         
-        if (shield > 0)
+        if (!_sNullCheck && _shield.isActive)
         {
-            // Debug.Log("Shielded!!");
-            shield--;
+            _shield.DoDamage();
+
+#if UNITY_EDITOR
+            if (logShield) Debug.Log("Shield used");
+#endif
+            
         }
         else
         {
             // Subtract health logic
             currentHealth -= damage;
             GUI.SendMessage("SetHealth", currentHealth/maxHealth);
-            iLastHit = Time.time;
-            _currentFlash = 0f;
-            flashOn = true;
-            _flashTimer = Time.time;
-            _flashBlinkTimer = 0;
+
+#if UNITY_EDITOR
+            if(logHit) Debug.Log("Hit");
+#endif
 
             // Death logic
             if (currentHealth <= 0)
@@ -103,6 +116,12 @@ public class PlayerHealthSystem : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
             }
         }
+        
+        iLastHit = Time.time;
+        _currentFlash = 0f;
+        flashOn = true;
+        _flashTimer = Time.time;
+        _flashBlinkTimer = 0;
     }
     
     /// <summary>
