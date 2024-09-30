@@ -10,7 +10,12 @@ public class Shield : MonoBehaviour
     private float _cooldownStart;
     private bool _onCooldown;
     private bool _shieldActive;
-    
+
+    /// <summary>
+    /// Returns a value from 0 to 1 that indicates how much time is left until the ability is not on cooldown
+    /// </summary>
+    public float cProgress;
+
     // This is here in case it's needed later on
     //
     // /// <summary>
@@ -22,14 +27,6 @@ public class Shield : MonoBehaviour
     //     get => _currentHealth; 
     // }
     //
-    // /// <summary>
-    // /// Returns true if Shield cooldown is active and cannot be used.
-    // /// Read only.
-    // /// </summary>
-    // public bool cooldownActive
-    // {
-    //     get => _onCooldown;
-    // }
 
     /// <summary>
     /// Returns true if Shield is active at the moment.
@@ -67,6 +64,11 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time < cooldownTime && _cooldownStart == 0)
+            cProgress = 1;
+        else
+            cProgress = Mathf.Clamp01((Time.time - _cooldownStart)/cooldownTime);
+        
         // Cooldown timer end check
         if (Time.time - _cooldownStart > cooldownTime)
         {
