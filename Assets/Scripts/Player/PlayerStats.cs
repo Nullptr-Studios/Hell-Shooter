@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     // Privates
     PlayerInput input;
-    
+
     [Header("Stat System")]
     [Range(0.9f, 1.5f)] public float statEffectMultiplier = 1f;
     [Range(1f, 8f)] public float statXpCurve = 5f;
@@ -23,13 +23,13 @@ public class PlayerStats : MonoBehaviour
     public int goldCoins;
 
     private GameObject GUI;
-    
+
 #if UNITY_EDITOR
     [Header("Debug")]
     public bool logLevelUp;
     public bool logSave = false;
 #endif
-    
+
     private void Start()
     {
         // Initializes all stats to 1
@@ -38,24 +38,24 @@ public class PlayerStats : MonoBehaviour
             StatLevel[i] = 1;
             StatMultiplier[i] = 1f;
         }
-        
+
         input = GetComponent<PlayerInput>();
         input.onActionTriggered += OnOpenLevelMenu;
         input.onActionTriggered += OnCloseLevelMenu;
-        
+
         GUI = GameObject.Find("GUI");
 
         xp = 0;
-        GUI.SendMessage("SetExperience", xp);
+        GUI.SendMessage("SetXpBar", xp / requiredXP);
         GUI.SendMessage("SetLevelPoints", levelPoints);
-        
+
         // Get data from save file
         goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
-        
+
 #if UNITY_EDITOR
         if (logSave) Debug.Log("Loaded gold coins: " + goldCoins);
 #endif
-        
+
     }
 
     /**
@@ -84,11 +84,11 @@ public class PlayerStats : MonoBehaviour
         var id = (int)statID;
         StatLevel[id]--;
         StatMultiplier[id] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[id], statXpCurve));
-        
+
 #if UNITY_EDITOR
         if (logLevelUp) DebugPrint(statID);
 #endif
-        
+
     }
 
     /**
@@ -131,7 +131,7 @@ public class PlayerStats : MonoBehaviour
             Debug.LogWarning("XP not given since required XP is zero or less. Check requiredXP to be able to use GiveXP().");
             return;
         }
-        
+
         xp += _xp;
         while (xp >= requiredXP)
         {
@@ -141,16 +141,20 @@ public class PlayerStats : MonoBehaviour
         }
 
         // Broadcast to GUI slider
-        GUI.SendMessage("SetExperience", (float)xp/requiredXP);
+        GUI.SendMessage("SetXpBar", (float)xp / requiredXP);
     }
-    
+
     /**
      *  Grants the player a level point
      *  Used when the player lowers one of their stats
      *
      *  <param name="number">Number of Level Points given to player</param>
-     */  
-    public void GiveLevelPoint(int number) => levelPoints += number;
+     */
+    public void GiveLevelPoint(int number) 
+    {
+        levelPoints += number;
+        GUI.SendMessage("SetLevelPoints", levelPoints);
+    }
 
     /// <summary>
     /// Gives player Gold Coins
