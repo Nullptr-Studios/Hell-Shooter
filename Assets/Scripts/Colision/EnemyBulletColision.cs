@@ -11,6 +11,8 @@ public class EnemyBulletColision : MonoBehaviour
     public float radius = 1.0f;
     public PlayerBulletColision playerCollider;
 
+    public GameObject EnemyHitEffectPrefab;
+
     private Transform _tr;
     private Transform _pTr;
     private Vector2 _pos;
@@ -55,7 +57,9 @@ public class EnemyBulletColision : MonoBehaviour
             {
                 //this.SendMessage("MyTriggerEnter");
                 player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+                Instantiate(EnemyHitEffectPrefab, transform.position, new Quaternion());
                 Destroy(this.gameObject);
+                return;
             }
         }
     }
