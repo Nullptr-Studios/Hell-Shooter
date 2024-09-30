@@ -17,6 +17,11 @@ public class Dash : MonoBehaviour
     [NonSerialized] public float speed;
     private float startedDash;
     private float startedCooldown;
+
+    /// <summary>
+    /// Returns a value from 0 to 1 that indicates how much time is left until the ability is not on cooldown
+    /// </summary>
+    public float cProgress;
     
     [Header("Graphics")]
     public TrailRenderer trailRenderer;
@@ -59,6 +64,11 @@ public class Dash : MonoBehaviour
 #endif
             
         }
+
+        if (Time.time < cooldown && startedCooldown == 0)
+            cProgress = 1;
+        else
+            cProgress = Mathf.Clamp01((Time.time - startedCooldown)/cooldown);
         
         // Stops cooldown
         if (!canDash && Time.time - startedDash >= cooldown)
