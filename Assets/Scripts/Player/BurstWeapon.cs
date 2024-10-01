@@ -2,11 +2,13 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class DefaultWeapon : MonoBehaviour
+public class BurstWeapon : MonoBehaviour
 {
     //exposed variables
     public GameObject bulletPrefab;
-    [Range(0.1f, 1.0f)] public float fireRate;
+    [Range(0.1f, 2.0f)] public float fireRate;
+    public float cooldownMultiplier;
+    public float burst;
     
 #if UNITY_EDITOR
     [Header("Debug")]
@@ -16,6 +18,7 @@ public class DefaultWeapon : MonoBehaviour
     //Internal Variables
     private float _nextFire;
     private float _wantsToFire;
+    private int fireNumber = 0;
     private GameObject _player;
     private PlayerStats _stats;
     private PlayerInput _playerInput;
@@ -25,6 +28,8 @@ public class DefaultWeapon : MonoBehaviour
         _player = GameObject.FindWithTag("Player");
         _stats = _player.GetComponent<PlayerStats>();
         if (_stats == null) Debug.LogWarning("No player stats attached to player");
+
+        fireNumber = 0;
         
         _playerInput = _player.GetComponent<PlayerInput>();
         _playerInput.onActionTriggered += OnFire;
@@ -42,11 +47,14 @@ public class DefaultWeapon : MonoBehaviour
         }
 
         //main check
-        if (_wantsToFire > 0.5f && (_nextFire >= fireRate / _stats.GetStat(StatID.fireRateMultiplier)))
+        if (_wantsToFire > 0.5f && (_nextFire >= (fireRate/(fireNumber<burst-1?cooldownMultiplier:1)) / _stats.GetStat(StatID.fireRateMultiplier)))
         {
             Fire();
             //revert timer to 0
             _nextFire = 0.0f;
+
+            if (fireNumber > burst-1)
+                fireNumber = 0;
         }
     }
 
@@ -58,6 +66,7 @@ public class DefaultWeapon : MonoBehaviour
         //fuck unity, a fucking button does not return bool it returns a fucking float, thanks unity -d
         //xd why aren't we in godot? -x
         _wantsToFire = context.ReadValue<float>();
+        fireNumber++;
     }
 
     private void Fire()
@@ -67,6 +76,8 @@ public class DefaultWeapon : MonoBehaviour
         if (logFire) Debug.Log("Fire");
 #endif
 
+        fireNumber++;
+        
         //Instantiate bullet in given spawn location
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         bullet.GetComponent<BulletScript>().speed *= _stats.GetStat(StatID.bulletSpeedMultiplier);

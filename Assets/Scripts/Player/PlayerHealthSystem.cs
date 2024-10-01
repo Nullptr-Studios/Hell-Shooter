@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 public class PlayerHealthSystem : MonoBehaviour
 {
     [Header("Health Settings")]
-    public float maxHealth = 100.0f; 
+    public float maxHealth = 3; 
     private float currentHealth;
     public int iFrameDuration = 3;
     private float iLastHit;
@@ -55,6 +55,7 @@ public class PlayerHealthSystem : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        maxHealth = 3 + DataSerializer.Load<float>(SaveDataKeywords.healthLevel);
         currentHealth = maxHealth;
         GUI = GameObject.Find("GUI");
         
