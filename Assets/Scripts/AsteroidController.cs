@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ public class AsteroidController : MonoBehaviour
     public bool randomVel = true;
     public Vector2 asteroidStartingVel = new Vector2(-1,-1);
     public GameObject asteroidPrefab;
+
+    public List<Sprite> SpriteList = new List<Sprite>();
 
     private GameObject player;
     private Rigidbody2D rb;
@@ -24,18 +27,25 @@ public class AsteroidController : MonoBehaviour
         if (randomVel)
         {
             //fuck random it dosent work
-            float x = UnityEngine.Random.Range(-1, 1);
-            float y = UnityEngine.Random.Range(-1, 1);
+            /*float x = UnityEngine.Random.Range(-1, 1);
+            float y = UnityEngine.Random.Range(-1, 1);*/
 
-            asteroidStartingVel = new Vector2 (x*velMagnitude, y*velMagnitude);
+
+
+            asteroidStartingVel *= UnityEngine.Random.Range(1, 3);
         }
 
         rb.velocity = asteroidStartingVel;
-        rb.AddTorque(Random.Range(2, 10));
+        rb.AddTorque(UnityEngine.Random.Range(-20, 20));
 
-        float scale = Random.Range(1, 3);
+        float scale = UnityEngine.Random.Range(.5f, 1);
 
         transform.localScale = new Vector3(scale, scale, scale);
+
+        if (SpriteList.Count != 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = SpriteList[UnityEngine.Random.Range(0, SpriteList.Count - 1)];
+        }
 
     }
 
@@ -62,6 +72,15 @@ public class AsteroidController : MonoBehaviour
                 currentAsteroidHealth--;
                 Destroy(collision.gameObject);
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.SendMessage("DoDamage",1);
+            Destroy(this.gameObject);
         }
     }
 }

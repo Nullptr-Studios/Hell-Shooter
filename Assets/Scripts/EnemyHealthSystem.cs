@@ -19,6 +19,11 @@ public class EnemyHealthSystem : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
     public void ChangeMaxHealth(float newMax)
     {
         this.maxHealth = newMax;
