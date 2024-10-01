@@ -106,6 +106,24 @@ class AbilityManagerEditor : Editor
             Debug.Log("Health set to: " + DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped));
         }
         
+        if (GUILayout.Button("Set Default Weapon"))
+        {
+            DataSerializer.Save(SaveDataKeywords.burstBought, false); 
+            DataSerializer.Save(SaveDataKeywords.burstEquipped, false); 
+            DataSerializer.Save(SaveDataKeywords.aimBought, false); 
+            DataSerializer.Save(SaveDataKeywords.aimEquipped, false); 
+            Debug.Log("Default Weapon");
+        }
+        
+        if (GUILayout.Button("Set Burst Weapon"))
+        {
+            DataSerializer.Save(SaveDataKeywords.burstBought, true); 
+            DataSerializer.Save(SaveDataKeywords.burstEquipped, true); 
+            DataSerializer.Save(SaveDataKeywords.aimBought, false); 
+            DataSerializer.Save(SaveDataKeywords.aimEquipped, false); 
+            Debug.Log("Burst Weapon");
+        }
+        
         DrawDefaultInspector();
     }
 }
