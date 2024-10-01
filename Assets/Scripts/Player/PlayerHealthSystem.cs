@@ -52,6 +52,9 @@ public class PlayerHealthSystem : MonoBehaviour
     [SerializeField] private bool logHit = false;
 #endif
     
+    //Sound hit
+    public AudioSource HitSource;
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -111,6 +114,11 @@ public class PlayerHealthSystem : MonoBehaviour
 #if UNITY_EDITOR
             if(logHit) Debug.Log("Hit");
 #endif
+            //Sound
+            if (HitSource)
+            {
+                HitSource.Play();
+            }
 
             // Death logic
             if (currentHealth <= 0)

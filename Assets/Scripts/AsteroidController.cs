@@ -44,7 +44,7 @@ public class AsteroidController : MonoBehaviour
 
         if (SpriteList.Count != 0)
         {
-            GetComponent<SpriteRenderer>().sprite = SpriteList[UnityEngine.Random.Range(0, SpriteList.Count - 1)];
+            GetComponent<SpriteRenderer>().sprite = SpriteList[UnityEngine.Random.Range(0, SpriteList.Count)];
         }
 
     }

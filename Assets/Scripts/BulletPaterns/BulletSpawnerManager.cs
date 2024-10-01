@@ -70,6 +70,10 @@ public class BulletSpawnerManager : MonoBehaviour
     private GameObject _player;
 
     private PlayerBulletColision _playerCollider;
+
+    private float _soundTimer = 0.0f;
+
+    public AudioSource FiringSource;
     
     // Start is called before the first frame update
     void Awake()
@@ -226,7 +230,18 @@ public class BulletSpawnerManager : MonoBehaviour
             index++;
         }
     }
-    
+
+    private void Update()
+    {
+        _soundTimer += Time.deltaTime;
+
+        if (_soundTimer >= firingRate)
+        {
+            FiringSource.Play();
+            _soundTimer = 0.0f;
+        }
+    }
+
     /// <summary>
     /// OnValidate is called whenever some variable has changed in the class
     /// </summary>
