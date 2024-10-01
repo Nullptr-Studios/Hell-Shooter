@@ -9,6 +9,8 @@ public class BulletScript : MonoBehaviour
     //Damage and multiplier is stored inside each bullet.
     public float storedDamage = 1.0f;
 
+    public GameObject PlayerHitEffectPrefab;
+
     private Vector2 _spawnPoint;
     private float _timer = 0.0f;
 
@@ -53,12 +55,14 @@ public class BulletScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && CompareTag("PlayerBullet"))
         {
             other.gameObject.SendMessage("DoDamage", storedDamage);
+
+            Instantiate(PlayerHitEffectPrefab, transform.position, new Quaternion());
+            
             Destroy(this.gameObject);
+            return;
         }
         
         //Warning! Asteroid implementation is on AsteroidController
-
-        //@TODO: Add fancy effects
         
     }
 

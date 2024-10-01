@@ -6,6 +6,7 @@ public class DefaultWeapon : MonoBehaviour
 {
     //exposed variables
     public GameObject bulletPrefab;
+    public AudioSource soundSource;
     [Range(0.1f, 1.0f)] public float fireRate;
     
 #if UNITY_EDITOR
@@ -66,6 +67,11 @@ public class DefaultWeapon : MonoBehaviour
 #if UNITY_EDITOR
         if (logFire) Debug.Log("Fire");
 #endif
+
+        if (soundSource)
+        {
+            soundSource.Play();
+        }
 
         //Instantiate bullet in given spawn location
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);

@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
         get => _direction;
     }
 
+    public GameObject PlayerThrusterRenderer;
+
     // Public variables
     [Range(10.0f, 300.0f)] public float maxSpeed;
     [Header("Acceleration variables")]
@@ -53,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         
         _dash = GetComponentInChildren<Dash>();
         _dNullCheck = _dash == null;
+        
+        PlayerThrusterRenderer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +69,16 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+
+        //Thruster renderer logic
+        if (_rb.velocity.magnitude < 3)
+        {
+            PlayerThrusterRenderer.SetActive(false);
+        }
+        else
+        {
+            PlayerThrusterRenderer.SetActive(true);
         }
         
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 

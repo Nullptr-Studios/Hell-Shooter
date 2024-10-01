@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +26,8 @@ public class MySceneManager : MonoBehaviour
     private List<EnemyWave> _currentEnemyWave;
 
     private bool _waitForObject = true;
+
+    private bool _ended = false;
     
     // Start is called before the first frame update
     void Start()
@@ -46,7 +49,7 @@ public class MySceneManager : MonoBehaviour
             _1Timer += Time.deltaTime;
         }
 
-        if (_started)
+        if (_started && !_ended)
         {
             if (!_waitForObject)
             {
@@ -74,16 +77,17 @@ public class MySceneManager : MonoBehaviour
                 
                 if (_currentIndex > _listMaxIndex)
                 {
-                    //@TODO: Change
+                    _ended = true;
                     Debug.Log("All scripted scenes played!!");
-                    Destroy(this.gameObject);
+                    OnSceneFinish();
+                    //Destroy(this.gameObject);
                 }
             }
             else
             {
                 if (_waitForObject)
                 {
-                    //If this returns true, all waves have been played, continuing to next scene but first we'll need to wait for delay
+                    //If this returns true, all waves have been played, continuing to next scene, but first we'll need to wait for delay
                     if (_wave.UpdateEnemyWave(Time.deltaTime))
                     {
                         //The stupid bug was adding + 1 in the _currentIndex, estoy cansado jefe -d
@@ -96,9 +100,18 @@ public class MySceneManager : MonoBehaviour
             
         }
     }
+    
+    /// <summary>
+    /// Handle Post-scene logic here...
+    /// This function gets called when the time for the scene has run out.
+    /// </summary>
+    private void OnSceneFinish()
+    {
+        
+    }
 }
 
-[System.Serializable]
+[Serializable]
 public struct SceneManagerEnum
 {
     public EnemyWavesScriptableObject Wave;

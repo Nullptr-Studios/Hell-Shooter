@@ -54,7 +54,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29b8051a6d545314b8429734fa59c8f0, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,6 +101,7 @@ MonoBehaviour:
   bulletLife: 1
   speed: 3
   storedDamage: 1
+  PlayerHitEffectPrefab: {fileID: 0}
 --- !u!114 &3267707344960296414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,4 +117,5 @@ MonoBehaviour:
   player: {fileID: 0}
   radius: 0.05
   playerCollider: {fileID: 0}
+  EnemyHitEffectPrefab: {fileID: 803619399186564591, guid: 1dcd70d61694ff44b87d9471fd756f4e, type: 3}
   drawGizmos: 0
