@@ -41,7 +41,7 @@ Transform:
   m_Children:
   - {fileID: 4780276574203045944}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6640582039354898557
 MonoBehaviour:
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   iFrameDuration: 3
-  flashColor: {r: 1, g: 1, b: 1, a: 0}
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
   flashBlinkDuration: 0.7
   isInvencible: 0
   logShield: 0
