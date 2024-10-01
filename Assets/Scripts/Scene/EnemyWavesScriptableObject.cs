@@ -69,7 +69,7 @@ public class EnemyWavesScriptableObject : ScriptableObject
      // 👍 THIS FUNCTION IS ALL CORRECT 0:20 am
      private void SpawnWave(EnemyWave Wave)
      {
-         Debug.Log("Spawned: " + Wave.EnemyPrefab + " in position: " + Wave.SpawnLocation.ToString());
+         //Debug.Log("Spawned: " + Wave.EnemyPrefab + " in position: " + Wave.SpawnLocation.ToString());
          // Instantiate enemy from prefab on position Wave.SpawnLocation
          GameObject Enemy = Instantiate(Wave.EnemyPrefab,
              new Vector3(Wave.SpawnLocation.x, Wave.SpawnLocation.y, 0), 
