@@ -25,6 +25,13 @@ public class Dash : MonoBehaviour
     
     [Header("Graphics")]
     public TrailRenderer trailRenderer;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    
+    public AudioClip dashPerformedSound;
+    public AudioClip dashDeniedSound;
+    public AudioClip cooldownFinalizedSound;
 
     private PlayerInput _playerInput;
     private PlayerMovement _movement;
@@ -75,6 +82,13 @@ public class Dash : MonoBehaviour
         {
             canDash = true;
             
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = cooldownFinalizedSound;
+                audioSource.Play();
+            }
+            
 #if UNITY_EDITOR
             if (log) Debug.Log("Dash cooldown ended");
 #endif
@@ -93,9 +107,19 @@ public class Dash : MonoBehaviour
 
         if (!context.performed)
             return;
-        
-        if (!canDash) 
+
+        if (!canDash)
+        {
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = dashDeniedSound;
+                audioSource.Play();
+            }
+
             return;
+        }
+            
         if (_movement.dir.magnitude < DASH_THRESHOLD)
             return;
         
@@ -103,6 +127,13 @@ public class Dash : MonoBehaviour
         startedDash = Time.time;
         direction = _movement.dir;
         trailRenderer.enabled = true;
+        
+        //Sound
+        if (audioSource)
+        {
+            audioSource.clip = dashPerformedSound;
+            audioSource.Play();
+        }
         
 #if UNITY_EDITOR
         if (log) Debug.Log("Dash");
