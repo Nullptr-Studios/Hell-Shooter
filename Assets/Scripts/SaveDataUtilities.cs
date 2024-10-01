@@ -25,6 +25,8 @@ public class SaveDataKeywords
     public const string burstEquipped = "itemBurstWeaponEquipped";
     public const string aimBought = "itemAimbotWeaponBought";
     public const string aimEquipped = "itemAimbotWeaponEquipped";
+    public const string healthBought = "itemHealthBought";
+    public const string healthLevel = "itemHealthLevel";
 }
 
 #if UNITY_EDITOR

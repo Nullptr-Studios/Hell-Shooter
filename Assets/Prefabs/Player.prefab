@@ -95,7 +95,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 75361cfd7033bbd43a785d694f064f82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de1f258dc7f04424ab87db8b35643995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.99, y: 0.75}
+    oldSize: {x: 1, y: 0.75609756}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -305,6 +305,10 @@ MonoBehaviour:
     isEquipped: 0
   shield:
     prefab: {fileID: 1686454078229014943, guid: 5b6cdce60495e4d4d88f8382bda2d1a5, type: 3}
+    isBought: 0
+    isEquipped: 0
+  reinforcer:
+    prefab: {fileID: 7321283145416669373, guid: 716b9451a33085745a484e2424073f41, type: 3}
     isBought: 0
     isEquipped: 0
   defaultWeapon:
