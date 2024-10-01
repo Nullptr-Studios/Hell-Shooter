@@ -41,7 +41,7 @@ Transform:
   m_Children:
   - {fileID: 4780276574203045944}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6640582039354898557
 MonoBehaviour:
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 75361cfd7033bbd43a785d694f064f82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de1f258dc7f04424ab87db8b35643995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,7 +143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.99, y: 0.75}
+    oldSize: {x: 1, y: 0.75609756}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -203,7 +203,139 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3816513828680154254}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b519823-e7c5-4631-88fa-b4b022650a42
+    m_ActionName: Gameplay/Move[/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e60653e9-5637-4019-abca-b2694cac3924
+    m_ActionName: Gameplay/Look[/DualSenseGamepadHID/rightStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7406765239541255132, guid: b1c1423ce09a110459b57597856c426a, type: 3}
+        m_TargetAssemblyTypeName: DefaultWeapon, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1aab38ea-e318-48cf-8538-68323e74648e
+    m_ActionName: Gameplay/Fire[/DualSenseGamepadHID/rightTrigger,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3816513828680154254}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnDebug
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e89a2248-1676-413a-afdc-6b20c43d5f16
+    m_ActionName: Gameplay/Debug[/Keyboard/l,/DualSenseGamepadHID/select]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b3ff0c30-3e1a-4f25-bd34-96c1b6f7d4d9
+    m_ActionName: Gameplay/OpenLevelMenu[/DualSenseGamepadHID/buttonWest,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 614967f6-c025-425f-b033-43c3b3abdff8
+    m_ActionName: Gameplay/Dash[/Keyboard/shift,/DualSenseGamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Shield, Assembly-CSharp
+        m_MethodName: OnShield
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3a3931a7-c10c-403f-8502-2e037362bf3f
+    m_ActionName: Gameplay/Shield[/Keyboard/space,/DualSenseGamepadHID/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ac2afc48-6e3e-425b-ab85-4e160c04f931
+    m_ActionName: UI/Navigate[/DualSenseGamepadHID/leftStick/up,/DualSenseGamepadHID/rightStick/up,/DualSenseGamepadHID/leftStick/down,/DualSenseGamepadHID/rightStick/down,/DualSenseGamepadHID/leftStick/left,/DualSenseGamepadHID/rightStick/left,/DualSenseGamepadHID/leftStick/right,/DualSenseGamepadHID/rightStick/right,/DualSenseGamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e36d48fb-9416-45eb-a487-2d789dcb852f
+    m_ActionName: UI/Submit[/Keyboard/enter,/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: de2dc66b-e042-4da3-8fb7-a5601322a1d0
+    m_ActionName: UI/Cancel[/Keyboard/escape,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bd8b7fdd-71a4-4ccb-a5d4-926c58c93cb2
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position,/Touchscreen/touch0/position,/Touchscreen/touch1/position,/Touchscreen/touch2/position,/Touchscreen/touch3/position,/Touchscreen/touch4/position,/Touchscreen/touch5/position,/Touchscreen/touch6/position,/Touchscreen/touch7/position,/Touchscreen/touch8/position,/Touchscreen/touch9/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2c87e2c-f249-47a2-a833-8a628457fb22
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip,/Touchscreen/touch0/press,/Touchscreen/touch1/press,/Touchscreen/touch2/press,/Touchscreen/touch3/press,/Touchscreen/touch4/press,/Touchscreen/touch5/press,/Touchscreen/touch6/press,/Touchscreen/touch7/press,/Touchscreen/touch8/press,/Touchscreen/touch9/press]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 48cd00c3-c709-4bde-af0a-7475dabead40
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0747f71f-e4cb-49d2-8162-321c53abcf7d
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5750010f-fbd0-4063-8de1-c5badcb77578
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a93c7aa3-4e3c-443b-a2e9-ca7f6390ee62
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f04b6608-714f-4f4c-a7fc-4695bc930170
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 292b767d-f70d-4b91-9735-771be473992f
+    m_ActionName: UI/CloseLevelMenu[/DualSenseGamepadHID/buttonWest,/Keyboard/e,/Keyboard/escape,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e7998e4-61c2-41cf-bd22-58dc4cf03acf
+    m_ActionName: LevelMenu/PointLevelMenu[/DualSenseGamepadHID/leftStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b80d2bbb-6a87-4906-9ec9-b724b81d542f
+    m_ActionName: LevelMenu/AcceptLevelMenu[/Mouse/leftButton,/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d52d8656-336b-4b29-b8fa-d07a35257c56
+    m_ActionName: LevelMenu/CancelLevelMenu[/DualSenseGamepadHID/buttonEast,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -309,16 +441,20 @@ MonoBehaviour:
     prefab: {fileID: 1686454078229014943, guid: 5b6cdce60495e4d4d88f8382bda2d1a5, type: 3}
     isBought: 0
     isEquipped: 0
+  reinforcer:
+    prefab: {fileID: 7321283145416669373, guid: 716b9451a33085745a484e2424073f41, type: 3}
+    isBought: 0
+    isEquipped: 0
   defaultWeapon:
     prefab: {fileID: 7649456685617930760, guid: b1c1423ce09a110459b57597856c426a, type: 3}
     isBought: 0
     isEquipped: 0
   burstWeapon:
-    prefab: {fileID: 0}
+    prefab: {fileID: 7485060552170802067, guid: 2d020b68bdddbfe43a4ecdf92d1a9f1b, type: 3}
     isBought: 0
     isEquipped: 0
-  aimbotWeapon:
-    prefab: {fileID: 0}
+  tripleWeapon:
+    prefab: {fileID: 4461411969547136728, guid: 308c2002257562a44b408df26518f343, type: 3}
     isBought: 0
     isEquipped: 0
 --- !u!1 &8190425921018668629
