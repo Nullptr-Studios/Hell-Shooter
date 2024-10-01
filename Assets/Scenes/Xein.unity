@@ -454,10 +454,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2351629967236284, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: weaponEmitters.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351629967236284, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: weaponEmitters.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351629967236284, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: weaponEmitters.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351629967236284, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: weaponEmitters.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4746165723592550958, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6077452691202961435, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: aimbotWeapon.prefab
+      value: 
+      objectReference: {fileID: 4461411969547136728, guid: 308c2002257562a44b408df26518f343, type: 3}
+    - target: {fileID: 6077452691202961435, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: tripleWeapon.prefab
+      value: 
+      objectReference: {fileID: 4461411969547136728, guid: 308c2002257562a44b408df26518f343, type: 3}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -502,8 +526,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 8072006462541822345, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: fireRate
+      value: 0.45
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1595819194232893497, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1764448052924267880, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}

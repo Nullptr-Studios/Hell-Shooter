@@ -14,19 +14,37 @@ public class SaveDataUtilities : MonoBehaviour
 /// </summary>
 public class SaveDataKeywords
 {
+    // Global
+    public const string score = "scoreCurrentScore";
+    public const string highScore = "scoreHighScore";
     public const string goldCoins = "goldCoins";
 
+    // Abilities
     public const string dashBought = "itemDashBought";
     public const string dashEquipped = "itemDashEquipped";
     public const string shieldBought = "itemShieldBought";
     public const string shieldEquipped = "itemShieldEquipped";
-    
-    public const string burstBought = "itemBurstWeaponBought";
-    public const string burstEquipped = "itemBurstWeaponEquipped";
-    public const string aimBought = "itemAimbotWeaponBought";
-    public const string aimEquipped = "itemAimbotWeaponEquipped";
     public const string healthBought = "itemHealthBought";
     public const string healthLevel = "itemHealthLevel";
+    
+    // Wepons
+    public const string burstBought = "itemBurstWeaponBought";
+    public const string burstEquipped = "itemBurstWeaponEquipped";
+    public const string tripleBought = "itemTripleWeaponBought";
+    public const string tripleEquipped = "itemTripleWeaponEquipped";
+
+    // Stat
+    public const string statDamage = "statDamageMultiplierLevel";
+    public const string statFire = "statFireRateLevel";
+    public const string statBullet = "statBulletSpeedMultiplierLevel";
+    public const string statCrit = "statCriticalHitProbabilityLevel";
+    public const string statSpeed = "statSpeedMultiplierLevel";
+    public const string statDashCooldown = "statDashCooldownLevel";
+    public const string statDashSpeed = "statDashSpeedMultiplierLevel";
+    public const string statShieldCooldown = "statShieldCooldownLevel";
+    
+    // Others
+    public const string playerPosition = "playerCurrentPosition";
 }
 
 #if UNITY_EDITOR
