@@ -160,6 +160,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9188568750191213045}
+  - {fileID: 6655331095598723912}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -265,6 +266,11 @@ MonoBehaviour:
   maxHealth: 1
   cooldownTime: 5
   cProgress: 0
+  audioSource: {fileID: 5599980958254890560}
+  shieldUpSound: {fileID: 8300000, guid: ad5eae61a04e57a4d8eaef2941f2bd0d, type: 3}
+  shieldDownSound: {fileID: 8300000, guid: 4d4aefbb49a88444d831cd4ebe4952db, type: 3}
+  shieldDeniedSound: {fileID: 8300000, guid: 5300b037ac75a91459ceb40404788497, type: 3}
+  cooldownFinalizedSound: {fileID: 8300000, guid: 7a287cac48aeb414d8eda0ac9fbc46fa, type: 3}
   logCooldown: 0
 --- !u!1 &4054435528344485081
 GameObject:
@@ -350,9 +356,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-  audioSource: {fileID: 5599980958254890560}
-  shieldUpSound: {fileID: 8300000, guid: ad5eae61a04e57a4d8eaef2941f2bd0d, type: 3}
-  shieldDownSound: {fileID: 8300000, guid: 4d4aefbb49a88444d831cd4ebe4952db, type: 3}
-  shieldDeniedSound: {fileID: 8300000, guid: 5300b037ac75a91459ceb40404788497, type: 3}
-  cooldownFinalizedSound: {fileID: 8300000, guid: 7a287cac48aeb414d8eda0ac9fbc46fa, type: 3}
-  logCooldown: 0
