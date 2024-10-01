@@ -617,6 +617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1583720841532301671, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3676129000879086144, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
       propertyPath: m_Name
       value: --BackgroundEffects--
@@ -664,6 +668,18 @@ PrefabInstance:
     - target: {fileID: 3728079123577328738, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3751175060382019959, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389757815201418743, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5389757815201418743, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
