@@ -28,10 +28,9 @@ public class SaveDataKeywords
     public const string healthLevel = "itemHealthLevel";
     
     // Wepons
-    public const string burstBought = "itemBurstWeaponBought";
-    public const string burstEquipped = "itemBurstWeaponEquipped";
-    public const string tripleBought = "itemTripleWeaponBought";
-    public const string tripleEquipped = "itemTripleWeaponEquipped";
+    public const string burstBought = "itemWeaponBurstBought";
+    public const string tripleBought = "itemWeaponTripleBought";
+    public const string weaponEquiped = "itemWeaponEquiped";
 
     // Stat
     public const string statDamage = "statDamageMultiplierLevel";

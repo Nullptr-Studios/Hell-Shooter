@@ -12,12 +12,20 @@ public class PlayerLookAt : MonoBehaviour
     
     private PlayerInput _playerInput;
     private LevelMenu _levelMenu; // This is needed to disable rotation on Level Menu
+    private bool _menuNullCheck;
     
     private bool UsingMouse = false;
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
-        _levelMenu = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
+        
+        var _levelMenuObject = GameObject.Find("LevelMenu");
+        if (_levelMenuObject != null)
+        {
+            _levelMenu = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
+        }
+        
+        _menuNullCheck = _levelMenuObject == null;
         
         _playerInput.onActionTriggered += OnLook;
     }
@@ -54,15 +62,15 @@ public class PlayerLookAt : MonoBehaviour
     
     void Update ()
     {
-        if (!_levelMenu.isMenuOpen)
+        if (!_menuNullCheck && _levelMenu.isMenuOpen)
+            return;
+        
+        if (UsingMouse)
         {
-            if (UsingMouse)
-            {
-                //Obtain mouse dir 
-                dir = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f) -
-                      Camera.main.WorldToScreenPoint(gameObject.transform.position);
-                dir.Normalize();
-            }
+            //Obtain mouse dir 
+            dir = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0.0f) -
+                  Camera.main.WorldToScreenPoint(gameObject.transform.position);
+            dir.Normalize();
         }
 
         //Lerp rotation over time

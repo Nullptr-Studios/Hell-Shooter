@@ -30,6 +30,7 @@ public class BurstWeapon : MonoBehaviour
         if (_stats == null) Debug.LogWarning("No player stats attached to player");
 
         fireNumber = 0;
+        _nextFire = fireRate;
         
         _playerInput = _player.GetComponent<PlayerInput>();
         _playerInput.onActionTriggered += OnFire;
