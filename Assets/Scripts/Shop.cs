@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using ToolBox.Serialization;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -16,7 +17,7 @@ public class Shop : MonoBehaviour
     // Object Classes
     [SerializeField] private ShopItem dash;
     [SerializeField] private ShopItem shield;
-    //[SerializeField] private ShopItem dash;
+    [SerializeField] private ShopItem health;
     
     [SerializeField] private ShopItem defaultWeapon;
     [SerializeField] private ShopItem tripleWeapon;
@@ -36,6 +37,9 @@ public class Shop : MonoBehaviour
         dash.isEquiped = DataSerializer.Load<bool>(SaveDataKeywords.dashEquipped);
         shield.isBought = DataSerializer.Load<bool>(SaveDataKeywords.shieldBought);
         shield.isEquiped = DataSerializer.Load<bool>(SaveDataKeywords.shieldEquipped);
+        health.isBought = DataSerializer.Load<bool>(SaveDataKeywords.healthBought);
+        health.isEquiped = DataSerializer.Load<bool>(SaveDataKeywords.healthBought);
+        health.level = DataSerializer.Load<int>(SaveDataKeywords.healthLevel);
         
         tripleWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.tripleBought);
         burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
@@ -43,19 +47,38 @@ public class Shop : MonoBehaviour
         
         dash.Awake(activeColor, inactiveColor, _player, 0);
         shield.Awake(activeColor, inactiveColor, _player, 1);
+        health.AwakeHealth(_player);
         
-        tripleWeapon.AwakeWeapon(activeColor, inactiveColor, _player, equippedWeapon, 1);
-        burstWeapon.AwakeWeapon(activeColor, inactiveColor, _player, equippedWeapon, 2);
-        defaultWeapon.AwakeWeapon(activeColor, inactiveColor, _player, equippedWeapon, 0);
+        tripleWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 1);
+        burstWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 2);
+        defaultWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 0);
     }
-    
+
+    public void ExitShop()
+    {
+        DataSerializer.Save(SaveDataKeywords.goldCoins, gold);
+        
+        DataSerializer.Save(SaveDataKeywords.dashBought, dash.isBought);
+        DataSerializer.Save(SaveDataKeywords.dashEquipped, dash.isEquiped);
+        DataSerializer.Save(SaveDataKeywords.shieldBought, shield.isBought);
+        DataSerializer.Save(SaveDataKeywords.shieldEquipped, shield.isEquiped);
+        DataSerializer.Save(SaveDataKeywords.healthBought, health.isBought);
+        DataSerializer.Save(SaveDataKeywords.healthLevel, health.level);
+        
+        DataSerializer.Save(SaveDataKeywords.tripleBought, tripleWeapon.isBought);
+        DataSerializer.Save(SaveDataKeywords.burstBought, burstWeapon.isBought);
+        DataSerializer.Save(SaveDataKeywords.weaponEquiped, equippedWeapon);
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void UpdateGold() => goldText.text = gold.ToString();
 
     // Equip functions
     // This functions handle the equip button for each item
     public void DashEquip() => dash.Equip(activeColor, inactiveColor, _player, 0);
     public void ShieldEquip() => shield.Equip(activeColor, inactiveColor, _player, 1);
-
+    
     public void TripleWEquip() => tripleWeapon.EquipWeapon(_player, 1, this, defaultWeapon, burstWeapon);
     public void BurstWEquip() => burstWeapon.EquipWeapon(_player, 2, this, defaultWeapon, tripleWeapon);
     public void DefaultWEquip() => defaultWeapon.EquipWeapon(_player, 0, this, tripleWeapon, burstWeapon);
@@ -63,7 +86,7 @@ public class Shop : MonoBehaviour
     // Buy functions
     public void BuyDash() => dash.Buy(this);
     public void BuyShield() => shield.Buy(this);
-    // public void BuyDash() => dash.Buy(this);
+    public void BuyHealth() => health.BuyHealth(this, _player);
     public void BuyTriple() => tripleWeapon.Buy(this);
     public void BuyBurst() => burstWeapon.Buy(this);
 }
@@ -71,8 +94,10 @@ public class Shop : MonoBehaviour
 [Serializable] internal class ShopItem
 {
     public int price = 1;
+    public int maxLevel = 0;
     [NonSerialized] public bool isBought = false;
     [NonSerialized] public bool isEquiped = false;
+    [NonSerialized] public int level;
     
     [Header("UI Elements")]
     public Button pucharseButton;
@@ -87,6 +112,8 @@ public class Shop : MonoBehaviour
 
     public void Awake(Color activeColor, Color inactiveColor, GameObject player, int id)
     {
+        priceText.text = price.ToString();
+        
         // Check if Dash bought
         if (!isBought)
         {
@@ -102,21 +129,49 @@ public class Shop : MonoBehaviour
             if (isEquiped) Create(player, id);
         }
     }
-    
-    public void AwakeWeapon(Color activeColor, Color inactiveColor, GameObject player, int equippedWeapon, int weaponID)
+
+    public void AwakeHealth(GameObject player)
     {
+        priceText.text = price.ToString();
+        
+        if (isBought)
+        {
+            Object.Destroy(disabledImage.gameObject);
+            for (int i = 1; i <= level; i++)
+            {
+                price *= level+1;   
+            }
+            priceText.text = price.ToString();
+            
+            if (level >= maxLevel)
+                Object.Destroy(pucharseButton.gameObject);
+            
+            Create(player, -1);
+        }
+        else
+        {
+            level = 0;
+        }
+        
+        levelSlider.value = (float)level/maxLevel;
+    }
+
+    public void AwakeWeapon(Color activeColor, GameObject player, int equippedWeapon, int weaponID)
+    {
+        if (priceText != null) priceText.text = price.ToString();
+        
         if (!isBought)
         {
             equipButton.interactable = false;
         }
         else
         {
+            equipButton.GetComponent<Image>().color = equippedWeapon == weaponID? activeColor : Color.white;
+            if (equippedWeapon == weaponID) Create(player, -1);
+            
             equipButton.interactable = true;
             Object.Destroy(pucharseButton.gameObject);
             Object.Destroy(disabledImage.gameObject);
-            
-            equipButton.GetComponent<Image>().color = equippedWeapon == 1? activeColor : inactiveColor;
-            if (equippedWeapon == weaponID) Create(player, -1);
         }
     }
     
@@ -158,19 +213,53 @@ public class Shop : MonoBehaviour
         
         shop.gold -= price;
         shop.UpdateGold();
+        isBought = true;
         
         equipButton.interactable = true;
         Object.Destroy(pucharseButton.gameObject);
         Object.Destroy(disabledImage.gameObject);
     }
 
+    public void BuyHealth(Shop shop, GameObject player)
+    {
+        if (shop.gold - price < 0) return;
+        
+        shop.gold -= price;
+        
+        if (level == 0)
+        {
+            Object.Destroy(disabledImage.gameObject);
+            isBought = true;
+        }
+        
+        if (++level >= maxLevel)
+            Object.Destroy(pucharseButton.gameObject);
+        
+        price *= level + 1;
+        if (priceText.text!=null) priceText.text = price.ToString();
+
+        levelSlider.value = (float)level/maxLevel;
+        
+        DataSerializer.Save(SaveDataKeywords.healthLevel, level);
+        
+        if (obj != null) Object.Destroy(obj.gameObject);
+        Create(player, -1);
+    }
+
     private void Create(GameObject player, int id)
     {
         obj = Object.Instantiate(prefab, player.transform, true);
-        if (id == 0)
-            obj.GetComponent<Dash>().enabled = false;
-        else if (id == 1)
-            obj.GetComponent<Shield>().enabled = false;
+        switch (id)
+        {
+            case 0:
+                obj.GetComponent<Dash>().enabled = false;
+                break;
+            case 1:
+                obj.GetComponent<Shield>().enabled = false;
+                break;
+            default:
+                break;
+        }
         var tr = obj.transform;
         obj.transform.localPosition = Vector3.zero + tr.position;
         obj.transform.localScale = tr.lossyScale;

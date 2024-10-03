@@ -7,9 +7,9 @@ public class Reinforcer : MonoBehaviour
     public Sprite baseLevelTexture;
     public Sprite maxLevelTexture;
 
-    private void Begin()
+    private void Start()
     {
-        if (DataSerializer.Load<float>(SaveDataKeywords.healthLevel) == 3)
+        if (DataSerializer.Load<float>(SaveDataKeywords.healthLevel) >= 3)
             GetComponent<SpriteRenderer>().sprite = maxLevelTexture;
     }
 }
