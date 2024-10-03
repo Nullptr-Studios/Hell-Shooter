@@ -49,24 +49,20 @@ public class EnemyBulletColision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            _pos = _tr.position;
-            _playerPos = _pTr.position;
-            if (TouchesPlayer())
-            {
-                //this.SendMessage("MyTriggerEnter");
-                player.GetComponent<PlayerHealthSystem>().DoDamage(1);
-                Instantiate(EnemyHitEffectPrefab, transform.position, new Quaternion());
-                Destroy(this.gameObject);
-                return;
-            }
+        if (TouchesPlayer())
+        { 
+            //this.SendMessage("MyTriggerEnter");
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Instantiate(EnemyHitEffectPrefab, transform.position, new Quaternion());
+            Destroy(this.gameObject);
         }
     }
     
     private bool TouchesPlayer()
     {
-        //returnVector2.Distance(unit.Position(), Position())- unit.Radius()- Radius()<= 0f;
+        _pos = _tr.position;
+        _playerPos = _pTr.position;
+
         return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
             (playerCollider.playerRadius + radius) <= 0f;
     }
