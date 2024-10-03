@@ -169,6 +169,7 @@ public class PlayerStats : MonoBehaviour
             xp -= requiredXP;
             levelPoints++;
             GUI.SendMessage("SetLevelPoints", levelPoints);
+            GUI.SendMessage("OpenLevelUp");
         }
 
         // Broadcast to GUI slider
@@ -201,6 +202,7 @@ public class PlayerStats : MonoBehaviour
         if (context.action.name != "OpenLevelMenu" || !context.performed)
             return;
         
+        GUI.SendMessage("CloseLevelUp");
         input.SwitchCurrentActionMap("UI");
         LevelMenu levelMenuScript = GameObject.Find("LevelMenu").GetComponent<LevelMenu>();
         levelMenuScript.Open();

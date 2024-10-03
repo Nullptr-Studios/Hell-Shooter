@@ -22,6 +22,7 @@ public class HUD : MonoBehaviour
     public Image xpBar;
     public TextMeshProUGUI xpNumber;
     public Image xpBackground;
+    public Animator levelAnim;
     
     public TextMeshProUGUI Score;
     public TextMeshProUGUI HighScore;
@@ -142,9 +143,10 @@ public class HUD : MonoBehaviour
         xpNumber.text = value.ToString();
     }
 
-    private void UpdateScore()
-    {
-        Score.text = _stats.Score.ToString("000000000");
-    }
+    private void UpdateScore() => Score.text = _stats.Score.ToString("000000000");
+
+    private void OpenLevelUp() => levelAnim.SetTrigger("OpenLevelUp");
+
+    private void CloseLevelUp() => levelAnim.SetTrigger("CloseLevelUp");
 
 }
