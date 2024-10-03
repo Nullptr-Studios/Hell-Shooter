@@ -1,4 +1,5 @@
 using ToolBox.Serialization;
+using Unity.Burst;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,6 +14,7 @@ public class AbilityManager : MonoBehaviour
     // Weapons
     public Ability defaultWeapon;
     public Ability burstWeapon;
+    private int _equipedWeapon;
     [FormerlySerializedAs("aimbotWeapon")] public Ability tripleWeapon;
     
     void Awake()
@@ -35,9 +37,22 @@ public class AbilityManager : MonoBehaviour
             Instantiate(reinforcer.prefab, this.transform);
         
         burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
-        burstWeapon.isEquipped = DataSerializer.Load<bool>(SaveDataKeywords.burstEquipped);
         tripleWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.tripleBought);
-        tripleWeapon.isEquipped = DataSerializer.Load<bool>(SaveDataKeywords.tripleEquipped);
+        switch (_equipedWeapon)
+        {
+            case 1:
+                tripleWeapon.isEquipped = true;
+                break;
+            
+            case 2:
+                burstWeapon.isEquipped = true;
+                break;
+            
+            default:
+                defaultWeapon.isEquipped = true;
+                break;
+        }
+
         if (burstWeapon.isBought && burstWeapon.isEquipped)
             Instantiate(burstWeapon.prefab, this.transform);
         else if (tripleWeapon.isBought && tripleWeapon.isEquipped)
@@ -110,27 +125,24 @@ class AbilityManagerEditor : Editor
         if (GUILayout.Button("Set Default Weapon"))
         {
             DataSerializer.Save(SaveDataKeywords.burstBought, false); 
-            DataSerializer.Save(SaveDataKeywords.burstEquipped, false); 
             DataSerializer.Save(SaveDataKeywords.tripleBought, false); 
-            DataSerializer.Save(SaveDataKeywords.tripleEquipped, false); 
+            DataSerializer.Save(SaveDataKeywords.weaponEquiped, 0); 
             Debug.Log("Default Weapon");
         }
         
         if (GUILayout.Button("Set Burst Weapon"))
         {
             DataSerializer.Save(SaveDataKeywords.burstBought, true); 
-            DataSerializer.Save(SaveDataKeywords.burstEquipped, true); 
             DataSerializer.Save(SaveDataKeywords.tripleBought, false); 
-            DataSerializer.Save(SaveDataKeywords.tripleEquipped, false); 
+            DataSerializer.Save(SaveDataKeywords.weaponEquiped, 1); 
             Debug.Log("Burst Weapon");
         }
         
         if (GUILayout.Button("Set Triple Weapon"))
         {
             DataSerializer.Save(SaveDataKeywords.burstBought, false); 
-            DataSerializer.Save(SaveDataKeywords.burstEquipped, false); 
             DataSerializer.Save(SaveDataKeywords.tripleBought, true); 
-            DataSerializer.Save(SaveDataKeywords.tripleEquipped, true); 
+            DataSerializer.Save(SaveDataKeywords.weaponEquiped, 2); 
             Debug.Log("Burst Weapon");
         }
         
