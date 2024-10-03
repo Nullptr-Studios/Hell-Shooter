@@ -8,25 +8,14 @@ public class BulletScript : MonoBehaviour
     
     //Damage and multiplier is stored inside each bullet.
     public float storedDamage = 1.0f;
-    public float storedMultiplier = 1.0f;
 
-    public GameObject player;
+    public GameObject PlayerHitEffectPrefab;
 
     private Vector2 _spawnPoint;
     private float _timer = 0.0f;
 
-    private Vector3 _transformRight;
+    private Vector2 _direction;
     private Transform _tr;
-
-    public void SetSpeed(float _speed)
-    {
-        this.speed = _speed;
-    }
-
-    public void SetLife(float life)
-    {
-        this.bulletLife = life;
-    }
 
     public void SetLifeAndSpeed(float life, float s)
     {
@@ -37,52 +26,57 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _tr = this.transform;
-        _spawnPoint = new Vector2(transform.position.x, transform.position.y);
-        _transformRight = _tr.right;
-        
+        _tr = transform;  // Cache the transform reference
+        _spawnPoint = _tr.position;  // Use Vector2 directly for more efficient storage
+        _direction = _tr.right.normalized;  // Cache direction to avoid recomputing per frame
+
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if(_timer > bulletLife) 
-            Destroy(this.gameObject);
-        _timer += Time.fixedDeltaTime;
-        _tr.position = Movement(_timer);
+        _timer += Time.deltaTime;
+        if (_timer > bulletLife)
+        {
+            Destroy(gameObject);  // Slightly faster than `this.gameObject`
+            return;  // Early return to avoid unnecessary movement calculations
+        }
+        
+        // Only move if the bullet is alive
+        _tr.position = _spawnPoint + _direction * (_timer * speed);  // Avoid calling the Movement() method
     }
 
-    private Vector2 Movement(float timer) {
+    /*private Vector2 Movement(float timer) {
         //this is done, so we can avoid Unity expensive RigidBody
         //Moves right according to the bullet's rotation
         float x = timer * speed * _transformRight.x;
         float y = timer * speed * _transformRight.y;
         return new Vector2(x+_spawnPoint.x, y+_spawnPoint.y);
-    }
-
-    public void MyTriggerEnter()
-    {
-        //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d
-        float calculatedDamage = storedDamage * storedMultiplier;
-        player.gameObject.SendMessage("DoDamage", calculatedDamage);
-        Destroy(this.gameObject);
-    }
+    }*/
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
+        // Debug.unityLogger.Log(other.gameObject.name + " collided with " + this.gameObject.name);
         if (other.gameObject.CompareTag("Enemy") && CompareTag("PlayerBullet"))
         {
-            //Damage multiplier is calculated here cuz fucking unity does not handle sending more than one param in SendMessage(), end my suffering pls -d
-            float calculatedDamage = storedDamage * storedMultiplier;
-            other.gameObject.SendMessage("DoDamage", calculatedDamage);
+            other.gameObject.SendMessage("DoDamage", storedDamage);
+
+            Instantiate(PlayerHitEffectPrefab, transform.position, new Quaternion());
+            
             Destroy(this.gameObject);
+            return;
+        }else if (other.gameObject.CompareTag("Asteroid"))
+        {
+            Instantiate(PlayerHitEffectPrefab, transform.position, new Quaternion());
         }
         
-        //Warning Asteroid implementation is on AsteroidController
-
-        //@TODO: Add fancy effects
+        //Warning! Asteroid implementation is on AsteroidController
         
     }
 

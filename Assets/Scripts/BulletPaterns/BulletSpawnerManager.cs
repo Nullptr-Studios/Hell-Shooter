@@ -44,7 +44,7 @@ public class BulletSpawnerManager : MonoBehaviour
     public bool overrideDistanceBetweenPoints = false;
     public float distanceBetweenSpawnPoints = 3.0f;
     public List<float> angleBetweenSpawnPoints = new List<float>();
-    //@TODO: Refactor all these variables
+
     public float InitialAngle = 0.0f;
 
     public int amountOfSpawners = 0;
@@ -69,13 +69,17 @@ public class BulletSpawnerManager : MonoBehaviour
 
     private GameObject _player;
 
-    private float _playerRadius;
+    private PlayerBulletColision _playerCollider;
+
+    private float _soundTimer = 0.0f;
+
+    public AudioSource FiringSource;
     
     // Start is called before the first frame update
     void Awake()
     {
         _player = GameObject.FindWithTag("Player");
-        _playerRadius = _player.GetComponent<PlayerBulletColision>().playerRadius;
+        _playerCollider = _player.GetComponent<PlayerBulletColision>();
         SelectSettingsForShape(premadeShapeType);
     }
 
@@ -83,7 +87,6 @@ public class BulletSpawnerManager : MonoBehaviour
     {
         if (overrideSettings)
         {
-            //@TODO: parse here scripteable object
             this.premadeShapeType = overrideSettings.premadeShapeType;
             shapeType = this.premadeShapeType;
             this.firingRate = overrideSettings.firingRate;
@@ -222,12 +225,23 @@ public class BulletSpawnerManager : MonoBehaviour
             spawner.senTimeMultiplier = this.senTimeMultiplier;
 
             spawner.player = this._player;
-            spawner._pRadius = this._playerRadius;
+            spawner._pCollider = this._playerCollider;
             
             index++;
         }
     }
-    
+
+    private void Update()
+    {
+        _soundTimer += Time.deltaTime;
+
+        if (_soundTimer >= firingRate)
+        {
+            FiringSource.Play();
+            _soundTimer = 0.0f;
+        }
+    }
+
     /// <summary>
     /// OnValidate is called whenever some variable has changed in the class
     /// </summary>

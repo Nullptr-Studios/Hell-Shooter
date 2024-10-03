@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MySceneManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class MySceneManager : MonoBehaviour
 
     //Scene starting delay
     public float onBeginDelay = 3.0f;
+
+    public GameObject warningIndicator;
     private bool _started = false;
 
     private float _1Timer = 0.0f;
@@ -23,6 +27,8 @@ public class MySceneManager : MonoBehaviour
     private List<EnemyWave> _currentEnemyWave;
 
     private bool _waitForObject = true;
+
+    private bool _ended = false;
     
     // Start is called before the first frame update
     void Start()
@@ -44,7 +50,7 @@ public class MySceneManager : MonoBehaviour
             _1Timer += Time.deltaTime;
         }
 
-        if (_started)
+        if (_started && !_ended)
         {
             if (!_waitForObject)
             {
@@ -62,6 +68,7 @@ public class MySceneManager : MonoBehaviour
                 _wave = waves[_currentIndex].Wave;
                 _currentEnemyWave = _wave.EnemyWavesList;
                 _waitForObject = true;
+                _wave.SetWarningIndicator(warningIndicator);
             }
 
             if (_timer >= _currentWaveTimer)
@@ -71,16 +78,17 @@ public class MySceneManager : MonoBehaviour
                 
                 if (_currentIndex > _listMaxIndex)
                 {
-                    //@TODO: Change
+                    _ended = true;
                     Debug.Log("All scripted scenes played!!");
-                    Destroy(this.gameObject);
+                    OnSceneFinish();
+                    //Destroy(this.gameObject);
                 }
             }
             else
             {
                 if (_waitForObject)
                 {
-                    //If this returns true, all waves have been played, continuing to next scene but first we'll need to wait for delay
+                    //If this returns true, all waves have been played, continuing to next scene, but first we'll need to wait for delay
                     if (_wave.UpdateEnemyWave(Time.deltaTime))
                     {
                         //The stupid bug was adding + 1 in the _currentIndex, estoy cansado jefe -d
@@ -93,9 +101,20 @@ public class MySceneManager : MonoBehaviour
             
         }
     }
+    
+    /// <summary>
+    /// Handle Post-scene logic here...
+    /// This function gets called when the time for the scene has run out.
+    /// </summary>
+    private void OnSceneFinish()
+    {
+        //@TODO: Change Win Screen placeholder
+        GameObject.FindGameObjectWithTag("Player").SendMessage("SaveData");
+        SceneManager.LoadScene("WinScreen");
+    }
 }
 
-[System.Serializable]
+[Serializable]
 public struct SceneManagerEnum
 {
     public EnemyWavesScriptableObject Wave;

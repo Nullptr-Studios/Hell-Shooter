@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.intothedev.savesystem": {
+      "version": "file:com.intothedev.savesystem@5927c44efb",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 1,

@@ -9,12 +9,28 @@ public class EnemyBulletColision : MonoBehaviour
     public GameObject player;
 
     public float radius = 1.0f;
-    public float playerRadius = 1.0f;
+    public PlayerBulletColision playerCollider;
+
+    public GameObject EnemyHitEffectPrefab;
 
     private Transform _tr;
     private Transform _pTr;
     private Vector2 _pos;
     private Vector2 _playerPos;
+
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool drawGizmos = true;
+
+    private void OnDrawGizmos()
+    {
+        if (!drawGizmos)
+            return;
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+#endif
 
     private void Start()
     {
@@ -33,22 +49,30 @@ public class EnemyBulletColision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player)
-        {
-            _pos = _tr.position;
-            _playerPos = _pTr.position;
-            if (TouchesPlayer())
-            {
-                this.SendMessage("MyTriggerEnter");
-                Destroy(this);
-            }
+        if (TouchesPlayer())
+        { 
+            //this.SendMessage("MyTriggerEnter");
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Instantiate(EnemyHitEffectPrefab, transform.position, new Quaternion());
+            Destroy(this.gameObject);
         }
     }
     
     private bool TouchesPlayer()
     {
-        //returnVector2.Distance(unit.Position(), Position())- unit.Radius()- Radius()<= 0f;
-        return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
-            (playerRadius + radius) <= 0f;
+        if (player)
+        {
+            _pos = _tr.position;
+            _playerPos = _pTr.position;
+
+            return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) +
+                    (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
+                (playerCollider.playerRadius + radius) <= 0f;
+        }
+        else
+        {
+            Destroy(this);
+            return false;
+        }
     }
 }

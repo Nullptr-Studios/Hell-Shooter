@@ -18,6 +18,7 @@ MonoBehaviour:
     delay: 3
     SpawnLocation: {x: -17, y: 8}
     DestinationLocation: {x: -9, y: 3}
+    DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 1
     speed: 1
@@ -28,29 +29,32 @@ MonoBehaviour:
     delay: 3
     SpawnLocation: {x: 17, y: 8}
     DestinationLocation: {x: 9, y: 3}
+    DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 1
     speed: 1
     spawnerAngle: 0
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
+    WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
     ammount: 0
     delay: 3
     SpawnLocation: {x: 17, y: -8}
     DestinationLocation: {x: 9, y: -3}
+    DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 1
     speed: 1
     spawnerAngle: 0
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
+    WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
     ammount: 0
     delay: 3
     SpawnLocation: {x: -17, y: -8}
     DestinationLocation: {x: -9, y: -3}
+    DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 1
     speed: 1
     spawnerAngle: 0
-    WaypointsSo: {fileID: 11400000, guid: 8f538fabc133ba04e805747f840b4c70, type: 2}
-  _currentSteppingIndex: 2
+    WaypointsSo: {fileID: 0}
+  _currentSteppingIndex: 0

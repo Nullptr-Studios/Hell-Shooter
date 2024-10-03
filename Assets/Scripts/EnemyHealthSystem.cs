@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyHealthSystem : MonoBehaviour
@@ -8,15 +9,28 @@ public class EnemyHealthSystem : MonoBehaviour
     public float currentHealth;
     public float criticalHitMultiplier = 2.0f;
     public int killedXp = 10;
-
+    public int killedGold = 2;
+    public AudioSource HitSource;
+    public GameObject ExplosionPrefab;
+    
+    public Color damageColor = new Color(208 / 255.0f, 0 / 255.0f, 0 / 255.0f);
+    
     private PlayerStats playerStats;
-    // public int killedGold = 2; prepared for when gold is used
-
+    private SpriteRenderer spriteRenderer;
+    
     // Start is called before the first frame update
     void Awake()
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
+    }
+
+    private void OnBecameInvisible()
+    {
+        playerStats.GiveXP(killedXp);
+        playerStats.GiveGold(killedGold);
+        Destroy(gameObject);
     }
 
     public void ChangeMaxHealth(float newMax)
@@ -27,13 +41,12 @@ public class EnemyHealthSystem : MonoBehaviour
 
     /// <summary>
     ///  Custom damage event
-    ///     - damage: amount of damage to deal
+    /// 
     /// </summary>
-    /// <param name="damage"></param>
+    /// <param name="damage">amount of damage to deal</param>
     public void DoDamage(float damage)
     {
         //@TODO: Change this to bullet
-        
         var damageMultiplier = playerStats.GetStat(StatID.damageMultiplier);
         var critHitPercentage = playerStats.GetStat(StatID.criticalHitPercentage);
         bool _isCrit = false;
@@ -42,28 +55,36 @@ public class EnemyHealthSystem : MonoBehaviour
             if (Random.Range(0, 100) % Mathf.RoundToInt(critHitPercentage * 8) == 0)
                 _isCrit = true;
         }
-
-        currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
-        _isCrit = false;
         
-        Debug.Log("Ouch: " + currentHealth);
+        currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
+        
+        spriteRenderer.color = Color.Lerp(damageColor, Color.white, (currentHealth / maxHealth));
+        
+        // Debug.Log("Ouch: " + currentHealth);
+        
+        if (HitSource)
+        {
+            HitSource.Play();
+        }
         
         if (currentHealth <= 0)
         {
-            Debug.Log("I'm Ded");
+            // Debug.Log("I'm Ded");
             currentHealth = 0;
             playerStats.GiveXP(killedXp);
+            playerStats.GiveGold(killedGold);
+            playerStats.GiveScore(killedXp * (int)maxHealth);
             //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
             //@TODO:Do something fancy (particles...etc)
+            Instantiate(ExplosionPrefab, transform.position, new Quaternion());
             Destroy(this.gameObject);
         }
     }
 
     /// <summary>
     /// Gain Health void
-    ///     - amount: amount to regen
     /// </summary>
-    /// <param name="amount"></param>
+    /// <param name="amount">Amount of health to regen</param>
     public void GainHealth(float amount)
     {
         if (currentHealth >= 100)
