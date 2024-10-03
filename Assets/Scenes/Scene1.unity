@@ -418,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4765042391462002835, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
+      propertyPath: isInvencible
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7772546804864399664, guid: 659392e33da11e34988a91ec7a2d16b1, type: 3}
       propertyPath: m_RootOrder
       value: 0
