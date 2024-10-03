@@ -24,6 +24,7 @@ public class Shield : MonoBehaviour
     public AudioClip shieldDownSound;
     public AudioClip shieldDeniedSound;
     public AudioClip cooldownFinalizedSound;
+    public AudioClip shieldDestroyedSound;
 
     
     // This is here in case it's needed later on
@@ -127,7 +128,7 @@ public class Shield : MonoBehaviour
             //Sound
             if (audioSource)
             {
-                audioSource.clip = shieldDownSound;
+                audioSource.clip = shieldDestroyedSound;
                 audioSource.Play();
             }
         }

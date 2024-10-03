@@ -23,6 +23,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
     private void OnBecameInvisible()
     {
+        playerStats.GiveXP(killedXp);
+        playerStats.GiveGold(killedGold);
         Destroy(gameObject);
     }
 

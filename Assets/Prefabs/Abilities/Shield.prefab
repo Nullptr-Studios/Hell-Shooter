@@ -271,6 +271,7 @@ MonoBehaviour:
   shieldDownSound: {fileID: 8300000, guid: 4d4aefbb49a88444d831cd4ebe4952db, type: 3}
   shieldDeniedSound: {fileID: 8300000, guid: 5300b037ac75a91459ceb40404788497, type: 3}
   cooldownFinalizedSound: {fileID: 8300000, guid: 7a287cac48aeb414d8eda0ac9fbc46fa, type: 3}
+  shieldDestroyedSound: {fileID: 8300000, guid: 0190e481ff3a129469db7d77c4ed6b30, type: 3}
   logCooldown: 0
 --- !u!1 &4054435528344485081
 GameObject:
