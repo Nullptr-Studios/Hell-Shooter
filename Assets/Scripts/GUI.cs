@@ -12,6 +12,7 @@ public class HUD : MonoBehaviour
     public Image[] healthIcons;
     public Sprite healthEmpty;
     public Sprite healthFull;
+    public Animator healthAnim;
 
     private int _maxHealth;
     private int _currentHealth;
@@ -109,6 +110,7 @@ public class HUD : MonoBehaviour
     private void DecreaseHealth()
     {
         // Best code ever written
+        healthAnim.SetTrigger("health");
         _currentHealth--;
         healthIcons[_currentHealth].sprite = healthEmpty;
     }
