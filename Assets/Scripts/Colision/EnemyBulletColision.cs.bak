@@ -1,0 +1,123 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
+
+public class EnemyBulletColision : MonoBehaviour
+{
+    public GameObject player;
+
+<<<<<<< HEAD
+    public float radius = 0.05f;
+    public float playerRadius = 0f;
+=======
+    public float radius = 1.0f;
+    public PlayerBulletColision playerCollider;
+>>>>>>> origin/dev
+
+    private Transform _tr;
+    private Transform _pTr;
+    private Vector2 _pos;
+    private Vector2 _playerPos;
+
+<<<<<<< HEAD
+    private bool _playerValid;
+=======
+#if UNITY_EDITOR
+    [Header("Debug")]
+    [SerializeField] private bool drawGizmos = true;
+
+    private void OnDrawGizmos()
+    {
+        if (!drawGizmos)
+            return;
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+#endif
+>>>>>>> origin/dev
+
+    private void Start()
+    {
+        if (player)
+        {
+            _tr = this.transform;
+            _pTr = player.transform;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (TouchesPlayer())
+        { 
+            //this.SendMessage("MyTriggerEnter");
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Destroy(this.gameObject);
+        }
+    }
+    
+    private bool TouchesPlayer()
+    {
+        _pos = _tr.position;
+        _playerPos = _pTr.position;
+
+        return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
+            (playerCollider.playerRadius + radius) <= 0f;
+    }
+}
+
+/*public class EnemyBulletColision : MonoBehaviour
+{
+    public GameObject player;
+
+    public float radius = 0.05f;
+    public float playerRadius = 0f;
+
+    private Transform _tr;
+    private Transform _pTr;
+    private Vector2 _pos;
+    private Vector2 _playerPos;
+    private float _combinedRadius;
+    private float _combinedRadiusSquared;
+
+    private void Start()
+    {
+        // Cache the Transform references and precompute combined radius squared
+        if (player)
+        {
+            _tr = transform; // Slightly faster than 'this.transform'
+            _pTr = player.transform;
+            _combinedRadius = radius + playerRadius;
+            _combinedRadiusSquared = _combinedRadius * _combinedRadius; // Avoid recalculating every frame
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    private void Update()
+    {
+        // Avoid calling GetComponent every frame, cache it in Start if possible.
+        if (TouchesPlayer())
+        {
+            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+            Destroy(gameObject); // Slightly faster than 'this.gameObject'
+        }
+    }
+
+    private bool TouchesPlayer()
+    {
+        // Use Vector2 sqrMagnitude to avoid computing expensive sqrt
+        Vector2 diff = (_tr.position - _pTr.position); // Cast only once
+        return diff.sqrMagnitude <= _combinedRadiusSquared;
+    }
+}*/

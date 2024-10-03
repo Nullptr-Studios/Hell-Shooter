@@ -34,7 +34,7 @@ Transform:
   - {fileID: 6599379372829174052}
   - {fileID: 8391111165040005835}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8890821907070899678
 SpriteRenderer:
@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 4319692308811654156}
   - {fileID: 5486554156433245392}
   - {fileID: 7188488658463653695}
-  coneAngle: 45
+  coneAngle: 41.5
   fireRate: 0.4
 --- !u!1001 &362744172365952227
 PrefabInstance:
@@ -114,6 +114,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6408358371840368190}
     m_Modifications:
+    - target: {fileID: 7406765239541255132, guid: b1c1423ce09a110459b57597856c426a, type: 3}
+      propertyPath: soundSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7649456685617930760, guid: b1c1423ce09a110459b57597856c426a, type: 3}
       propertyPath: m_Name
       value: Triple Weapon Emitter 3
@@ -191,6 +195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6408358371840368190}
     m_Modifications:
+    - target: {fileID: 7406765239541255132, guid: b1c1423ce09a110459b57597856c426a, type: 3}
+      propertyPath: soundSource
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7649456685617930760, guid: b1c1423ce09a110459b57597856c426a, type: 3}
       propertyPath: m_Name
       value: Triple Weapon Emitter 2

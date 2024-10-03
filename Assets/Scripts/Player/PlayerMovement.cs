@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject PlayerThrusterRenderer;
 
+    public AudioSource PlayerThrusterSource;
+
     // Public variables
     [Range(10.0f, 300.0f)] public float maxSpeed;
     [Header("Acceleration variables")]
@@ -72,13 +74,29 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Thruster renderer logic
-        if (_rb.velocity.magnitude < 3)
+        if (_rb.velocity.magnitude < 5)
         {
-            PlayerThrusterRenderer.SetActive(false);
+            if (PlayerThrusterRenderer.activeSelf)
+            {
+                PlayerThrusterRenderer.SetActive(false);
+
+                if (PlayerThrusterSource)
+                {
+                    PlayerThrusterSource.Stop();
+                }
+            }
         }
         else
         {
-            PlayerThrusterRenderer.SetActive(true);
+            if (!PlayerThrusterRenderer.activeSelf)
+            {
+                PlayerThrusterRenderer.SetActive(true);
+                
+                if (PlayerThrusterSource)
+                {
+                    PlayerThrusterSource.Play();
+                }
+            }
         }
         
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
