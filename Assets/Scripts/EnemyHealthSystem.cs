@@ -57,6 +57,7 @@ public class EnemyHealthSystem : MonoBehaviour
             currentHealth = 0;
             playerStats.GiveXP(killedXp);
             playerStats.GiveGold(killedGold);
+            playerStats.GiveScore(killedXp * (int)maxHealth);
             //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
             //@TODO:Do something fancy (particles...etc)
             Destroy(this.gameObject);

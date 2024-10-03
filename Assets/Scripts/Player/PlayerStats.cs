@@ -1,5 +1,6 @@
 using System;
 using ToolBox.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -8,6 +9,11 @@ public class PlayerStats : MonoBehaviour
 {
     // Privates
     PlayerInput input;
+
+    private int _score;
+    private float _scoreTimer;
+    
+    public int Score { get => _score; }
 
     [Header("Stat System")]
     [Range(0.9f, 1.5f)] public float statEffectMultiplier = 1f;
@@ -39,6 +45,8 @@ public class PlayerStats : MonoBehaviour
             StatMultiplier[i] = 1f;
         }
 
+        _score = DataSerializer.Load<int>(SaveDataKeywords.score);
+
         input = GetComponent<PlayerInput>();
         input.onActionTriggered += OnOpenLevelMenu;
         input.onActionTriggered += OnCloseLevelMenu;
@@ -56,6 +64,17 @@ public class PlayerStats : MonoBehaviour
         if (logSave) Debug.Log("Loaded gold coins: " + goldCoins);
 #endif
 
+    }
+
+    private void Update()
+    {
+        _scoreTimer += Time.deltaTime;
+
+        if (_scoreTimer >= 1)
+        {
+            GiveScore(1);
+            _scoreTimer = 0;
+        }
     }
 
     /**
@@ -189,11 +208,30 @@ public class PlayerStats : MonoBehaviour
     }
 
     /// <summary>
+    ///  Gives the player score for the leaderboard
+    /// </summary>
+    /// <param name="value">Number of points to be added</param>
+    public void GiveScore(int value)
+    {
+        _score += value;
+        GUI.SendMessage("UpdateScore", _score);
+    }
+
+    /// <summary>
     /// Saves values onto file
     /// </summary>
     private void SaveData()
     {
         DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins);
+        DataSerializer.Save(SaveDataKeywords.score, _score);
+        
+        DataSerializer.Save(SaveDataKeywords.statBullet, StatLevel[(int)StatID.bulletSpeedMultiplier]);
+        DataSerializer.Save(SaveDataKeywords.statCrit, StatLevel[(int)StatID.criticalHitPercentage]);
+        DataSerializer.Save(SaveDataKeywords.statDamage, StatLevel[(int)StatID.damageMultiplier]);
+        DataSerializer.Save(SaveDataKeywords.statFire, StatLevel[(int)StatID.fireRateMultiplier]);
+        DataSerializer.Save(SaveDataKeywords.statSpeed, StatLevel[(int)StatID.speedMultiplier]);
+        
+        DataSerializer.Save(SaveDataKeywords.playerPosition, transform.position);
         
 #if UNITY_EDITOR
         if (logSave) Debug.Log("Data saved: " + DataSerializer.Load<int>(SaveDataKeywords.goldCoins));
