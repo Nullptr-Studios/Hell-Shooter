@@ -68,6 +68,8 @@ public class DefaultWeapon : MonoBehaviour
         if (logFire) Debug.Log("Fire");
 #endif
 
+        _stats.GiveScore(20);
+        
         if (soundSource)
         {
             soundSource.Play();

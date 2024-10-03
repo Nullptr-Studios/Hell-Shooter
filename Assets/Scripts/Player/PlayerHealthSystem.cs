@@ -14,6 +14,8 @@ public class PlayerHealthSystem : MonoBehaviour
     public int iFrameDuration = 3;
     private float iLastHit;
 
+    public int shieldXp = 100;
+
     public int current
     {
         get => (int)currentHealth;
@@ -101,7 +103,8 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!_sNullCheck && _shield.isActive)
         {
             _shield.DoDamage();
-
+            this.SendMessage("GiveScore", shieldXp);
+            
 #if UNITY_EDITOR
             if (logShield) Debug.Log("Shield used");
 #endif

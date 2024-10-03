@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyHealthSystem : MonoBehaviour
@@ -12,12 +13,16 @@ public class EnemyHealthSystem : MonoBehaviour
     public AudioSource HitSource;
     public GameObject ExplosionPrefab;
     
+    public Color damageColor = new Color(208 / 255.0f, 0 / 255.0f, 0 / 255.0f);
+    
     private PlayerStats playerStats;
+    private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Awake()
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -50,8 +55,10 @@ public class EnemyHealthSystem : MonoBehaviour
             if (Random.Range(0, 100) % Mathf.RoundToInt(critHitPercentage * 8) == 0)
                 _isCrit = true;
         }
-
+        
         currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
+        
+        spriteRenderer.color = Color.Lerp(damageColor, Color.white, (currentHealth / maxHealth));
         
         // Debug.Log("Ouch: " + currentHealth);
         
@@ -66,6 +73,7 @@ public class EnemyHealthSystem : MonoBehaviour
             currentHealth = 0;
             playerStats.GiveXP(killedXp);
             playerStats.GiveGold(killedGold);
+            playerStats.GiveScore(killedXp * (int)maxHealth);
             //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
             //@TODO:Do something fancy (particles...etc)
             Instantiate(ExplosionPrefab, transform.position, new Quaternion());

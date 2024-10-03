@@ -104,6 +104,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slow Burst
       objectReference: {fileID: 0}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: damageColor.b
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: damageColor.g
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: damageColor.r
+      value: 0.6156863
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8988544443889730681, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}

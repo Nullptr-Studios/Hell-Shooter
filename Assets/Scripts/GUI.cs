@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using ToolBox.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class HUD : MonoBehaviour
     public Image[] healthIcons;
     public Sprite healthEmpty;
     public Sprite healthFull;
+    public Animator healthAnim;
 
     private int _maxHealth;
     private int _currentHealth;
@@ -20,6 +22,10 @@ public class HUD : MonoBehaviour
     public Image xpBar;
     public TextMeshProUGUI xpNumber;
     public Image xpBackground;
+    public Animator levelAnim;
+    
+    public TextMeshProUGUI Score;
+    public TextMeshProUGUI HighScore;
 
     [Header("Abilities")] 
     public Image dashIcon;
@@ -44,6 +50,8 @@ public class HUD : MonoBehaviour
         _dNullCheck = _dash == null;
         _shield = player.GetComponentInChildren<Shield>();
         _sNullCheck = _shield == null;
+        
+        HighScore.text = DataSerializer.Load<int>(SaveDataKeywords.highScore).ToString("000000000");
 
         // Health Setup
         _maxHealth = (int)_health.maxHealth;
@@ -103,6 +111,7 @@ public class HUD : MonoBehaviour
     private void DecreaseHealth()
     {
         // Best code ever written
+        healthAnim.SetTrigger("health");
         _currentHealth--;
         healthIcons[_currentHealth].sprite = healthEmpty;
     }
@@ -133,5 +142,11 @@ public class HUD : MonoBehaviour
 
         xpNumber.text = value.ToString();
     }
+
+    private void UpdateScore() => Score.text = _stats.Score.ToString("000000000");
+
+    private void OpenLevelUp() => levelAnim.SetTrigger("OpenLevelUp");
+
+    private void CloseLevelUp() => levelAnim.SetTrigger("CloseLevelUp");
 
 }

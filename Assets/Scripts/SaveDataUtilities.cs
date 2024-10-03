@@ -38,12 +38,11 @@ public class SaveDataKeywords
     public const string statBullet = "statBulletSpeedMultiplierLevel";
     public const string statCrit = "statCriticalHitProbabilityLevel";
     public const string statSpeed = "statSpeedMultiplierLevel";
-    public const string statDashCooldown = "statDashCooldownLevel";
-    public const string statDashSpeed = "statDashSpeedMultiplierLevel";
-    public const string statShieldCooldown = "statShieldCooldownLevel";
     
     // Others
     public const string playerPosition = "playerCurrentPosition";
+    public const string levelPoints = "playerCurrentLevelPoints";
+    public const string xp = "playerCurrentXpPoints";
 }
 
 #if UNITY_EDITOR

@@ -80,6 +80,7 @@ public class BurstWeapon : MonoBehaviour
         if (logFire) Debug.Log("Fire");
 #endif
 
+        _stats.GiveScore(20);
         fireNumber++;
 
         if (soundSource)
