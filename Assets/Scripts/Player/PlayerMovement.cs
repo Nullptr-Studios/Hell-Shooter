@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
         get => _direction;
     }
 
+    public GameObject PlayerThrusterRenderer;
+
+    public AudioSource PlayerThrusterSource;
+
     // Public variables
     [Range(10.0f, 300.0f)] public float maxSpeed;
     [Header("Acceleration variables")]
@@ -53,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
         
         _dash = GetComponentInChildren<Dash>();
         _dNullCheck = _dash == null;
+        
+        PlayerThrusterRenderer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -65,6 +71,32 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _rb.velocity += Vector2.Lerp(Vector2.zero, _direction, _accelTimer) * (maxSpeed * Time.deltaTime * _stats.GetStat(StatID.speedMultiplier));
+        }
+
+        //Thruster renderer logic
+        if (_rb.velocity.magnitude < 5)
+        {
+            if (PlayerThrusterRenderer.activeSelf)
+            {
+                PlayerThrusterRenderer.SetActive(false);
+
+                if (PlayerThrusterSource)
+                {
+                    PlayerThrusterSource.Stop();
+                }
+            }
+        }
+        else
+        {
+            if (!PlayerThrusterRenderer.activeSelf)
+            {
+                PlayerThrusterRenderer.SetActive(true);
+                
+                if (PlayerThrusterSource)
+                {
+                    PlayerThrusterSource.Play();
+                }
+            }
         }
         
         if (_accelTimer < 1) _accelTimer += Time.deltaTime / accelerationTime; 
@@ -99,7 +131,9 @@ public class PlayerMovement : MonoBehaviour
 #if UNITY_EDITOR
         if (!context.performed) 
             return;
-        if (log) SendMessage("SaveData");
+
+        _stats.GiveXP(100);
+
 #endif
         
     }

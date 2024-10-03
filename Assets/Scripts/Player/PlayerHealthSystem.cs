@@ -9,10 +9,15 @@ using UnityEngine.Serialization;
 public class PlayerHealthSystem : MonoBehaviour
 {
     [Header("Health Settings")]
-    public float maxHealth = 100.0f; 
+    public float maxHealth = 3; 
     private float currentHealth;
     public int iFrameDuration = 3;
     private float iLastHit;
+
+    public int current
+    {
+        get => (int)currentHealth;
+    }
     
     [Header("Hit Animation")]
     [SerializeField] private Color flashColor;
@@ -47,12 +52,15 @@ public class PlayerHealthSystem : MonoBehaviour
     [SerializeField] private bool logHit = false;
 #endif
     
+    //Sound hit
+    public AudioSource HitSource;
+    
     // Start is called before the first frame update
     void Awake()
     {
+        maxHealth = 3 + DataSerializer.Load<float>(SaveDataKeywords.healthLevel);
         currentHealth = maxHealth;
         GUI = GameObject.Find("GUI");
-        GUI.SendMessage("SetHealth", currentHealth/maxHealth);
         
         // Hit animation stuff
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -101,11 +109,16 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             // Subtract health logic
             currentHealth -= damage;
-            GUI.SendMessage("SetHealth", currentHealth/maxHealth);
+            GUI.SendMessage("DecreaseHealth");
 
 #if UNITY_EDITOR
             if(logHit) Debug.Log("Hit");
 #endif
+            //Sound
+            if (HitSource)
+            {
+                HitSource.Play();
+            }
 
             // Death logic
             if (currentHealth <= 0)

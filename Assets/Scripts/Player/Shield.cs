@@ -6,10 +6,26 @@ public class Shield : MonoBehaviour
     public int maxHealth = 1;
     public float cooldownTime;
     
+
     private int _currentHealth;
     private float _cooldownStart;
     private bool _onCooldown;
     private bool _shieldActive;
+
+    /// <summary>
+    /// Returns a value from 0 to 1 that indicates how much time is left until the ability is not on cooldown
+    /// </summary>
+    public float cProgress;
+
+    [Header("Audio")]
+    public AudioSource audioSource;
+
+    public AudioClip shieldUpSound;
+    public AudioClip shieldDownSound;
+    public AudioClip shieldDeniedSound;
+    public AudioClip cooldownFinalizedSound;
+    public AudioClip shieldDestroyedSound;
+
     
     // This is here in case it's needed later on
     //
@@ -22,14 +38,6 @@ public class Shield : MonoBehaviour
     //     get => _currentHealth; 
     // }
     //
-    // /// <summary>
-    // /// Returns true if Shield cooldown is active and cannot be used.
-    // /// Read only.
-    // /// </summary>
-    // public bool cooldownActive
-    // {
-    //     get => _onCooldown;
-    // }
 
     /// <summary>
     /// Returns true if Shield is active at the moment.
@@ -67,16 +75,30 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Time.time < cooldownTime && _cooldownStart == 0)
+            cProgress = 1;
+        else
+            cProgress = Mathf.Clamp01((Time.time - _cooldownStart)/cooldownTime);
+        
         // Cooldown timer end check
         if (Time.time - _cooldownStart > cooldownTime)
         {
-            _currentHealth = maxHealth;
-            _onCooldown = false;
-            
+            if (_onCooldown)
+            {
+                _currentHealth = maxHealth;
+                _onCooldown = false;
+
+                //Sound
+                if (audioSource)
+                {
+                    audioSource.clip = cooldownFinalizedSound;
+                    audioSource.Play();
+                }
+
 #if UNITY_EDITOR
-            if (logCooldown) Debug.Log("Shield cooldown ended");
+                if (logCooldown) Debug.Log("Shield cooldown ended");
 #endif
-            
+            }
         }
     }
 
@@ -102,6 +124,13 @@ public class Shield : MonoBehaviour
             // Here add the particles and sound when needed
             _renderer.enabled = false;
             _collider.enabled = false;
+            
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = shieldDestroyedSound;
+                audioSource.Play();
+            }
         }
     }
 
@@ -114,9 +143,18 @@ public class Shield : MonoBehaviour
     {
         if (context.action.name != "Shield")
             return;
-        
+
         if (_onCooldown)
+        {
+            //Sound
+            if (audioSource && context.performed)
+            {
+                audioSource.clip = shieldDeniedSound;
+                audioSource.Play();
+            }
             return;
+        }
+            
         
         if (context.performed)
         {
@@ -125,6 +163,13 @@ public class Shield : MonoBehaviour
             
             _renderer.enabled = true;
             _collider.enabled = true;
+            
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = shieldUpSound;
+                audioSource.Play();
+            }
         }
 
         if (context.canceled)
@@ -134,6 +179,13 @@ public class Shield : MonoBehaviour
             
             _renderer.enabled = false;
             _collider.enabled = false;
+            
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = shieldDownSound;
+                audioSource.Play();
+            }
         }
     }
 }

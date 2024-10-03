@@ -8,7 +8,9 @@ public class EnemyHealthSystem : MonoBehaviour
     public float currentHealth;
     public float criticalHitMultiplier = 2.0f;
     public int killedXp = 10;
-    public int killedGold = 2; 
+    public int killedGold = 2;
+    public AudioSource ExplosionSource;
+    public GameObject ExplosionPrefab;
     
     private PlayerStats playerStats;
     
@@ -17,6 +19,13 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
         currentHealth = maxHealth;
+    }
+
+    private void OnBecameInvisible()
+    {
+        playerStats.GiveXP(killedXp);
+        playerStats.GiveGold(killedGold);
+        Destroy(gameObject);
     }
 
     public void ChangeMaxHealth(float newMax)
@@ -46,6 +55,11 @@ public class EnemyHealthSystem : MonoBehaviour
         
         // Debug.Log("Ouch: " + currentHealth);
         
+        if (ExplosionSource)
+        {
+            ExplosionSource.Play();
+        }
+        
         if (currentHealth <= 0)
         {
             // Debug.Log("I'm Ded");
@@ -54,6 +68,7 @@ public class EnemyHealthSystem : MonoBehaviour
             playerStats.GiveGold(killedGold);
             //Idunno if unity has something like delegates or event notifies in Unreal, in order to keep count of dead enemies and it's score
             //@TODO:Do something fancy (particles...etc)
+            Instantiate(ExplosionPrefab, transform.position, new Quaternion());
             Destroy(this.gameObject);
         }
     }

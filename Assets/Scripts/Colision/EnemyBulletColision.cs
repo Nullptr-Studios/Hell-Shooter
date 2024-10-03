@@ -8,15 +8,15 @@ public class EnemyBulletColision : MonoBehaviour
 {
     public GameObject player;
 
-    public float radius = 0.05f;
+    public float radius = 1.0f;
     public PlayerBulletColision playerCollider;
+
+    public GameObject EnemyHitEffectPrefab;
 
     private Transform _tr;
     private Transform _pTr;
     private Vector2 _pos;
     private Vector2 _playerPos;
-
-    private bool _playerValid;
 
 #if UNITY_EDITOR
     [Header("Debug")]
@@ -26,11 +26,12 @@ public class EnemyBulletColision : MonoBehaviour
     {
         if (!drawGizmos)
             return;
-
+        
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 #endif
+
     private void Start()
     {
         if (player)
@@ -48,20 +49,24 @@ public class EnemyBulletColision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TouchesPlayer())
+        if (player)
         {
-            //this.SendMessage("MyTriggerEnter");
-            player.GetComponent<PlayerHealthSystem>().DoDamage(1);
-            Destroy(gameObject);
+            _pos = _tr.position;
+            _playerPos = _pTr.position;
+            if (TouchesPlayer())
+            {
+                //this.SendMessage("MyTriggerEnter");
+                player.GetComponent<PlayerHealthSystem>().DoDamage(1);
+                Instantiate(EnemyHitEffectPrefab, transform.position, new Quaternion());
+                Destroy(this.gameObject);
+                return;
+            }
         }
     }
-
+    
     private bool TouchesPlayer()
     {
         //returnVector2.Distance(unit.Position(), Position())- unit.Radius()- Radius()<= 0f;
-        _pos = _tr.position;
-        _playerPos = _pTr.position;
-
         return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
             (playerCollider.playerRadius + radius) <= 0f;
     }

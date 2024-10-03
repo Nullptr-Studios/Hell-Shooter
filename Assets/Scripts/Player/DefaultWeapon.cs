@@ -6,9 +6,8 @@ public class DefaultWeapon : MonoBehaviour
 {
     //exposed variables
     public GameObject bulletPrefab;
+    public AudioSource soundSource;
     [Range(0.1f, 1.0f)] public float fireRate;
-    
-    private PlayerInput _playerInput;
     
 #if UNITY_EDITOR
     [Header("Debug")]
@@ -18,14 +17,17 @@ public class DefaultWeapon : MonoBehaviour
     //Internal Variables
     private float _nextFire;
     private float _wantsToFire;
+    private GameObject _player;
     private PlayerStats _stats;
+    private PlayerInput _playerInput;
 
     void Start()
     {
-        _stats = transform.parent.GetComponent<PlayerStats>();
+        _player = GameObject.FindWithTag("Player");
+        _stats = _player.GetComponent<PlayerStats>();
         if (_stats == null) Debug.LogWarning("No player stats attached to player");
         
-        _playerInput = transform.parent.GetComponent<PlayerInput>();
+        _playerInput = _player.GetComponent<PlayerInput>();
         _playerInput.onActionTriggered += OnFire;
     }
 
@@ -65,6 +67,11 @@ public class DefaultWeapon : MonoBehaviour
 #if UNITY_EDITOR
         if (logFire) Debug.Log("Fire");
 #endif
+
+        if (soundSource)
+        {
+            soundSource.Play();
+        }
 
         //Instantiate bullet in given spawn location
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);

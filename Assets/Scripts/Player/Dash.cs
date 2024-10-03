@@ -17,9 +17,21 @@ public class Dash : MonoBehaviour
     [NonSerialized] public float speed;
     private float startedDash;
     private float startedCooldown;
+
+    /// <summary>
+    /// Returns a value from 0 to 1 that indicates how much time is left until the ability is not on cooldown
+    /// </summary>
+    public float cProgress;
     
     [Header("Graphics")]
     public TrailRenderer trailRenderer;
+    
+    [Header("Audio")]
+    public AudioSource audioSource;
+    
+    public AudioClip dashPerformedSound;
+    public AudioClip dashDeniedSound;
+    public AudioClip cooldownFinalizedSound;
 
     private PlayerInput _playerInput;
     private PlayerMovement _movement;
@@ -59,11 +71,23 @@ public class Dash : MonoBehaviour
 #endif
             
         }
+
+        if (Time.time < cooldown && startedCooldown == 0)
+            cProgress = 1;
+        else
+            cProgress = Mathf.Clamp01((Time.time - startedCooldown)/cooldown);
         
         // Stops cooldown
         if (!canDash && Time.time - startedDash >= cooldown)
         {
             canDash = true;
+            
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = cooldownFinalizedSound;
+                audioSource.Play();
+            }
             
 #if UNITY_EDITOR
             if (log) Debug.Log("Dash cooldown ended");
@@ -83,9 +107,19 @@ public class Dash : MonoBehaviour
 
         if (!context.performed)
             return;
-        
-        if (!canDash) 
+
+        if (!canDash)
+        {
+            //Sound
+            if (audioSource)
+            {
+                audioSource.clip = dashDeniedSound;
+                audioSource.Play();
+            }
+
             return;
+        }
+            
         if (_movement.dir.magnitude < DASH_THRESHOLD)
             return;
         
@@ -93,6 +127,13 @@ public class Dash : MonoBehaviour
         startedDash = Time.time;
         direction = _movement.dir;
         trailRenderer.enabled = true;
+        
+        //Sound
+        if (audioSource)
+        {
+            audioSource.clip = dashPerformedSound;
+            audioSource.Play();
+        }
         
 #if UNITY_EDITOR
         if (log) Debug.Log("Dash");
