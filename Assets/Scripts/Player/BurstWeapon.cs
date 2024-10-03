@@ -14,6 +14,9 @@ public class BurstWeapon : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool logFire = false;
 #endif
+
+    [Header("Sound")] 
+    public AudioSource soundSource;
     
     //Internal Variables
     private float _nextFire;
@@ -77,6 +80,11 @@ public class BurstWeapon : MonoBehaviour
 #endif
 
         fireNumber++;
+
+        if (soundSource)
+        {
+            soundSource.Play();
+        }
         
         //Instantiate bullet in given spawn location
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);

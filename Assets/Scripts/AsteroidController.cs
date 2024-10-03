@@ -14,6 +14,11 @@ public class AsteroidController : MonoBehaviour
 
     public List<Sprite> SpriteList = new List<Sprite>();
 
+    [Header("Sound")] 
+    public AudioSource soundSource;
+
+    public GameObject explosionPrefab;
+
     private GameObject player;
     private Rigidbody2D rb;
 
@@ -58,11 +63,17 @@ public class AsteroidController : MonoBehaviour
     {
         if (collision.CompareTag("PlayerBullet"))
         {
+            if (soundSource)
+            {
+                soundSource.Play();
+            }
             if (currentAsteroidHealth <= 0)
             {
                 //Destroy
                 player.SendMessage("GiveXP", 5);
-
+                
+                Instantiate(explosionPrefab, transform.position, new Quaternion());
+                
                 Destroy(this.gameObject);
                 Destroy(collision.gameObject);
                 currentAsteroidHealth = 0;
@@ -80,6 +91,7 @@ public class AsteroidController : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.SendMessage("DoDamage",1);
+            Instantiate(explosionPrefab, transform.position, new Quaternion());
             Destroy(this.gameObject);
         }
     }

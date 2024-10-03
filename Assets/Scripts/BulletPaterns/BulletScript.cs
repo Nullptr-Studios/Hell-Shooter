@@ -31,6 +31,11 @@ public class BulletScript : MonoBehaviour
         _transformRight = _tr.right;
     }
 
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -60,6 +65,9 @@ public class BulletScript : MonoBehaviour
             
             Destroy(this.gameObject);
             return;
+        }else if (other.gameObject.CompareTag("Asteroid"))
+        {
+            Instantiate(PlayerHitEffectPrefab, transform.position, new Quaternion());
         }
         
         //Warning! Asteroid implementation is on AsteroidController
