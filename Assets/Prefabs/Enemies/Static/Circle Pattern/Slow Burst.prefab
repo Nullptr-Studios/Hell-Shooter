@@ -95,7 +95,11 @@ PrefabInstance:
     - target: {fileID: 4140132037290987671, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ea73b57ec4496c44d9e6b04856526e8d, type: 3}
+      objectReference: {fileID: 21300000, guid: a774f0ff6cd992d49992fa74c5f2505c, type: 3}
+    - target: {fileID: 4140132037290987671, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7015178151573303251, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: m_Name
       value: Slow Burst

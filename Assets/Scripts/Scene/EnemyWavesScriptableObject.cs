@@ -95,7 +95,14 @@ public class EnemyWavesScriptableObject : ScriptableObject
          {
              movement.moveToPosition = true;
          }
+         
          movement.bulletSpawner.transform.localEulerAngles = new Vector3(0,0, Wave.spawnerAngle);
+         
+         if(Wave.WaypointsSo)
+         {
+            movement.waypoints = Wave.WaypointsSo;
+         }
+         
          WarningLogic(Wave);
      }
 

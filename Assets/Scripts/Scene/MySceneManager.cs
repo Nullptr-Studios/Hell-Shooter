@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MySceneManager : MonoBehaviour
 {
@@ -107,7 +108,9 @@ public class MySceneManager : MonoBehaviour
     /// </summary>
     private void OnSceneFinish()
     {
-        
+        //@TODO: Change Win Screen placeholder
+        GameObject.FindGameObjectWithTag("Player").SendMessage("SaveData");
+        SceneManager.LoadScene("WinScreen");
     }
 }
 

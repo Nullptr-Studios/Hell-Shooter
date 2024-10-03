@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SpawnerScriptableObjects 1
   m_EditorClassIdentifier: 
   premadeShapeType: 1
-  firingRate: 0.25
+  firingRate: 0.1
   backAndForth: 1
   bulletLife: 10
   bulletSpeed: 1
