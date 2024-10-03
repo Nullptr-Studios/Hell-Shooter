@@ -41,6 +41,8 @@ public class SaveDataKeywords
     
     // Others
     public const string playerPosition = "playerCurrentPosition";
+    public const string levelPoints = "playerCurrentLevelPoints";
+    public const string xp = "playerCurrentXpPoints";
 }
 
 #if UNITY_EDITOR

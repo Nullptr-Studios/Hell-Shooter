@@ -80,6 +80,18 @@ PrefabInstance:
       propertyPath: killedXp
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 6530877813392020244, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
+      propertyPath: damageColor.b
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530877813392020244, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
+      propertyPath: damageColor.g
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 6530877813392020244, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
+      propertyPath: damageColor.r
+      value: 0.6156863
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

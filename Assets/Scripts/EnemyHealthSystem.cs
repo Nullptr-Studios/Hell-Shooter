@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyHealthSystem : MonoBehaviour
@@ -8,14 +9,18 @@ public class EnemyHealthSystem : MonoBehaviour
     public float currentHealth;
     public float criticalHitMultiplier = 2.0f;
     public int killedXp = 10;
-    public int killedGold = 2; 
+    public int killedGold = 2;
+    
+    public Color damageColor = new Color(208 / 255.0f, 0 / 255.0f, 0 / 255.0f);
     
     private PlayerStats playerStats;
+    private SpriteRenderer spriteRenderer;
     
     // Start is called before the first frame update
     void Awake()
     {
         playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -46,8 +51,10 @@ public class EnemyHealthSystem : MonoBehaviour
             if (Random.Range(0, 100) % Mathf.RoundToInt(critHitPercentage * 8) == 0)
                 _isCrit = true;
         }
-
+        
         currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);
+        
+        spriteRenderer.color = Color.Lerp(damageColor, Color.white, (currentHealth / maxHealth));
         
         // Debug.Log("Ouch: " + currentHealth);
         

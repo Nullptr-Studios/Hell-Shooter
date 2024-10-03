@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: killedXp
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: damageColor.b
+      value: 0.03137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: damageColor.g
+      value: 0.007843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: damageColor.r
+      value: 0.6156863
+      objectReference: {fileID: 0}
     - target: {fileID: 3613213327871252870, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
       propertyPath: m_Name
       value: Circle

@@ -36,6 +36,23 @@ public class PlayerStats : MonoBehaviour
     public bool logSave = false;
 #endif
 
+    private void Awake()
+    {
+        // Load stats from previous Scenes
+        goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
+        _score = DataSerializer.Load<int>(SaveDataKeywords.score);
+        
+        StatLevel[(int)StatID.bulletSpeedMultiplier] = DataSerializer.Load<int>(SaveDataKeywords.statBullet);
+        StatLevel[(int)StatID.criticalHitPercentage] = DataSerializer.Load<int>(SaveDataKeywords.statCrit);
+        StatLevel[(int)StatID.damageMultiplier] = DataSerializer.Load<int>(SaveDataKeywords.statDamage);
+        StatLevel[(int)StatID.fireRateMultiplier] = DataSerializer.Load<int>(SaveDataKeywords.statFire);
+        StatLevel[(int)StatID.speedMultiplier] = DataSerializer.Load<int>(SaveDataKeywords.statSpeed);
+        
+        transform.position = DataSerializer.Load<Vector3>(SaveDataKeywords.playerPosition);
+        levelPoints = DataSerializer.Load<int>(SaveDataKeywords.levelPoints);
+        xp = DataSerializer.Load<int>(SaveDataKeywords.xp);
+    }
+
     private void Start()
     {
         // Initializes all stats to 1
@@ -44,8 +61,6 @@ public class PlayerStats : MonoBehaviour
             StatLevel[i] = 1;
             StatMultiplier[i] = 1f;
         }
-
-        _score = DataSerializer.Load<int>(SaveDataKeywords.score);
 
         input = GetComponent<PlayerInput>();
         input.onActionTriggered += OnOpenLevelMenu;
@@ -56,9 +71,6 @@ public class PlayerStats : MonoBehaviour
         xp = 0;
         GUI.SendMessage("SetXpBar", xp / requiredXP);
         GUI.SendMessage("SetLevelPoints", levelPoints);
-
-        // Get data from save file
-        goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
 
 #if UNITY_EDITOR
         if (logSave) Debug.Log("Loaded gold coins: " + goldCoins);
@@ -232,6 +244,8 @@ public class PlayerStats : MonoBehaviour
         DataSerializer.Save(SaveDataKeywords.statSpeed, StatLevel[(int)StatID.speedMultiplier]);
         
         DataSerializer.Save(SaveDataKeywords.playerPosition, transform.position);
+        DataSerializer.Save(SaveDataKeywords.levelPoints, levelPoints);
+        DataSerializer.Save(SaveDataKeywords.xp, xp);
         
 #if UNITY_EDITOR
         if (logSave) Debug.Log("Data saved: " + DataSerializer.Load<int>(SaveDataKeywords.goldCoins));
@@ -256,10 +270,4 @@ public enum StatID
     criticalHitPercentage = 3,
     speedMultiplier = 4,
 }
-
-/*  TODO: Make this a custom unity component using child of class ScriptableObject
- *  Example:
- *  [CreateAssetMenu(fileName = "New MotionCurve", menuName = "Create MotionCurve")]
- *  public class MotionCurve : ScriptableObject {};
- */  
  
