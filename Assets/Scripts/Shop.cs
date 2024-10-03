@@ -11,7 +11,7 @@ public class Shop : MonoBehaviour
     public Color inactiveColor;
 
     public TextMeshProUGUI goldText;
-    private int _gold = 99;
+    [NonSerialized] public int gold = 10;
 
     // Object Classes
     [SerializeField] private ShopItem dash;
@@ -29,6 +29,8 @@ public class Shop : MonoBehaviour
     {
         _player = GameObject.FindWithTag("Player");
         defaultWeapon.isBought = true;
+        gold = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
+        UpdateGold();
 
         dash.isBought = DataSerializer.Load<bool>(SaveDataKeywords.dashBought);
         dash.isEquiped = DataSerializer.Load<bool>(SaveDataKeywords.dashEquipped);
@@ -46,16 +48,24 @@ public class Shop : MonoBehaviour
         burstWeapon.AwakeWeapon(activeColor, inactiveColor, _player, equippedWeapon, 2);
         defaultWeapon.AwakeWeapon(activeColor, inactiveColor, _player, equippedWeapon, 0);
     }
+    
+    public void UpdateGold() => goldText.text = gold.ToString();
 
     // Equip functions
     // This functions handle the equip button for each item
-    
     public void DashEquip() => dash.Equip(activeColor, inactiveColor, _player, 0);
     public void ShieldEquip() => shield.Equip(activeColor, inactiveColor, _player, 1);
 
-    public void TripleWEquip() => tripleWeapon.EquipWeapon(activeColor, inactiveColor, _player, 1, this, defaultWeapon, burstWeapon);
-    public void BurstWEquip() => tripleWeapon.EquipWeapon(activeColor, inactiveColor, _player, 2, this, defaultWeapon, tripleWeapon);
-    public void DefaultWEquip() => tripleWeapon.EquipWeapon(activeColor, inactiveColor, _player, 0, this, tripleWeapon, burstWeapon);
+    public void TripleWEquip() => tripleWeapon.EquipWeapon(_player, 1, this, defaultWeapon, burstWeapon);
+    public void BurstWEquip() => burstWeapon.EquipWeapon(_player, 2, this, defaultWeapon, tripleWeapon);
+    public void DefaultWEquip() => defaultWeapon.EquipWeapon(_player, 0, this, tripleWeapon, burstWeapon);
+    
+    // Buy functions
+    public void BuyDash() => dash.Buy(this);
+    public void BuyShield() => shield.Buy(this);
+    // public void BuyDash() => dash.Buy(this);
+    public void BuyTriple() => tripleWeapon.Buy(this);
+    public void BuyBurst() => burstWeapon.Buy(this);
 }
 
 [Serializable] internal class ShopItem
@@ -127,19 +137,31 @@ public class Shop : MonoBehaviour
         }
     }
     
-    public void EquipWeapon(Color activeColor, Color inactiveColor, GameObject player, int weaponID, Shop shop, ShopItem w1, ShopItem w2)
+    public void EquipWeapon(GameObject player, int weaponID, Shop shop, ShopItem w1, ShopItem w2)
     {
         if (shop.equippedWeapon == weaponID) return;
         shop.equippedWeapon = weaponID;
             
-        equipButton.GetComponent<Image>().color = activeColor;
-        w1.equipButton.GetComponent<Image>().color = inactiveColor;
-        w2.equipButton.GetComponent<Image>().color = inactiveColor;
+        equipButton.GetComponent<Image>().color = shop.activeColor;
+        w1.equipButton.GetComponent<Image>().color = Color.white;
+        w2.equipButton.GetComponent<Image>().color = Color.white;
             
         Object.Destroy(w1.obj);
         Object.Destroy(w2.obj);
             
         Create(player, -1);
+    }
+
+    public void Buy(Shop shop)
+    {
+        if (shop.gold - price < 0) return;
+        
+        shop.gold -= price;
+        shop.UpdateGold();
+        
+        equipButton.interactable = true;
+        Object.Destroy(pucharseButton.gameObject);
+        Object.Destroy(disabledImage.gameObject);
     }
 
     private void Create(GameObject player, int id)

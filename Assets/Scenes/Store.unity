@@ -495,7 +495,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 189613051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280809272}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyTriple
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &189613051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1224,7 +1236,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 553798689}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280809272}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyShield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553798689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,7 +1659,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 644229061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280809272}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyDash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &644229061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,10 +3334,10 @@ MonoBehaviour:
     prefab: {fileID: 4461411969547136728, guid: 308c2002257562a44b408df26518f343, type: 3}
   burstWeapon:
     price: 1
-    pucharseButton: {fileID: 189613050}
-    equipButton: {fileID: 102168236}
-    disabledImage: {fileID: 1178933642}
-    priceText: {fileID: 1274514026}
+    pucharseButton: {fileID: 1718356331}
+    equipButton: {fileID: 606902998}
+    disabledImage: {fileID: 2078386446}
+    priceText: {fileID: 724116567}
     levelSlider: {fileID: 0}
     prefab: {fileID: 7485060552170802067, guid: 2d020b68bdddbfe43a4ecdf92d1a9f1b, type: 3}
   equippedWeapon: 0
@@ -4397,7 +4433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1718356332}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1280809272}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: BuyBurst
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1718356332
 MonoBehaviour:
   m_ObjectHideFlags: 0
