@@ -392,6 +392,7 @@ MonoBehaviour:
   logShield: 0
   logHit: 0
   HitSource: {fileID: 3297222867271879682}
+  playerExplosion: {fileID: 6573145836657299431, guid: 2c54390d4cf059747950713187c5f713, type: 3}
 --- !u!114 &2932305367751407079
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,18 +30,25 @@ public class DynamicEnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _enemyToPlayer = _p.transform.position - gameObject.transform.position;
-        _enemyToPlayer.Normalize();
-        
-        if (gotoPlayer)
+        if (_p)
         {
-            _rb.velocity += _enemyToPlayer * (speed * Time.deltaTime);
-        }
+            _enemyToPlayer = _p.transform.position - gameObject.transform.position;
+            _enemyToPlayer.Normalize();
 
-        if (lookAtPlayer)
+            if (gotoPlayer)
+            {
+                _rb.velocity += _enemyToPlayer * (speed * Time.deltaTime);
+            }
+
+            if (lookAtPlayer)
+            {
+                float rot_z = Mathf.Atan2(_enemyToPlayer.y, _enemyToPlayer.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
+            }
+        }
+        else
         {
-            float rot_z = Mathf.Atan2(_enemyToPlayer.y, _enemyToPlayer.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 90);
+            Destroy(this);
         }
     }
 }

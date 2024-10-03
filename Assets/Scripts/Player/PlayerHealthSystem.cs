@@ -54,6 +54,8 @@ public class PlayerHealthSystem : MonoBehaviour
     
     //Sound hit
     public AudioSource HitSource;
+
+    public GameObject playerExplosion;
     
     // Start is called before the first frame update
     void Awake()
@@ -125,8 +127,9 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 currentHealth = 0;
                 this.SendMessage("SaveData");
+                Instantiate(playerExplosion, transform.position, new Quaternion());
                 Destroy(this.gameObject);
-                SceneManager.LoadScene("MainMenu");
+                //SceneManager.LoadScene("MainMenu");
             }
         }
         

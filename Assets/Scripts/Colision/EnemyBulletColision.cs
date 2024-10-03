@@ -60,10 +60,19 @@ public class EnemyBulletColision : MonoBehaviour
     
     private bool TouchesPlayer()
     {
-        _pos = _tr.position;
-        _playerPos = _pTr.position;
+        if (player)
+        {
+            _pos = _tr.position;
+            _playerPos = _pTr.position;
 
-        return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) + (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
-            (playerCollider.playerRadius + radius) <= 0f;
+            return ((_pos.x - _playerPos.x) * (_pos.x - _playerPos.x) +
+                    (_pos.y - _playerPos.y) * (_pos.y - _playerPos.y)) -
+                (playerCollider.playerRadius + radius) <= 0f;
+        }
+        else
+        {
+            Destroy(this);
+            return false;
+        }
     }
 }
