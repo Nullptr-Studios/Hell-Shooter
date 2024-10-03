@@ -297,7 +297,7 @@ MonoBehaviour:
   criticalHitMultiplier: 2
   killedXp: 10
   killedGold: 2
-  ExplosionSource: {fileID: 2655230987301811018}
+  HitSource: {fileID: 202887358896996780}
   ExplosionPrefab: {fileID: 6573145836657299431, guid: f19a2161bf3c7f040aa22315cc1c2ab0, type: 3}
 --- !u!114 &5588805392906202844
 MonoBehaviour:
@@ -317,6 +317,7 @@ MonoBehaviour:
   useLerp: 1
   bulletSpawner: {fileID: 8709604987579895752}
   destroyAtArrival: 0
+  waypoints: {fileID: 0}
 --- !u!1001 &7716546385961627810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,11 +447,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
---- !u!82 &2655230987301811018 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5751070945870267368, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}
-  m_PrefabInstance: {fileID: 7716546385961627810}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4254636645907878143 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5772822460066160733, guid: b225c28201c438a4ebe8ac1696f54598, type: 3}

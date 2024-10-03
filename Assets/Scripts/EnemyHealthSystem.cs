@@ -9,7 +9,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public float criticalHitMultiplier = 2.0f;
     public int killedXp = 10;
     public int killedGold = 2;
-    public AudioSource ExplosionSource;
+    public AudioSource HitSource;
     public GameObject ExplosionPrefab;
     
     private PlayerStats playerStats;
@@ -55,9 +55,9 @@ public class EnemyHealthSystem : MonoBehaviour
         
         // Debug.Log("Ouch: " + currentHealth);
         
-        if (ExplosionSource)
+        if (HitSource)
         {
-            ExplosionSource.Play();
+            HitSource.Play();
         }
         
         if (currentHealth <= 0)
