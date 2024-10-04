@@ -36,29 +36,37 @@ public class AbilityManager : MonoBehaviour
         if (reinforcer.isBought)
             Instantiate(reinforcer.prefab, this.transform);
         
-        burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
-        tripleWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.tripleBought);
+        //This check here is irrelevant//
+        /*burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
+        tripleWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.tripleBought);*/
+        _equipedWeapon = DataSerializer.Load<int>(SaveDataKeywords.weaponEquiped);
         switch (_equipedWeapon)
         {
             case 1:
                 tripleWeapon.isEquipped = true;
+                Instantiate(tripleWeapon.prefab, this.transform);
                 break;
             
             case 2:
                 burstWeapon.isEquipped = true;
+                Instantiate(burstWeapon.prefab, this.transform);
                 break;
             
             default:
                 defaultWeapon.isEquipped = true;
+                Instantiate(defaultWeapon.prefab, this.transform);
                 break;
         }
 
+        //This check here is also irrelevant
+        /*
         if (burstWeapon.isBought && burstWeapon.isEquipped)
             Instantiate(burstWeapon.prefab, this.transform);
         else if (tripleWeapon.isBought && tripleWeapon.isEquipped)
             Instantiate(tripleWeapon.prefab, this.transform);
         else
             Instantiate(defaultWeapon.prefab, this.transform);
+        */
     }
     
 }
