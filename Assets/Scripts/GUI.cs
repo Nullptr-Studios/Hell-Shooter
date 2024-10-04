@@ -110,8 +110,10 @@ public class HUD : MonoBehaviour
 
     private void DecreaseHealth()
     {
-        // Best code ever written
-        healthAnim.SetTrigger("health");
+        // Best code ever written -x
+        //yes, setTrigger has a lag of at least half a second xd fuck unity -d
+        //healthAnim.SetTrigger("health");
+        healthAnim.Play("HealthIndicator");
         _currentHealth--;
         healthIcons[_currentHealth].sprite = healthEmpty;
     }
