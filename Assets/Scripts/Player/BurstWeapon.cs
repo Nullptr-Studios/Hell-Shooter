@@ -30,10 +30,11 @@ public class BurstWeapon : MonoBehaviour
     {
         _player = GameObject.FindWithTag("Player");
         _stats = _player.GetComponent<PlayerStats>();
-        if (_stats == null) Debug.LogWarning("No player stats attached to player");
+        if (_stats == null) 
+            Debug.LogWarning("No player stats attached to player");
 
-        fireNumber = 0;
-        _nextFire = fireRate;
+        fireNumber = -1;
+        _nextFire = fireRate / _stats.GetStat(StatID.fireRateMultiplier);
         
         _playerInput = _player.GetComponent<PlayerInput>();
         _playerInput.onActionTriggered += OnFire;
@@ -54,6 +55,7 @@ public class BurstWeapon : MonoBehaviour
         if (_wantsToFire > 0.5f && (_nextFire >= (fireRate/(fireNumber<burst-1?cooldownMultiplier:1)) / _stats.GetStat(StatID.fireRateMultiplier)))
         {
             Fire();
+            
             //revert timer to 0
             _nextFire = 0.0f;
 
@@ -70,7 +72,7 @@ public class BurstWeapon : MonoBehaviour
         //fuck unity, a fucking button does not return bool it returns a fucking float, thanks unity -d
         //xd why aren't we in godot? -x
         _wantsToFire = context.ReadValue<float>();
-        fireNumber++;
+        
     }
 
     private void Fire()

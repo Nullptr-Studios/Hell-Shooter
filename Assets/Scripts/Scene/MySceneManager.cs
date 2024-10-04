@@ -29,6 +29,10 @@ public class MySceneManager : MonoBehaviour
     private bool _waitForObject = true;
 
     private bool _ended = false;
+
+    private float _endTimer = 0.0f;
+    
+    
     
     // Start is called before the first frame update
     void Start()
@@ -99,6 +103,9 @@ public class MySceneManager : MonoBehaviour
                 }
             }
             
+        }else if (_ended)
+        {
+            OnSceneFinish();
         }
     }
     
@@ -108,9 +115,16 @@ public class MySceneManager : MonoBehaviour
     /// </summary>
     private void OnSceneFinish()
     {
-        //@TODO: Change Win Screen placeholder
-        GameObject.FindGameObjectWithTag("Player").SendMessage("SaveData");
-        SceneManager.LoadScene("WinScreen");
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0) //No Enemies Left
+        {
+            _endTimer += Time.deltaTime;
+            if (_endTimer >= 2)
+            {
+                //@TODO: Change Win Screen placeholder
+                GameObject.FindGameObjectWithTag("Player").SendMessage("SaveData");
+                SceneManager.LoadScene("WinScreen");
+            }
+        }
     }
 }
 

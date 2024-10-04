@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 971210a2cc69de74ab908734d4b1a34c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -299,6 +299,7 @@ MonoBehaviour:
   killedGold: 2
   HitSource: {fileID: 202887358896996780}
   ExplosionPrefab: {fileID: 6573145836657299431, guid: f19a2161bf3c7f040aa22315cc1c2ab0, type: 3}
+  damageColor: {r: 0.8156863, g: 0, b: 0, a: 1}
 --- !u!114 &5588805392906202844
 MonoBehaviour:
   m_ObjectHideFlags: 0
