@@ -170,8 +170,11 @@ public class Shop : MonoBehaviour
             if (equippedWeapon == weaponID) Create(player, -1);
             
             equipButton.interactable = true;
-            Object.Destroy(pucharseButton.gameObject);
-            Object.Destroy(disabledImage.gameObject);
+            if (pucharseButton && disabledImage)
+            {
+                Object.Destroy(pucharseButton.gameObject);
+                Object.Destroy(disabledImage.gameObject);
+            }
         }
     }
     
