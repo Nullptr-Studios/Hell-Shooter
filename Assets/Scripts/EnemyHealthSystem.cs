@@ -14,6 +14,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public GameObject ExplosionPrefab;
     
     public Color damageColor = new Color(208 / 255.0f, 0 / 255.0f, 0 / 255.0f);
+    public GameObject critIndicator;
     
     private PlayerStats playerStats;
     private SpriteRenderer spriteRenderer;
@@ -52,8 +53,11 @@ public class EnemyHealthSystem : MonoBehaviour
         bool _isCrit = false;
         if (playerStats.GetStatLevel(StatID.criticalHitPercentage) > 1)
         {
-            if (Random.Range(0, 100) % Mathf.RoundToInt(critHitPercentage * 8) == 0)
+            if (Random.Range(0, 100) % Mathf.RoundToInt(100/(critHitPercentage*20)) == 0)
+            {
                 _isCrit = true;
+                Instantiate(critIndicator, transform);
+            }
         }
         
         currentHealth -= damage * damageMultiplier * (_isCrit ? criticalHitMultiplier : 1);

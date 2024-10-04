@@ -105,6 +105,10 @@ PrefabInstance:
       value: Slow Burst
       objectReference: {fileID: 0}
     - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
+      propertyPath: critIndicator
+      value: 
+      objectReference: {fileID: 4945545300479629347, guid: 6ada17e27b2e16b468260dfe6a7af815, type: 3}
+    - target: {fileID: 9125628967143201922, guid: 7113f2aa1c6232a4ab52ac4461a3c10a, type: 3}
       propertyPath: damageColor.b
       value: 0.03137255
       objectReference: {fileID: 0}
