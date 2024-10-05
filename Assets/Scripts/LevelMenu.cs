@@ -57,9 +57,17 @@ public class LevelMenu : MonoBehaviour
             // maxLevel has to be -1 as the array has "points to get to next level"
             // As level 6 doesn't exist, maxLevel[5] doesn't also
             if (i.upgradeCost[Mathf.Clamp(i.currentLevel,1,i.maxLevel-1)] > levelPoints || i.currentLevel >= 5)
-                i.upgradeButton.interactable = false;
-            else 
-                i.upgradeButton.interactable = true;
+            {
+                i.upgradeButton.button.interactable = false;
+                i.upgradeButton.value.color = new Color(0, 0.529f, 0.318f);
+                i.upgradeButton.symbol.enabled = false;
+            }
+            else
+            {
+                i.upgradeButton.button.interactable = true;
+                i.upgradeButton.value.color = Color.white;
+                i.upgradeButton.symbol.enabled = true;
+            }
         }
     }
 }

@@ -14,12 +14,13 @@ public class UpgradeButtons : MonoBehaviour
      */
     [Tooltip("Please do not use ID 0")]
     public int[] upgradeCost;
+    public Sprite[] levelBarSprites;
     [NonSerialized] public int currentLevel = 1;
     [Header("Buttons")]
-    public Button upgradeButton;
-    public Button downgradeButton;
-    public Slider levelSlider;
-    public TextMeshProUGUI levelText;
+    [SerializeField]
+    public UpgButton upgradeButton;
+    [SerializeField] private UpgButton downgradeButton;
+    public Image levelBar;
     
     private GameObject player;
     
@@ -27,11 +28,13 @@ public class UpgradeButtons : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         
-        downgradeButton.interactable = false;
-        levelSlider.value = (float)currentLevel/maxLevel;
+        downgradeButton.button.interactable = false;
+        downgradeButton.symbol.enabled = false;
+        downgradeButton.value.color = new Color(1, 0, 0.302f);
+        levelBar.sprite = levelBarSprites[currentLevel];
         
-        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
-        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
+        upgradeButton.value.text = upgradeCost[currentLevel].ToString();
+        downgradeButton.value.text = upgradeCost[currentLevel-1].ToString();
     }
     
     /// <summary>
@@ -46,13 +49,16 @@ public class UpgradeButtons : MonoBehaviour
         currentLevel++;
 
         // All fom here is UI related
-        levelSlider.value = (float)currentLevel/maxLevel;
-        levelText.text = currentLevel.ToString();
-        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[Mathf.Clamp(currentLevel, 1, maxLevel-1)].ToString();
-        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
+        levelBar.sprite = levelBarSprites[currentLevel];
+        upgradeButton.value.text = upgradeCost[Mathf.Clamp(currentLevel, 1, maxLevel-1)].ToString();
+        downgradeButton.value.text = upgradeCost[currentLevel-1].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
-        if (downgradeButton.interactable == false) // This enabled the downgrade button again if disabled
-            downgradeButton.interactable = true;
+        if (downgradeButton.button.interactable == false) // This enabled the downgrade button again if disabled
+        {
+            downgradeButton.button.interactable = true;
+            downgradeButton.value.color = Color.white;
+            downgradeButton.symbol.enabled = true;
+        }
     }
     
     /// <summary>
@@ -68,12 +74,24 @@ public class UpgradeButtons : MonoBehaviour
         currentLevel--;
 
         // All fom here is UI related
-        levelSlider.value = (float)currentLevel/maxLevel;
-        levelText.text = currentLevel.ToString();
-        downgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel-1].ToString();
-        upgradeButton.GetComponentInChildren<TextMeshProUGUI>().text = upgradeCost[currentLevel].ToString();
+        levelBar.sprite = levelBarSprites[currentLevel];
+        downgradeButton.value.text = upgradeCost[currentLevel-1].ToString();
+        upgradeButton.value.text = upgradeCost[currentLevel].ToString();
         transform.parent.gameObject.BroadcastMessage("UpdateLevelPoints");
         if (currentLevel <= 1) // This disables the buttons on reach level limit
-            downgradeButton.interactable = false;
+        {
+            downgradeButton.button.interactable = false;
+            downgradeButton.value.color = new Color(1, 0, 0.302f);
+            downgradeButton.symbol.enabled = false;
+        }
     }
 }
+
+[System.Serializable]
+public class UpgButton
+{
+    public Button button;
+    public TextMeshProUGUI value;
+    public TextMeshProUGUI symbol;
+}
+
