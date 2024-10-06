@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MISSION_NAME
+  m_text: UNNAMED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5d9531816118e94b95538348647a67e, type: 2}
   m_sharedMaterial: {fileID: 8321274665310614332, guid: f5d9531816118e94b95538348647a67e, type: 2}
@@ -304,7 +304,7 @@ RectTransform:
   m_Children:
   - {fileID: 4246523760725358885}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04890529, g: 0.0546161, b: 0.066037714, a: 1}
+  m_Color: {r: 0.04890529, g: 0.0546161, b: 0.066037714, a: 0.70980394}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
