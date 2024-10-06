@@ -3200,7 +3200,7 @@ MonoBehaviour:
   - {fileID: 54883074, guid: 73963913e5e3e4f4bb49871591b2aeb8, type: 3}
   goldText: {fileID: 1046886063}
   dash:
-    price: 1
+    price: 30
     maxLevel: 0
     pucharseButton: {fileID: 644229060}
     equipButton: {fileID: 1069829630}
@@ -3209,7 +3209,7 @@ MonoBehaviour:
     levelBar: {fileID: 0}
     prefab: {fileID: 8203038699776634909, guid: d0a5b9a29c942814fa7522e65b503ebe, type: 3}
   shield:
-    price: 1
+    price: 50
     maxLevel: 0
     pucharseButton: {fileID: 553798688}
     equipButton: {fileID: 1618601326}

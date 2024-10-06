@@ -13,7 +13,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public AudioSource HitSource;
     public GameObject ExplosionPrefab;
     
-    public Color damageColor = new Color(208 / 255.0f, 0 / 255.0f, 0 / 255.0f);
+    public Color damageColor = new Color32(208, 0, 0, 255);
     public GameObject critIndicator;
     
     private PlayerStats playerStats;
@@ -29,8 +29,6 @@ public class EnemyHealthSystem : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        playerStats.GiveXP(killedXp);
-        playerStats.GiveGold(killedGold);
         Destroy(gameObject);
     }
 
