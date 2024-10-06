@@ -60,9 +60,7 @@ public class PlayerStats : MonoBehaviour
         // Initializes all stats to 1
         for (int i = 0; i < StatLevel.Length; i++)
         {
-            // TODO: Change this so it works when having multiple scenes
-            StatLevel[i] = 1;
-            StatMultiplier[i] = 1f;
+            StatMultiplier[i] = statEffectMultiplier * (1 + Mathf.Log(StatLevel[i], statXpCurve));
         }
 
         input = GetComponent<PlayerInput>();

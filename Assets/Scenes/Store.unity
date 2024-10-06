@@ -2986,7 +2986,7 @@ MonoBehaviour:
     levelBar: {fileID: 0}
     prefab: {fileID: 1686454078229014943, guid: 5b6cdce60495e4d4d88f8382bda2d1a5, type: 3}
   health:
-    price: 1
+    price: 40
     maxLevel: 3
     pucharseButton: {fileID: 1142850853}
     equipButton: {fileID: 0}
@@ -3004,7 +3004,7 @@ MonoBehaviour:
     levelBar: {fileID: 0}
     prefab: {fileID: 7649456685617930760, guid: 8e6fd3a18634c874da7c4c786b28609e, type: 3}
   tripleWeapon:
-    price: 1
+    price: 150
     maxLevel: 0
     pucharseButton: {fileID: 189613050}
     equipButton: {fileID: 102168236}
@@ -3013,7 +3013,7 @@ MonoBehaviour:
     levelBar: {fileID: 0}
     prefab: {fileID: 4461411969547136728, guid: 7a6882014d162da4fa80362eaadd7cbc, type: 3}
   burstWeapon:
-    price: 1
+    price: 200
     maxLevel: 0
     pucharseButton: {fileID: 1718356331}
     equipButton: {fileID: 606902998}
