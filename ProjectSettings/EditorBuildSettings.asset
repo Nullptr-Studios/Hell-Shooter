@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Store.unity
     guid: 4f1df1b1a5776764e9c80fd315fe4286
   - enabled: 1
-    path: Assets/Scenes/Scene1.unity
-    guid: ecdfaaf6744bbb64ca063a4b1df05c35
-  - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
-    guid: 6685d401663a12e4eb2d70506e6dc8c3
-  - enabled: 1
     path: Assets/Scenes/LoseScreen.unity
     guid: 7b5aa888828a1f64d848be9562349060
+  - enabled: 1
+    path: Assets/Scenes/Scene1.unity
+    guid: ecdfaaf6744bbb64ca063a4b1df05c35
+  - enabled: 0
+    path: Assets/Scenes/WinScreen.unity
+    guid: 6685d401663a12e4eb2d70506e6dc8c3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 244255f25ddabcc4c9f4de94b4ac850d, type: 2}
