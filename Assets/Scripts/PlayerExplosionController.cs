@@ -12,7 +12,7 @@ public class ExplosPlayerionController : MonoBehaviour
     public SpriteRenderer spr;
 
     public float lifetime = 1;
-    public float timeToSceneChange = 5;
+    public float timeToSceneChange = 3;
 
     private float _timer = 0.0f;
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class ExplosPlayerionController : MonoBehaviour
             spr.color = Color.clear;
             if (_timer > timeToSceneChange)
             {
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("LoseScreen");
             }
         }
         

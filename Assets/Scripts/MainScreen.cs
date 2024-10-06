@@ -55,6 +55,7 @@ public class MainMenu : MonoBehaviour
         DataSerializer.Save(SaveDataKeywords.score, 0);
         DataSerializer.Save(SaveDataKeywords.levelPoints, 0);
         DataSerializer.Save(SaveDataKeywords.xp, 0);
+        DataSerializer.Save(SaveDataKeywords.goldCoinsDelta, 0);
         DataSerializer.Save(SaveDataKeywords.playerPosition, Vector3.zero);
     }
 }

@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     [NonSerialized] protected internal int xp;
     [NonSerialized] protected internal int levelPoints = 0;
     public int goldCoins;
+    public int goldCoinsDelta;
 
     private GameObject GUI;
 
@@ -40,6 +41,7 @@ public class PlayerStats : MonoBehaviour
     {
         // Load stats from previous Scenes
         goldCoins = DataSerializer.Load<int>(SaveDataKeywords.goldCoins);
+        goldCoinsDelta = DataSerializer.Load<int>(SaveDataKeywords.goldCoinsDelta);
         _score = DataSerializer.Load<int>(SaveDataKeywords.score);
         
         StatLevel[(int)StatID.bulletSpeedMultiplier] = DataSerializer.Load<int>(SaveDataKeywords.statBullet);
@@ -58,6 +60,7 @@ public class PlayerStats : MonoBehaviour
         // Initializes all stats to 1
         for (int i = 0; i < StatLevel.Length; i++)
         {
+            // TODO: Change this so it works when having multiple scenes
             StatLevel[i] = 1;
             StatMultiplier[i] = 1f;
         }
@@ -192,7 +195,7 @@ public class PlayerStats : MonoBehaviour
     /// Gives player Gold Coins
     /// </summary>
     /// <param name="value">Number of gold coins to give</param>
-    public void GiveGold(int value) => goldCoins += value;
+    public void GiveGold(int value) => goldCoinsDelta += value;
 
     /**
      *  Calls level menu to be opened and switches ActionMap to the one for LevelMenu
@@ -236,7 +239,8 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     private void SaveData()
     {
-        DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins);
+        DataSerializer.Save(SaveDataKeywords.goldCoins, goldCoins + goldCoinsDelta);
+        DataSerializer.Save(SaveDataKeywords.goldCoinsDelta, goldCoinsDelta);
         DataSerializer.Save(SaveDataKeywords.score, _score);
         
         DataSerializer.Save(SaveDataKeywords.statBullet, StatLevel[(int)StatID.bulletSpeedMultiplier]);
