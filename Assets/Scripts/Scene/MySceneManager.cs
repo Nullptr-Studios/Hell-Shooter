@@ -122,7 +122,8 @@ public class MySceneManager : MonoBehaviour
             {
                 //@TODO: Change Win Screen placeholder
                 GameObject.FindGameObjectWithTag("Player").SendMessage("SaveData");
-                SceneManager.LoadScene("WinScreen");
+                // Disabled Win screen temporarily
+                SceneManager.LoadScene("LoseScreen");
             }
         }
     }
