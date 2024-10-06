@@ -131,29 +131,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1375826202073786658, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2811378021966601835, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477015238291676167, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 3801732089618432285, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
       propertyPath: m_Name
       value: LevelMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5773599347672196104, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6053674938128342149, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6070045950022867668, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
       propertyPath: m_Pivot.x
@@ -237,14 +217,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6070045950022867668, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250878703951190513, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8731828269823121325, guid: 6326f821f5bc2784bb06069333725c4d, type: 3}
-      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

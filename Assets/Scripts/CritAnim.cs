@@ -17,6 +17,7 @@ public class CritAnim : MonoBehaviour
         timer += Time.deltaTime;
 
         // Kill child
-        if (timer >= 1f) Destroy(this.gameObject);
+        if (timer >= 1f) 
+            Destroy(this.gameObject);
     }
 }
