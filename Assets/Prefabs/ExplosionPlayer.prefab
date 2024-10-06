@@ -287,4 +287,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: be75b9288c5f1be4887c74146dcbbdb8, type: 3}
   spr: {fileID: 7395860916328220732}
   lifetime: 1.133
-  timeToSceneChange: 5
+  timeToSceneChange: 3

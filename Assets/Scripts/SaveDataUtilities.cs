@@ -18,6 +18,7 @@ public class SaveDataKeywords
     public const string score = "scoreCurrentScore";
     public const string highScore = "scoreHighScore";
     public const string goldCoins = "goldCoins";
+    public const string goldCoinsDelta = "goldCoinsDelta";
 
     // Abilities
     public const string dashBought = "itemDashBought";
