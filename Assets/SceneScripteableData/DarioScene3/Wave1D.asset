@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffaf7457114db74bbb6910cdd8eaa3e, type: 3}
+  m_Name: Wave1D
+  m_EditorClassIdentifier: 
+  EnemyWavesList:
+  - EnemyPrefab: {fileID: 7180366694138124449, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -20, y: 0}
+    DestinationLocation: {x: -10, y: 0}
+    DestroyOnArrival: 0
+    overrideHealth: 10
+    useLerp: 1
+    speed: 1
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 7180366694138124449, guid: 614fe79474b68f8438542a1eaa1a9690, type: 3}
+    ammount: 1
+    delay: 2
+    SpawnLocation: {x: 20, y: 0}
+    DestinationLocation: {x: 10, y: 0}
+    DestroyOnArrival: 0
+    overrideHealth: 10
+    useLerp: 1
+    speed: 1
+    spawnerAngle: 0
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
+    ammount: 1
+    delay: 2
+    SpawnLocation: {x: 17, y: 6}
+    DestinationLocation: {x: 10, y: 0}
+    DestroyOnArrival: 0
+    overrideHealth: 10
+    useLerp: 1
+    speed: 1
+    spawnerAngle: -90
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -17, y: 6}
+    DestinationLocation: {x: 10, y: 0}
+    DestroyOnArrival: 0
+    overrideHealth: 10
+    useLerp: 1
+    speed: 1
+    spawnerAngle: -90
+    WaypointsSo: {fileID: 0}
+  _currentSteppingIndex: 0
