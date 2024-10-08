@@ -732,6 +732,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1123317394056564733, guid: 8290e9ae985de14488bab9ac1ab1e98e, type: 3}
+      propertyPath: m_text
+      value: 'Mission 01:'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3597147641421035328, guid: 8290e9ae985de14488bab9ac1ab1e98e, type: 3}
+      propertyPath: m_text
+      value: NIGHTFALL
+      objectReference: {fileID: 0}
     - target: {fileID: 5145233934250479334, guid: 8290e9ae985de14488bab9ac1ab1e98e, type: 3}
       propertyPath: m_Color.a
       value: 0.90588236
