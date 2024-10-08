@@ -505,28 +505,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - Wave: {fileID: 11400000, guid: 1bcacf9857cc8fe44a2fbe351d389775, type: 2}
+  - Wave: {fileID: 11400000, guid: 67963da80704f0142a1cbd723f030546, type: 2}
     TotalWaveTime: 10
-  - Wave: {fileID: 11400000, guid: c95155c09fadbfa48988af1b680737f8, type: 2}
-    TotalWaveTime: 8
-  - Wave: {fileID: 11400000, guid: 14af803ac51568f4c906d4e3d2cde73c, type: 2}
+  - Wave: {fileID: 11400000, guid: 26dcc95f6cbcd714eaabecc6a10d8613, type: 2}
+    TotalWaveTime: 5
+  - Wave: {fileID: 11400000, guid: 33c4b5f480f089147bc19b44143448d8, type: 2}
     TotalWaveTime: 2
-  - Wave: {fileID: 11400000, guid: 8500c8daf7631664ea268f052c35fdfe, type: 2}
-    TotalWaveTime: 16
-  - Wave: {fileID: 11400000, guid: f928cc10951fe61408158ce4b8e649fc, type: 2}
+  - Wave: {fileID: 11400000, guid: 167458b0be979574eb74ac5aee1e5382, type: 2}
+    TotalWaveTime: 5
+  - Wave: {fileID: 11400000, guid: 90333825914a3d54d9bc5699a7dbb44e, type: 2}
+    TotalWaveTime: 15
+  - Wave: {fileID: 11400000, guid: 26dcc95f6cbcd714eaabecc6a10d8613, type: 2}
     TotalWaveTime: 10
-  - Wave: {fileID: 11400000, guid: 8500c8daf7631664ea268f052c35fdfe, type: 2}
-    TotalWaveTime: 16
-  - Wave: {fileID: 11400000, guid: f928cc10951fe61408158ce4b8e649fc, type: 2}
-    TotalWaveTime: 12
-  - Wave: {fileID: 11400000, guid: f7a760c194d21564eafd060a415ab03e, type: 2}
-    TotalWaveTime: 22
-  - Wave: {fileID: 11400000, guid: 14af803ac51568f4c906d4e3d2cde73c, type: 2}
+  - Wave: {fileID: 11400000, guid: 33c4b5f480f089147bc19b44143448d8, type: 2}
+    TotalWaveTime: 10
+  - Wave: {fileID: 11400000, guid: 67963da80704f0142a1cbd723f030546, type: 2}
+    TotalWaveTime: 15
+  - Wave: {fileID: 11400000, guid: 90333825914a3d54d9bc5699a7dbb44e, type: 2}
     TotalWaveTime: 2
-  - Wave: {fileID: 11400000, guid: 6ffb9e58d745bc549a468f3b39015bce, type: 2}
-    TotalWaveTime: 22
-  - Wave: {fileID: 11400000, guid: c95155c09fadbfa48988af1b680737f8, type: 2}
-    TotalWaveTime: 10
   onBeginDelay: 5
   warningIndicator: {fileID: 8190051827322315488, guid: 77825e73a5677a9429167bb905e9b08f, type: 3}
 --- !u!4 &1440202588
@@ -568,7 +564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882998385}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.53, y: 7.02, z: 0}
+  m_LocalPosition: {x: 11.94, y: 8.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
