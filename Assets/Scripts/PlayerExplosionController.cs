@@ -32,7 +32,7 @@ public class ExplosPlayerionController : MonoBehaviour
             spr.color = Color.clear;
             if (_timer > timeToSceneChange)
             {
-                SceneManager.LoadScene("LoseScreen");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
         
