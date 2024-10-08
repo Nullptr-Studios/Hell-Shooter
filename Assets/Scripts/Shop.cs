@@ -1,8 +1,10 @@
 using System;
 using TMPro;
 using ToolBox.Serialization;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -10,6 +12,11 @@ public class Shop : MonoBehaviour
 {
     public Color activeColor;
     public Color inactiveColor;
+    [FormerlySerializedAs("activeSprite")] public Sprite activeWeaponSprite;
+    [FormerlySerializedAs("inactiveSprite")] public Sprite inactiveWeaponSprite;
+    public Sprite activeAbilitySprite;
+    public Sprite inactiveAbilitySprite;
+    public Sprite[] shieldLevels;
 
     public TextMeshProUGUI goldText;
     [NonSerialized] public int gold = 10;
@@ -45,13 +52,13 @@ public class Shop : MonoBehaviour
         burstWeapon.isBought = DataSerializer.Load<bool>(SaveDataKeywords.burstBought);
         equippedWeapon = DataSerializer.Load<int>(SaveDataKeywords.weaponEquiped);
         
-        dash.Awake(activeColor, inactiveColor, _player, 0);
-        shield.Awake(activeColor, inactiveColor, _player, 1);
-        health.AwakeHealth(_player);
+        dash.Awake(activeAbilitySprite, inactiveAbilitySprite, _player, 0);
+        shield.Awake(activeAbilitySprite, inactiveAbilitySprite, _player, 1);
+        health.AwakeHealth(_player, shieldLevels);
         
-        tripleWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 1);
-        burstWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 2);
-        defaultWeapon.AwakeWeapon(activeColor,  _player, equippedWeapon, 0);
+        tripleWeapon.AwakeWeapon(activeWeaponSprite, inactiveWeaponSprite,  _player, equippedWeapon, 1);
+        burstWeapon.AwakeWeapon(activeWeaponSprite, inactiveWeaponSprite,  _player, equippedWeapon, 2);
+        defaultWeapon.AwakeWeapon(activeWeaponSprite, inactiveWeaponSprite,  _player, equippedWeapon, 0);
     }
 
     public void ExitShop()
@@ -76,8 +83,8 @@ public class Shop : MonoBehaviour
 
     // Equip functions
     // This functions handle the equip button for each item
-    public void DashEquip() => dash.Equip(activeColor, inactiveColor, _player, 0);
-    public void ShieldEquip() => shield.Equip(activeColor, inactiveColor, _player, 1);
+    public void DashEquip() => dash.Equip(activeAbilitySprite, inactiveAbilitySprite, _player, 0);
+    public void ShieldEquip() => shield.Equip(activeAbilitySprite, inactiveAbilitySprite, _player, 1);
     
     public void TripleWEquip() => tripleWeapon.EquipWeapon(_player, 1, this, defaultWeapon, burstWeapon);
     public void BurstWEquip() => burstWeapon.EquipWeapon(_player, 2, this, defaultWeapon, tripleWeapon);
@@ -104,13 +111,13 @@ public class Shop : MonoBehaviour
     public Button equipButton;
     public Image disabledImage;
     public TextMeshProUGUI priceText;
-    public Slider levelSlider;
+    public Image levelBar;
 
     [Header("Game Objects")]
     public GameObject prefab;
     [NonSerialized] public GameObject obj;
 
-    public void Awake(Color activeColor, Color inactiveColor, GameObject player, int id)
+    public void Awake(Sprite activeAbility, Sprite inactiveAbility, GameObject player, int id)
     {
         priceText.text = price.ToString();
         
@@ -125,12 +132,12 @@ public class Shop : MonoBehaviour
             Object.Destroy(pucharseButton.gameObject);
             Object.Destroy(disabledImage.gameObject);
             
-            equipButton.GetComponent<Image>().color = isEquiped? activeColor : inactiveColor;
+            equipButton.GetComponent<Image>().sprite = isEquiped? activeAbility : inactiveAbility;
             if (isEquiped) Create(player, id);
         }
     }
 
-    public void AwakeHealth(GameObject player)
+    public void AwakeHealth(GameObject player, Sprite[] levelSprite)
     {
         priceText.text = price.ToString();
         
@@ -153,10 +160,10 @@ public class Shop : MonoBehaviour
             level = 0;
         }
         
-        levelSlider.value = (float)level/maxLevel;
+        levelBar.sprite = levelSprite[level];
     }
 
-    public void AwakeWeapon(Color activeColor, GameObject player, int equippedWeapon, int weaponID)
+    public void AwakeWeapon(Sprite activeSprite, Sprite inactiveSprite, GameObject player, int equippedWeapon, int weaponID)
     {
         if (priceText != null) priceText.text = price.ToString();
         
@@ -166,28 +173,30 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            equipButton.GetComponent<Image>().color = equippedWeapon == weaponID? activeColor : Color.white;
+            equipButton.GetComponent<Image>().sprite = equippedWeapon == weaponID? activeSprite : inactiveSprite;
             if (equippedWeapon == weaponID) Create(player, -1);
             
             equipButton.interactable = true;
-            Object.Destroy(pucharseButton.gameObject);
-            Object.Destroy(disabledImage.gameObject);
+            if (pucharseButton)
+            {
+                Object.Destroy(pucharseButton.gameObject);
+            }
         }
     }
     
-    public void Equip(Color activeColor, Color inactiveColor, GameObject player, int id)
+    public void Equip(Sprite activeAbility, Sprite inactiveAbility, GameObject player, int id)
     {
         if (!isEquiped)
         {
             isEquiped = true;
-            equipButton.GetComponent<Image>().color = activeColor;
+            equipButton.GetComponent<Image>().sprite = activeAbility;
         
             Create(player, id);
         }
         else
         {
             isEquiped = false;
-            equipButton.GetComponent<Image>().color = inactiveColor;
+            equipButton.GetComponent<Image>().sprite = inactiveAbility;
             Object.Destroy(obj);
         }
     }
@@ -197,9 +206,9 @@ public class Shop : MonoBehaviour
         if (shop.equippedWeapon == weaponID) return;
         shop.equippedWeapon = weaponID;
             
-        equipButton.GetComponent<Image>().color = shop.activeColor;
-        w1.equipButton.GetComponent<Image>().color = Color.white;
-        w2.equipButton.GetComponent<Image>().color = Color.white;
+        equipButton.GetComponent<Image>().sprite = shop.activeWeaponSprite;
+        w1.equipButton.GetComponent<Image>().sprite = shop.inactiveWeaponSprite;
+        w2.equipButton.GetComponent<Image>().sprite = shop.inactiveWeaponSprite;
             
         Object.Destroy(w1.obj);
         Object.Destroy(w2.obj);
@@ -238,7 +247,7 @@ public class Shop : MonoBehaviour
         price *= level + 1;
         if (priceText.text!=null) priceText.text = price.ToString();
 
-        levelSlider.value = (float)level/maxLevel;
+        levelBar.sprite = shop.shieldLevels[level];
         
         DataSerializer.Save(SaveDataKeywords.healthLevel, level);
         

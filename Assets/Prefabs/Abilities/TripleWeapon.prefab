@@ -104,8 +104,8 @@ MonoBehaviour:
   - {fileID: 4319692308811654156}
   - {fileID: 5486554156433245392}
   - {fileID: 7188488658463653695}
-  coneAngle: 41.5
-  fireRate: 0.4
+  coneAngle: 20
+  fireRate: 0.5
 --- !u!1001 &362744172365952227
 PrefabInstance:
   m_ObjectHideFlags: 0

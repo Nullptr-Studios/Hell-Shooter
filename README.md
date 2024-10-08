@@ -1,4 +1,4 @@
-# Hell Shooter (WT)
+# Rift Collapse
 > by _nullptr* Studios_
 
 GDD: [Word Document](https://digipen824-my.sharepoint.com/:w:/g/personal/d_rodrguez_digipen_edu/ERH7TJBSIwFHhsgFjqGd0DQBO-a-fHunU0eprdiMGsE-PQ?e=HYZekd)

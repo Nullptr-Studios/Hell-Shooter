@@ -155,8 +155,8 @@ Transform:
   m_GameObject: {fileID: 6040269654169091117}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7503716801094756758}
   m_RootOrder: -1
@@ -285,4 +285,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43f00c0e676ebbd46bf5e9b1b0cbbcab, type: 3}
   - {fileID: 8300000, guid: cd8241f106d76dd4eb39ea440438191d, type: 3}
   - {fileID: 8300000, guid: be75b9288c5f1be4887c74146dcbbdb8, type: 3}
+  - {fileID: 8300000, guid: 4389d2df67b717743a18b55f636e3f25, type: 3}
+  - {fileID: 8300000, guid: 5def0e7cd52b24a4baf87daa9bb2e2f6, type: 3}
+  - {fileID: 8300000, guid: 4621d302d839f574db22fcc9ce4d2cc4, type: 3}
+  - {fileID: 8300000, guid: 435dfccbc4746274683785d53db3a543, type: 3}
   lifetime: 1.133

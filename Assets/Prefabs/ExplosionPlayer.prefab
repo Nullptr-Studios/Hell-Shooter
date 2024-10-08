@@ -285,6 +285,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 43f00c0e676ebbd46bf5e9b1b0cbbcab, type: 3}
   - {fileID: 8300000, guid: cd8241f106d76dd4eb39ea440438191d, type: 3}
   - {fileID: 8300000, guid: be75b9288c5f1be4887c74146dcbbdb8, type: 3}
+  - {fileID: 8300000, guid: 4389d2df67b717743a18b55f636e3f25, type: 3}
+  - {fileID: 8300000, guid: 5def0e7cd52b24a4baf87daa9bb2e2f6, type: 3}
+  - {fileID: 8300000, guid: 4621d302d839f574db22fcc9ce4d2cc4, type: 3}
+  - {fileID: 8300000, guid: 435dfccbc4746274683785d53db3a543, type: 3}
   spr: {fileID: 7395860916328220732}
   lifetime: 1.133
-  timeToSceneChange: 5
+  timeToSceneChange: 3

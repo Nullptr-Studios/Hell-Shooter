@@ -13,6 +13,14 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: killedGold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
+      propertyPath: critIndicator
+      value: 
+      objectReference: {fileID: 4945545300479629347, guid: 6ada17e27b2e16b468260dfe6a7af815, type: 3}
+    - target: {fileID: 3304201828592741079, guid: 806d62199181cb54990dfa949e99f7aa, type: 3}
       propertyPath: damageColor.b
       value: 0.03137255
       objectReference: {fileID: 0}

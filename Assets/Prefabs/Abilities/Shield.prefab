@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
-  cooldownTime: 5
+  cooldownTime: 15
   cProgress: 0
   audioSource: {fileID: 5599980958254890560}
   shieldUpSound: {fileID: 8300000, guid: ad5eae61a04e57a4d8eaef2941f2bd0d, type: 3}
