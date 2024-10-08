@@ -519,8 +519,14 @@ MonoBehaviour:
     TotalWaveTime: 16
   - Wave: {fileID: 11400000, guid: f928cc10951fe61408158ce4b8e649fc, type: 2}
     TotalWaveTime: 12
-  - Wave: {fileID: 11400000, guid: a1f9974dbcfde8c4ebc199d55b7311c8, type: 2}
-    TotalWaveTime: 12
+  - Wave: {fileID: 11400000, guid: f7a760c194d21564eafd060a415ab03e, type: 2}
+    TotalWaveTime: 22
+  - Wave: {fileID: 11400000, guid: 14af803ac51568f4c906d4e3d2cde73c, type: 2}
+    TotalWaveTime: 2
+  - Wave: {fileID: 11400000, guid: 6ffb9e58d745bc549a468f3b39015bce, type: 2}
+    TotalWaveTime: 22
+  - Wave: {fileID: 11400000, guid: c95155c09fadbfa48988af1b680737f8, type: 2}
+    TotalWaveTime: 10
   onBeginDelay: 5
   warningIndicator: {fileID: 8190051827322315488, guid: 77825e73a5677a9429167bb905e9b08f, type: 3}
 --- !u!4 &1440202588
@@ -536,7 +542,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1882998385
 GameObject:
@@ -587,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728079123577328738, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3728079123577328738, guid: 5b42ccd39e5243c459139b00d0a43c0f, type: 3}
       propertyPath: m_LocalPosition.x
