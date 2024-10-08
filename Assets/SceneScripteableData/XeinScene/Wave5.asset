@@ -10,40 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ffaf7457114db74bbb6910cdd8eaa3e, type: 3}
-  m_Name: 4RotatingDiamondSide
+  m_Name: Wave5
   m_EditorClassIdentifier: 
   EnemyWavesList:
-  - EnemyPrefab: {fileID: 2561731431333060820, guid: a0bd3358e8bc5214aaceb4434ff169a2, type: 3}
-    ammount: 0
-    delay: 2
-    SpawnLocation: {x: 0, y: 8}
-    DestinationLocation: {x: 0, y: 0}
-    DestroyOnArrival: 0
-    overrideHealth: 25
-    useLerp: 0
-    speed: 1
-    spawnerAngle: 0
-    WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
-    ammount: 0
-    delay: 2
-    SpawnLocation: {x: 15, y: 4}
-    DestinationLocation: {x: -15, y: 4}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -16, y: 10}
+    DestinationLocation: {x: 16, y: -10}
     DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 0
-    speed: 3
+    speed: 1
     spawnerAngle: -90
     WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
-    ammount: 0
-    delay: 3
-    SpawnLocation: {x: -15, y: -4}
-    DestinationLocation: {x: 15, y: -4}
+    ammount: 1
+    delay: 1
+    SpawnLocation: {x: 16, y: 10}
+    DestinationLocation: {x: -16, y: -10}
     DestroyOnArrival: 0
     overrideHealth: 0
     useLerp: 0
-    speed: 3
+    speed: 1
+    spawnerAngle: -90
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
+    ammount: 1
+    delay: 6
+    SpawnLocation: {x: 16, y: -10}
+    DestinationLocation: {x: 16, y: -10}
+    DestroyOnArrival: 0
+    overrideHealth: 0
+    useLerp: 0
+    speed: 1
+    spawnerAngle: -90
+    WaypointsSo: {fileID: 0}
+  - EnemyPrefab: {fileID: 7015178151573303251, guid: 97d94d67cfb003b48b75a683a4e422a2, type: 3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -16, y: -10}
+    DestinationLocation: {x: 16, y: 10}
+    DestroyOnArrival: 0
+    overrideHealth: 0
+    useLerp: 0
+    speed: 1
     spawnerAngle: -90
     WaypointsSo: {fileID: 0}
   _currentSteppingIndex: 0

@@ -83,26 +83,31 @@ public class EnemyWavesScriptableObject : ScriptableObject
              health.ChangeMaxHealth(Wave.overrideHealth);
          }
 
-         // Sets destination
-         movement.destination = Wave.DestinationLocation;
-         // Set use lerp
-         movement.useLerp = Wave.useLerp;
-         // Set movement speed 
-         movement.speed = Wave.speed;
-         movement.destroyAtArrival = Wave.DestroyOnArrival;
-         // Set move to position if speed is > 0
-         if (Wave.speed > 0)
+         if (movement)
          {
-             movement.moveToPosition = true;
+             // Sets destination
+             movement.destination = Wave.DestinationLocation;
+             // Set use lerp
+             movement.useLerp = Wave.useLerp;
+             // Set movement speed 
+             movement.speed = Wave.speed;
+             movement.destroyAtArrival = Wave.DestroyOnArrival;
+
+
+             // Set move to position if speed is > 0
+             if (Wave.speed > 0)
+             {
+                 movement.moveToPosition = true;
+             }
+
+             movement.bulletSpawner.transform.localEulerAngles = new Vector3(0, 0, Wave.spawnerAngle);
+
+             if (Wave.WaypointsSo)
+             {
+                 movement.waypoints = Wave.WaypointsSo;
+             }
          }
-         
-         movement.bulletSpawner.transform.localEulerAngles = new Vector3(0,0, Wave.spawnerAngle);
-         
-         if(Wave.WaypointsSo)
-         {
-            movement.waypoints = Wave.WaypointsSo;
-         }
-         
+
          WarningLogic(Wave);
      }
 

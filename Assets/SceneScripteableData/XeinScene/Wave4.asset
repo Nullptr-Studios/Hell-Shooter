@@ -10,51 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ffaf7457114db74bbb6910cdd8eaa3e, type: 3}
-  m_Name: 4CirclePatternFromEachSideDelayed
+  m_Name: Wave4
   m_EditorClassIdentifier: 
   EnemyWavesList:
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
-    ammount: 0
-    delay: 3
-    SpawnLocation: {x: -17, y: 8}
-    DestinationLocation: {x: -9, y: 3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: 16, y: 6}
+    DestinationLocation: {x: -16, y: 6}
     DestroyOnArrival: 0
-    overrideHealth: 0
-    useLerp: 1
-    speed: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
     spawnerAngle: 0
     WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
-    ammount: 0
-    delay: 3
-    SpawnLocation: {x: 17, y: 8}
-    DestinationLocation: {x: 9, y: 3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -16, y: -6}
+    DestinationLocation: {x: 16, y: -6}
     DestroyOnArrival: 0
-    overrideHealth: 0
-    useLerp: 1
-    speed: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
     spawnerAngle: 0
     WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
-    ammount: 0
-    delay: 3
-    SpawnLocation: {x: 17, y: -8}
-    DestinationLocation: {x: 9, y: -3}
+    ammount: 1
+    delay: 8
+    SpawnLocation: {x: 16, y: 6}
+    DestinationLocation: {x: -16, y: 6}
     DestroyOnArrival: 0
-    overrideHealth: 0
-    useLerp: 1
-    speed: 1
-    spawnerAngle: -90
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
+    spawnerAngle: 0
     WaypointsSo: {fileID: 0}
   - EnemyPrefab: {fileID: 4997872618338541637, guid: 103d51b0d4ffd5a44a0ee2e6c085b9d0, type: 3}
-    ammount: 0
-    delay: 3
-    SpawnLocation: {x: -17, y: -8}
-    DestinationLocation: {x: -9, y: -3}
+    ammount: 1
+    delay: 0
+    SpawnLocation: {x: -16, y: -6}
+    DestinationLocation: {x: 16, y: -6}
     DestroyOnArrival: 0
-    overrideHealth: 0
-    useLerp: 1
-    speed: 1
+    overrideHealth: 10
+    useLerp: 0
+    speed: 2
     spawnerAngle: 0
     WaypointsSo: {fileID: 0}
   _currentSteppingIndex: 0
