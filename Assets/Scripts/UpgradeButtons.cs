@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using ToolBox.Serialization;
 using UnityEngine.UI;
 
 public class UpgradeButtons : MonoBehaviour
@@ -28,10 +29,31 @@ public class UpgradeButtons : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         
+        switch (statId)
+        {
+            case StatID.damageMultiplier:
+                currentLevel = DataSerializer.Load<int>(SaveDataKeywords.statDamage);
+                break;
+            case StatID.speedMultiplier:
+                currentLevel = DataSerializer.Load<int>(SaveDataKeywords.statSpeed);
+                break;
+            case StatID.bulletSpeedMultiplier:
+                currentLevel = DataSerializer.Load<int>(SaveDataKeywords.statBullet);
+                break;
+            case StatID.criticalHitPercentage:
+                currentLevel = DataSerializer.Load<int>(SaveDataKeywords.statCrit);
+                break;
+            case StatID.fireRateMultiplier:
+                currentLevel = DataSerializer.Load<int>(SaveDataKeywords.statFire);
+                break;
+        }
+        
         downgradeButton.button.interactable = false;
         downgradeButton.symbol.enabled = false;
         downgradeButton.value.color = new Color(1, 0, 0.302f);
         levelBar.sprite = levelBarSprites[currentLevel];
+        
+        
         
         upgradeButton.value.text = upgradeCost[currentLevel].ToString();
         downgradeButton.value.text = upgradeCost[currentLevel-1].ToString();
